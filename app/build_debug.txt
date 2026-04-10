@@ -1,0 +1,1958 @@
+2026-04-08T19:38:41.426Z vite:config config file loaded in 153.26ms
+2026-04-08T19:38:41.430Z vite:env loading env files: [
+  '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/.env',
+  '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/.env.local',
+  '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/.env.production',
+  '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/.env.production.local'
+]
+2026-04-08T19:38:41.431Z vite:env env files loaded in 1.53ms
+2026-04-08T19:38:41.438Z vite:env using resolved env: {
+  APP_DEBUG: 'true',
+  APP_ENV: 'local',
+  APP_FAKER_LOCALE: 'en_US',
+  APP_FALLBACK_LOCALE: 'en',
+  APP_KEY: 'base64:endjLygmYBLheyQeeTv+kcMXoHsaYZuE/Bw0ROMzTDE=',
+  APP_LOCALE: 'en',
+  APP_MAINTENANCE_DRIVER: 'file',
+  APP_NAME: 'Laravel',
+  APP_URL: 'http://localhost',
+  AWS_ACCESS_KEY_ID: '',
+  AWS_BUCKET: '',
+  AWS_DEFAULT_REGION: 'us-east-1',
+  AWS_SECRET_ACCESS_KEY: '',
+  AWS_USE_PATH_STYLE_ENDPOINT: 'false',
+  BCRYPT_ROUNDS: '12',
+  BROADCAST_CONNECTION: 'log',
+  CACHE_STORE: 'database',
+  DB_CONNECTION: 'sqlite',
+  FILESYSTEM_DISK: 'local',
+  LOG_CHANNEL: 'stack',
+  LOG_DEPRECATIONS_CHANNEL: 'null',
+  LOG_LEVEL: 'debug',
+  LOG_STACK: 'single',
+  MAIL_FROM_ADDRESS: 'hello@example.com',
+  MAIL_FROM_NAME: 'Laravel',
+  MAIL_HOST: '127.0.0.1',
+  MAIL_MAILER: 'log',
+  MAIL_PASSWORD: 'null',
+  MAIL_PORT: '2525',
+  MAIL_SCHEME: 'null',
+  MAIL_USERNAME: 'null',
+  MEMCACHED_HOST: '127.0.0.1',
+  QUEUE_CONNECTION: 'database',
+  REDIS_CLIENT: 'phpredis',
+  REDIS_HOST: '127.0.0.1',
+  REDIS_PASSWORD: 'null',
+  REDIS_PORT: '6379',
+  SESSION_DOMAIN: 'null',
+  SESSION_DRIVER: 'database',
+  SESSION_ENCRYPT: 'false',
+  SESSION_LIFETIME: '120',
+  SESSION_PATH: '/',
+  VITE_APP_NAME: 'Laravel',
+  GJS_DEBUG_TOPICS: 'JS ERROR;JS LOG',
+  LESSOPEN: '| /usr/bin/lesspipe %s',
+  USER: 'mwangi-brian',
+  PHP_INI_SCAN_DIR: '/home/mwangi-brian/.config/herd-lite/bin:/home/mwangi-brian/.config/herd-lite/bin:',
+  npm_config_user_agent: 'npm/11.4.2 node/v24.4.0 linux x64 workspaces/false',
+  XDG_SESSION_TYPE: 'x11',
+  GIT_ASKPASS: '/usr/share/antigravity/resources/app/extensions/git/dist/askpass.sh',
+  BUN_INSTALL: '/home/mwangi-brian/.bun',
+  npm_node_execpath: '/usr/local/bin/node',
+  CLUTTER_DISABLE_MIPMAPPED_TEXT: '1',
+  SHLVL: '1',
+  npm_config_noproxy: '',
+  ANTIGRAVITY_CLI_ALIAS: 'agy',
+  HOME: '/home/mwangi-brian',
+  CHROME_DESKTOP: 'antigravity.desktop',
+  OLDPWD: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+  TERM_PROGRAM_VERSION: '1.107.0',
+  DESKTOP_SESSION: 'ubuntu-xorg',
+  npm_package_json: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/package.json',
+  GIO_LAUNCHED_DESKTOP_FILE: '/usr/share/applications/antigravity.desktop',
+  GNOME_SHELL_SESSION_MODE: 'ubuntu',
+  GTK_MODULES: 'gail:atk-bridge',
+  PAGER: 'cat',
+  VSCODE_GIT_ASKPASS_MAIN: '/usr/share/antigravity/resources/app/extensions/git/dist/askpass-main.js',
+  VSCODE_GIT_ASKPASS_NODE: '/usr/share/antigravity/antigravity',
+  MANAGERPID: '1761',
+  npm_config_userconfig: '/home/mwangi-brian/.npmrc',
+  npm_config_local_prefix: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+  SYSTEMD_EXEC_PID: '3707',
+  VSCODE_PYTHON_AUTOACTIVATE_GUARD: '1',
+  GSM_SKIP_SSH_AGENT_WORKAROUND: 'true',
+  DBUS_SESSION_BUS_ADDRESS: 'unix:path=/run/user/1000/bus',
+  COLORTERM: 'truecolor',
+  ANTIGRAVITY_AGENT: '1',
+  GIO_LAUNCHED_DESKTOP_FILE_PID: '40619',
+  COLOR: '0',
+  DEBUGINFOD_URLS: 'https://debuginfod.ubuntu.com ',
+  LOGNAME: 'mwangi-brian',
+  JOURNAL_STREAM: '9:33314',
+  _: '/usr/local/bin/npx',
+  npm_config_prefix: '/home/mwangi-brian/.npm-global',
+  npm_config_npm_version: '11.4.2',
+  MEMORY_PRESSURE_WATCH: '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure',
+  XDG_SESSION_CLASS: 'user',
+  USERNAME: 'mwangi-brian',
+  TERM: 'xterm-256color',
+  npm_config_cache: '/home/mwangi-brian/.npm',
+  GNOME_DESKTOP_SESSION_ID: 'this-is-deprecated',
+  FC_FONTATIONS: '1',
+  npm_config_ignore_scripts: 'true',
+  WINDOWPATH: '2',
+  npm_config_node_gyp: '/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js',
+  PATH: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/.bin:/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/.bin:/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/node_modules/.bin:/home/mwangi-brian/Desktop/mwangi.work/node_modules/.bin:/home/mwangi-brian/Desktop/node_modules/.bin:/home/mwangi-brian/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/home/mwangi-brian/.bun/bin:/home/mwangi-brian/.npm-global/bin:/home/mwangi-brian/.config/herd-lite/bin:/home/mwangi-brian/.config/composer/vendor/bin:/home/mwangi-brian/.local/bin:/home/mwangi-brian/.bun/bin:/home/mwangi-brian/.npm-global/bin:/home/mwangi-brian/.config/herd-lite/bin:/home/mwangi-brian/.config/composer/vendor/bin:/home/mwangi-brian/.cargo/bin:/home/mwangi-brian/.aiken/bin:/home/mwangi-brian/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin',
+  SESSION_MANAGER: 'local/mwangi-brian:@/tmp/.ICE-unix/3663,unix/mwangi-brian:/tmp/.ICE-unix/3663',
+  INVOCATION_ID: '4edffebf466a4e38903db86a95920c5a',
+  NODE: '/usr/local/bin/node',
+  XDG_MENU_PREFIX: 'gnome-',
+  XDG_RUNTIME_DIR: '/run/user/1000',
+  GDK_BACKEND: 'x11',
+  DISPLAY: ':0',
+  LANG: 'en_US.UTF-8',
+  XDG_CURRENT_DESKTOP: 'ubuntu:GNOME',
+  XMODIFIERS: '@im=ibus',
+  XDG_SESSION_DESKTOP: 'ubuntu-xorg',
+  XAUTHORITY: '/run/user/1000/gdm/Xauthority',
+  LS_COLORS: 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:',
+  SBX_CHROME_API_RQ: '1',
+  VSCODE_GIT_IPC_HANDLE: '/run/user/1000/vscode-git-d8b6e99cce.sock',
+  TERM_PROGRAM: 'vscode',
+  npm_lifecycle_script: '"vite"',
+  SSH_AUTH_SOCK: '/run/user/1000/keyring/ssh',
+  SHELL: '/bin/bash',
+  npm_lifecycle_event: 'npx',
+  QT_ACCESSIBILITY: '1',
+  GDMSESSION: 'ubuntu-xorg',
+  LESSCLOSE: '/usr/bin/lesspipe %s %s',
+  GPG_AGENT_INFO: '/run/user/1000/gnupg/S.gpg-agent:0:1',
+  GJS_DEBUG_OUTPUT: 'stderr',
+  VSCODE_GIT_ASKPASS_EXTRA_ARGS: '',
+  QT_IM_MODULE: 'ibus',
+  npm_config_globalconfig: '/home/mwangi-brian/.npm-global/etc/npmrc',
+  npm_config_init_module: '/home/mwangi-brian/.npm-init.js',
+  PWD: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+  npm_execpath: '/usr/local/lib/node_modules/npm/bin/npm-cli.js',
+  XDG_CONFIG_DIRS: '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg',
+  XDG_DATA_DIRS: '/usr/share/ubuntu-xorg:/usr/share/gnome:/home/mwangi-brian/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop',
+  npm_config_global_prefix: '/home/mwangi-brian/.npm-global',
+  npm_command: 'exec',
+  MEMORY_PRESSURE_WRITE: 'c29tZSAyMDAwMDAgMjAwMDAwMAA=',
+  INIT_CWD: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+  EDITOR: 'vi',
+  DEBUG: 'vite:*',
+  NODE_ENV: 'production'
+}
+2026-04-08T19:38:41.443Z vite:env loading env files: [
+  '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/.env',
+  '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/.env.local',
+  '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/.env.production',
+  '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/.env.production.local'
+]
+2026-04-08T19:38:41.444Z vite:env env files loaded in 0.67ms
+2026-04-08T19:38:41.447Z vite:env using resolved env: { VITE_APP_NAME: 'Laravel' }
+2026-04-08T19:38:41.496Z vite:config using resolved config: {
+  plugins: [
+    'vite:watch-package-data',
+    'builtin:vite-alias',
+    'vite:react-babel',
+    'vite:react-refresh-fbm',
+    'vite:react-refresh',
+    '@tailwindcss/vite:scan',
+    '@tailwindcss/vite:generate:build',
+    '@laravel/vite-plugin-wayfinder',
+    'native:modulepreload-polyfill',
+    'vite:resolve-builtin:get-environment',
+    'vite:resolve-builtin',
+    'vite:html-inline-proxy',
+    'vite:css',
+    'native:transform',
+    'builtin:vite-json',
+    'vite:wasm-helper',
+    'vite:worker',
+    'vite:asset',
+    'vite:forward-console',
+    '@inertiajs/vite',
+    'vite:react-virtual-preamble',
+    'builtin:vite-wasm-fallback',
+    'vite:define',
+    'vite:css-post',
+    'vite:build-html',
+    'vite:worker-import-meta-url',
+    'vite:asset-import-meta-url',
+    'vite:prepare-out-dir',
+    'vite:rollup-options-plugins',
+    'native:dynamic-import-vars',
+    'builtin:vite-import-glob',
+    'laravel',
+    'vite:react:config-post',
+    'vite:build-import-analysis',
+    'native:import-analysis-build',
+    'vite:terser',
+    'vite:license',
+    'native:manifest',
+    'vite:ssr-manifest',
+    'native:reporter',
+    'builtin:vite-load-fallback'
+  ],
+  build: {
+    target: [ 'chrome111', 'edge111', 'firefox114', 'safari16.4', 'ios16.4' ],
+    polyfillModulePreload: true,
+    modulePreload: { polyfill: true },
+    outDir: 'public/build',
+    assetsDir: 'assets',
+    assetsInlineLimit: 0,
+    sourcemap: false,
+    terserOptions: {},
+    rolldownOptions: {
+      platform: 'browser',
+      onwarn: [Function: onwarn],
+      input: [ 'resources/css/app.css', 'resources/js/app.tsx' ]
+    },
+    commonjsOptions: { include: [ /node_modules/ ], extensions: [ '.js', '.cjs' ] },
+    dynamicImportVarsOptions: { exclude: [ /node_modules/ ] },
+    write: true,
+    emptyOutDir: null,
+    copyPublicDir: true,
+    license: false,
+    manifest: 'manifest.json',
+    lib: false,
+    ssrManifest: false,
+    ssrEmitAssets: false,
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 500,
+    watch: null,
+    cssCodeSplit: true,
+    minify: 'oxc',
+    rollupOptions: {
+      platform: 'browser',
+      onwarn: [Function: onwarn],
+      input: [ 'resources/css/app.css', 'resources/js/app.tsx' ]
+    },
+    ssr: false,
+    emitAssets: true,
+    createEnvironment: [Function: createEnvironment],
+    cssTarget: [ 'chrome111', 'edge111', 'firefox114', 'safari16.4', 'ios16.4' ],
+    cssMinify: true
+  },
+  worker: {
+    format: 'iife',
+    plugins: '() => plugins',
+    rollupOptions: {},
+    rolldownOptions: {}
+  },
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react/jsx-dev-runtime',
+      'react/jsx-runtime',
+      'react/compiler-runtime'
+    ],
+    exclude: [],
+    needsInterop: [],
+    rolldownOptions: {
+      transform: { jsx: { runtime: 'automatic' } },
+      resolve: { symlinks: true },
+      output: { topLevelVar: true }
+    },
+    extensions: [],
+    disabled: undefined,
+    holdUntilCrawlEnd: true,
+    force: false,
+    ignoreOutdatedRequests: false,
+    noDiscovery: false,
+    rollupOptions: [Getter/Setter],
+    esbuildOptions: { preserveSymlinks: false }
+  },
+  oxc: {
+    jsx: {
+      development: false,
+      runtime: 'automatic',
+      importSource: undefined,
+      refresh: false
+    },
+    jsxRefreshInclude: /\.[tj]sx?(?:\?.*)?$/,
+    jsxRefreshExclude: /\/node_modules\//
+  },
+  base: '/build/',
+  publicDir: '',
+  server: {
+    port: 5173,
+    strictPort: false,
+    host: undefined,
+    allowedHosts: [
+      '__laravel_vite_placeholder__.test',
+      '__laravel_vite_placeholder__.test'
+    ],
+    https: undefined,
+    open: false,
+    proxy: undefined,
+    cors: {
+      origin: [
+        /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/,
+        'http://localhost',
+        /^https?:\/\/.*\.test(:\d+)?$/
+      ]
+    },
+    headers: {},
+    warmup: { clientFiles: [], ssrFiles: [] },
+    middlewareMode: false,
+    fs: {
+      strict: true,
+      deny: [ '.env', '.env.*', '*.{crt,pem}', '**/.git/**' ],
+      allow: [
+        '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app'
+      ]
+    },
+    preTransformRequests: true,
+    perEnvironmentStartEndDuringDev: false,
+    perEnvironmentWatchChangeDuringDev: false,
+    forwardConsole: {
+      enabled: true,
+      unhandledErrors: true,
+      logLevels: [ 'error', 'warn' ]
+    },
+    sourcemapIgnoreList: [Function: isInNodeModules],
+    origin: 'http://__laravel_vite_placeholder__.test'
+  },
+  resolve: {
+    externalConditions: [ 'node', 'module-sync' ],
+    extensions: [
+      '.mjs',  '.js',
+      '.mts',  '.ts',
+      '.jsx',  '.tsx',
+      '.json'
+    ],
+    dedupe: [],
+    noExternal: [],
+    external: [],
+    preserveSymlinks: false,
+    tsconfigPaths: false,
+    alias: [
+      { find: '@', replacement: '/resources/js' },
+      {
+        find: /^\/?@vite\/env/,
+        replacement: '/@fs/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/vite/dist/client/env.mjs'
+      },
+      {
+        find: /^\/?@vite\/client/,
+        replacement: '/@fs/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/vite/dist/client/client.mjs'
+      }
+    ],
+    mainFields: [ 'browser', 'module', 'jsnext:main', 'jsnext' ],
+    conditions: [ 'module', 'browser', 'development|production' ],
+    builtins: []
+  },
+  ssr: {
+    target: 'node',
+    optimizeDeps: {
+      esbuildOptions: { preserveSymlinks: false },
+      include: [],
+      exclude: [],
+      needsInterop: [],
+      rolldownOptions: { resolve: { symlinks: true }, output: { topLevelVar: true } },
+      extensions: [],
+      holdUntilCrawlEnd: true,
+      force: false,
+      ignoreOutdatedRequests: false,
+      noDiscovery: true,
+      rollupOptions: { resolve: { symlinks: true }, output: { topLevelVar: true } }
+    },
+    noExternal: [ 'laravel-vite-plugin' ],
+    external: [],
+    resolve: {
+      conditions: [ 'module', 'node', 'development|production' ],
+      externalConditions: [ 'node', 'module-sync' ]
+    }
+  },
+  environments: {
+    client: {
+      define: undefined,
+      resolve: {
+        externalConditions: [ 'node', 'module-sync' ],
+        extensions: [
+          '.mjs',  '.js',
+          '.mts',  '.ts',
+          '.jsx',  '.tsx',
+          '.json'
+        ],
+        dedupe: [],
+        noExternal: [],
+        external: [],
+        preserveSymlinks: false,
+        tsconfigPaths: false,
+        alias: [
+          { find: '@', replacement: '/resources/js' },
+          {
+            find: /^\/?@vite\/env/,
+            replacement: '/@fs/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/vite/dist/client/env.mjs'
+          },
+          {
+            find: /^\/?@vite\/client/,
+            replacement: '/@fs/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/vite/dist/client/client.mjs'
+          }
+        ],
+        mainFields: [ 'browser', 'module', 'jsnext:main', 'jsnext' ],
+        conditions: [ 'module', 'browser', 'development|production' ],
+        builtins: []
+      },
+      keepProcessEnv: false,
+      consumer: 'client',
+      optimizeDeps: {
+        include: [
+          'react',
+          'react-dom',
+          'react/jsx-dev-runtime',
+          'react/jsx-runtime',
+          'react/compiler-runtime'
+        ],
+        exclude: [],
+        needsInterop: [],
+        rolldownOptions: {
+          transform: { jsx: { runtime: 'automatic' } },
+          resolve: { symlinks: true },
+          output: { topLevelVar: true }
+        },
+        extensions: [],
+        disabled: undefined,
+        holdUntilCrawlEnd: true,
+        force: false,
+        ignoreOutdatedRequests: false,
+        noDiscovery: false,
+        rollupOptions: [Getter/Setter],
+        esbuildOptions: { preserveSymlinks: false }
+      },
+      dev: {
+        warmup: [],
+        sourcemap: { js: true },
+        sourcemapIgnoreList: [Function: isInNodeModules],
+        preTransformRequests: true,
+        createEnvironment: [Function: defaultCreateClientDevEnvironment],
+        recoverable: true,
+        moduleRunnerTransform: false
+      },
+      build: {
+        target: [
+          'chrome111',
+          'edge111',
+          'firefox114',
+          'safari16.4',
+          'ios16.4'
+        ],
+        polyfillModulePreload: true,
+        modulePreload: { polyfill: true },
+        outDir: 'public/build',
+        assetsDir: 'assets',
+        assetsInlineLimit: 0,
+        sourcemap: false,
+        terserOptions: {},
+        rolldownOptions: {
+          platform: 'browser',
+          onwarn: [Function: onwarn],
+          input: [ 'resources/css/app.css', 'resources/js/app.tsx' ]
+        },
+        commonjsOptions: { include: [ /node_modules/ ], extensions: [ '.js', '.cjs' ] },
+        dynamicImportVarsOptions: { exclude: [ /node_modules/ ] },
+        write: true,
+        emptyOutDir: null,
+        copyPublicDir: true,
+        license: false,
+        manifest: 'manifest.json',
+        lib: false,
+        ssrManifest: false,
+        ssrEmitAssets: false,
+        reportCompressedSize: true,
+        chunkSizeWarningLimit: 500,
+        watch: null,
+        cssCodeSplit: true,
+        minify: 'oxc',
+        rollupOptions: {
+          platform: 'browser',
+          onwarn: [Function: onwarn],
+          input: [ 'resources/css/app.css', 'resources/js/app.tsx' ]
+        },
+        ssr: false,
+        emitAssets: true,
+        createEnvironment: [Function: createEnvironment],
+        cssTarget: [
+          'chrome111',
+          'edge111',
+          'firefox114',
+          'safari16.4',
+          'ios16.4'
+        ],
+        cssMinify: true
+      },
+      plugins: [
+        {
+          name: 'vite:watch-package-data',
+          buildStart: [Function: buildStart],
+          buildEnd: [Function: buildEnd],
+          watchChange: [Function: watchChange]
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-alias',
+          _options: {
+            entries: [
+              { find: '@', replacement: '/resources/js' },
+              {
+                find: /^\/?@vite\/env/,
+                replacement: '/@fs/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/vite/dist/client/env.mjs'
+              },
+              {
+                find: /^\/?@vite\/client/,
+                replacement: '/@fs/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/vite/dist/client/client.mjs'
+              }
+            ]
+          }
+        },
+        {
+          name: 'vite:react-babel',
+          enforce: 'pre',
+          config: [Function: config],
+          configResolved: [Function: configResolved],
+          options: [Function: options],
+          transform: {
+            filter: {
+              id: {
+                include: /\.[tj]sx?(?:\?.*)?$/,
+                exclude: /\/node_modules\//
+              }
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:react-refresh-fbm',
+          enforce: 'pre',
+          transformIndexHtml: { handler: [Function: handler], order: 'pre' }
+        },
+        {
+          name: 'vite:react-refresh',
+          enforce: 'pre',
+          config: [Function: config],
+          resolveId: {
+            filter: { id: /^\/@react\-refresh$/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: { id: /^\/@react\-refresh$/ },
+            handler: [Function: handler]
+          },
+          transformIndexHtml: [Function: transformIndexHtml]
+        },
+        {
+          name: '@tailwindcss/vite:scan',
+          enforce: 'pre',
+          configureServer: [Function: configureServer],
+          configResolved: [AsyncFunction: configResolved]
+        },
+        {
+          name: '@tailwindcss/vite:generate:build',
+          apply: 'build',
+          enforce: 'pre',
+          transform: {
+            filter: {
+              id: {
+                exclude: [
+                  /\/\.vite\//,
+                  /[?&](?:worker|sharedworker|raw|url)\b/,
+                  /\?commonjs-proxy/
+                ],
+                include: [
+                  /\.css(?:\?.*)?$/,
+                  /&lang\.css/,
+                  /[?&]index=\d+\.css$/
+                ]
+              }
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: '@laravel/vite-plugin-wayfinder',
+          enforce: 'pre',
+          buildStart: [Function: buildStart],
+          handleHotUpdate: [AsyncFunction: handleHotUpdate]
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-module-preload-polyfill',
+          _options: { isServer: false }
+        },
+        {
+          name: 'vite:resolve-builtin:get-environment',
+          buildStart: [Function: buildStart],
+          perEnvironmentStartEndDuringDev: true
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-resolve',
+          _options: {
+            resolveOptions: {
+              isBuild: true,
+              isProduction: true,
+              asSrc: true,
+              preferRelative: false,
+              isRequire: undefined,
+              root: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+              scan: false,
+              mainFields: [ 'browser', 'module', 'jsnext:main', 'jsnext', 'main' ],
+              conditions: [ 'module', 'browser', 'development|production' ],
+              externalConditions: [ 'node', 'module-sync' ],
+              extensions: [
+                '.mjs',  '.js',
+                '.mts',  '.ts',
+                '.jsx',  '.tsx',
+                '.json'
+              ],
+              tryIndex: true,
+              tryPrefix: undefined,
+              preserveSymlinks: false,
+              tsconfigPaths: false
+            },
+            environmentConsumer: 'client',
+            environmentName: 'client',
+            builtins: [],
+            external: [],
+            noExternal: [],
+            dedupe: [],
+            disableCache: false,
+            legacyInconsistentCjsInterop: undefined,
+            finalizeBareSpecifier: undefined,
+            finalizeOtherSpecifiers: undefined,
+            resolveSubpathImports: [Function: resolveSubpathImports],
+            yarnPnp: false
+          },
+          getOrder: [AsyncFunction: wrappedHook],
+          load: [AsyncFunction: wrappedHook],
+          resolveId: [AsyncFunction: wrappedHook],
+          transform: [AsyncFunction: wrappedHook],
+          watchChange: [AsyncFunction: wrappedHook],
+          perEnvironmentWatchChangeDuringDev: true
+        },
+        {
+          name: 'vite:html-inline-proxy',
+          resolveId: {
+            filter: { id: /[?&]html-proxy\b/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: { id: /[?&]html-proxy\b/ },
+            handler: [Function: handler]
+          }
+        },
+        {
+          name: 'vite:css',
+          buildStart: [Function: buildStart],
+          buildEnd: [Function: buildEnd],
+          load: {
+            filter: {
+              id: /\.(css|less|sass|scss|styl|stylus|pcss|postcss|sss)(?:$|\?)/
+            },
+            handler: [AsyncFunction: handler]
+          },
+          transform: {
+            filter: {
+              id: {
+                include: /\.(css|less|sass|scss|styl|stylus|pcss|postcss|sss)(?:$|\?)/,
+                exclude: [
+                  /[?&]commonjs-proxy/,
+                  /[?&](?:worker|sharedworker|raw|url)\b/
+                ]
+              }
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-transform',
+          _options: {
+            root: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+            include: [ /\.(m?ts|[jt]sx)$/ ],
+            exclude: [ /\.js$/ ],
+            jsxRefreshInclude: [ /\.[tj]sx?(?:\?.*)?$/ ],
+            jsxRefreshExclude: [ /\/node_modules\// ],
+            isServerConsumer: false,
+            jsxInject: undefined,
+            transformOptions: {
+              jsx: {
+                development: false,
+                runtime: 'automatic',
+                importSource: undefined,
+                refresh: false
+              },
+              sourcemap: true
+            },
+            yarnPnp: false
+          }
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-json',
+          _options: { namedExports: true, stringify: 'auto', minify: true },
+          getOrder: [AsyncFunction: wrappedHook],
+          load: [AsyncFunction: wrappedHook],
+          resolveId: [AsyncFunction: wrappedHook],
+          transform: [AsyncFunction: wrappedHook],
+          watchChange: [AsyncFunction: wrappedHook]
+        },
+        {
+          name: 'vite:wasm-helper',
+          resolveId: {
+            filter: { id: /^ vite\/wasm\-helper\.js$/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: {
+              id: [
+                /^ vite\/wasm\-helper\.js$/,
+                /(?<![?#].*)\.wasm\?init/
+              ]
+            },
+            handler: [AsyncFunction: handler]
+          },
+          renderChunk: undefined
+        },
+        {
+          name: 'vite:worker',
+          buildStart: [Function: buildStart],
+          load: {
+            filter: { id: /(?:\?|&)(worker|sharedworker)(?:&|$)/ },
+            handler: [AsyncFunction: handler]
+          },
+          transform: {
+            filter: { id: /(?:\?|&)worker_file&type=(\w+)(?:&|$)/ },
+            handler: [AsyncFunction: handler]
+          },
+          renderChunk: [Function: renderChunk],
+          generateBundle: [Function: generateBundle],
+          watchChange: [Function: watchChange]
+        },
+        {
+          name: 'vite:asset',
+          perEnvironmentStartEndDuringDev: true,
+          buildStart: [Function: buildStart],
+          resolveId: {
+            filter: {
+              id: [
+                /(\?|&)url(?:&|$)/,
+                /\.(apng|bmp|png|jpe?g|jfif|pjpeg|pjp|gif|svg|ico|webp|avif|cur|jxl|mp4|webm|ogg|mp3|wav|flac|aac|opus|mov|m4a|vtt|woff2?|eot|ttf|otf|webmanifest|pdf|txt)(\?.*)?$/i
+              ]
+            },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: {
+              id: {
+                include: [
+                  /(\?|&)raw(?:&|$)/,
+                  /(\?|&)url(?:&|$)/,
+                  /\.(apng|bmp|png|jpe?g|jfif|pjpeg|pjp|gif|svg|ico|webp|avif|cur|jxl|mp4|webm|ogg|mp3|wav|flac|aac|opus|mov|m4a|vtt|woff2?|eot|ttf|otf|webmanifest|pdf|txt)(\?.*)?$/i
+                ],
+                exclude: /^\0/
+              }
+            },
+            handler: [AsyncFunction: handler]
+          },
+          renderChunk: [Function: renderChunk],
+          generateBundle: [Function: generateBundle],
+          watchChange: [Function: watchChange]
+        },
+        {
+          name: 'vite:forward-console',
+          apply: 'serve',
+          configureServer: [Function: configureServer]
+        },
+        {
+          name: '@inertiajs/vite',
+          config: [Function: config],
+          configResolved: [Function: configResolved],
+          transform: [Function: transform],
+          configureServer: [Function: configureServer]
+        },
+        {
+          name: 'vite:react-virtual-preamble',
+          resolveId: {
+            order: 'pre',
+            filter: { id: /^@vitejs\/plugin\-react\/preamble$/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: { id: /^ @vitejs\/plugin\-react\/preamble$/ },
+            handler: [Function: handler]
+          }
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-wasm-fallback',
+          _options: undefined,
+          getOrder: [AsyncFunction: wrappedHook],
+          load: [AsyncFunction: wrappedHook],
+          resolveId: [AsyncFunction: wrappedHook],
+          transform: [AsyncFunction: wrappedHook],
+          watchChange: [AsyncFunction: wrappedHook]
+        },
+        { name: 'vite:define', options: [Function: options] },
+        {
+          name: 'vite:css-post',
+          renderStart: [Function: renderStart],
+          transform: {
+            filter: {
+              id: {
+                include: /\.(css|less|sass|scss|styl|stylus|pcss|postcss|sss)(?:$|\?)/,
+                exclude: [
+                  /[?&]commonjs-proxy/,
+                  /[?&](?:worker|sharedworker|raw|url)\b/
+                ]
+              }
+            },
+            handler: [AsyncFunction: handler]
+          },
+          renderChunk: [AsyncFunction: renderChunk],
+          augmentChunkHash: [Function: augmentChunkHash],
+          generateBundle: [AsyncFunction: generateBundle]
+        },
+        {
+          name: 'vite:build-html',
+          transform: {
+            filter: { id: /\.html$/ },
+            handler: [AsyncFunction: handler]
+          },
+          generateBundle: [AsyncFunction: generateBundle]
+        },
+        {
+          name: 'vite:worker-import-meta-url',
+          applyToEnvironment: [Function: applyToEnvironment],
+          transform: {
+            filter: {
+              code: /\bnew\s+(?:Worker|SharedWorker)\s*\(\s*(new\s+URL\s*\(\s*('[^']+'|"[^"]+"|`[^`]+`)\s*,\s*import\.meta\.url\s*(?:,\s*)?\))/dg
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:asset-import-meta-url',
+          applyToEnvironment: [Function: applyToEnvironment],
+          transform: {
+            filter: {
+              id: {
+                exclude: [
+                  /^ vite\/preload\-helper\.js$/,
+                  /^\/home\/mwangi\-brian\/Desktop\/mwangi\.work\/www\.2connect\.co\.ke\/app\/node_modules\/vite\/dist\/client\/client\.mjs$/
+                ]
+              },
+              code: /\bnew\s+URL\s*\(\s*('[^']+'|"[^"]+"|`[^`]+`)\s*,\s*import\.meta\.url\s*(?:,\s*)?\)/dg
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:prepare-out-dir',
+          options: [Function: options],
+          renderStart: { order: 'pre', handler: [Function: handler] }
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-dynamic-import-vars',
+          _options: {
+            include: undefined,
+            exclude: [ /node_modules/ ],
+            resolver: [Function: resolver],
+            sourcemap: false
+          }
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-import-glob',
+          _options: {
+            root: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+            sourcemap: false,
+            restoreQueryExtension: false
+          }
+        },
+        {
+          name: 'laravel',
+          enforce: 'post',
+          config: [Function: config],
+          configResolved: [Function: configResolved],
+          transform: [Function: transform],
+          configureServer: [Function: configureServer]
+        },
+        {
+          name: 'vite:react:config-post',
+          enforce: 'post',
+          config: [Function: config]
+        },
+        {
+          name: 'vite:build-import-analysis',
+          renderChunk: [Function: renderChunk],
+          generateBundle: [AsyncFunction: generateBundle]
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-build-import-analysis',
+          _options: {
+            preloadCode: `const scriptRel = 'modulepreload';const assetsURL = function(dep) { return "/build/"+dep };const seen = {};export const __vitePreload = function preload(baseModule, deps, importerUrl) {\n` +
+              '\tlet promise = Promise.resolve();\n' +
+              '\tif (__VITE_IS_MODERN__ && deps && deps.length > 0) {\n' +
+              '\t\tconst links = document.getElementsByTagName("link");\n' +
+              '\t\tconst cspNonceMeta = document.querySelector("meta[property=csp-nonce]");\n' +
+              '\t\tconst cspNonce = cspNonceMeta?.nonce || cspNonceMeta?.getAttribute("nonce");\n' +
+              '\t\tfunction allSettled(promises) {\n' +
+              '\t\t\treturn Promise.all(promises.map((p) => Promise.resolve(p).then((value) => ({\n' +
+              '\t\t\t\tstatus: "fulfilled",\n' +
+              '\t\t\t\tvalue\n' +
+              '\t\t\t}), (reason) => ({\n' +
+              '\t\t\t\tstatus: "rejected",\n' +
+              '\t\t\t\treason\n' +
+              '\t\t\t}))));\n' +
+              '\t\t}\n' +
+              '\t\tpromise = allSettled(deps.map((dep) => {\n' +
+              '\t\t\tdep = assetsURL(dep, importerUrl);\n' +
+              '\t\t\tif (dep in seen) return;\n' +
+              '\t\t\tseen[dep] = true;\n' +
+              '\t\t\tconst isCss = dep.endsWith(".css");\n' +
+              '\t\t\tconst cssSelector = isCss ? "[rel=\\"stylesheet\\"]" : "";\n' +
+              '\t\t\tif (!!importerUrl) for (let i = links.length - 1; i >= 0; i--) {\n' +
+              '\t\t\t\tconst link = links[i];\n' +
+              '\t\t\t\tif (link.href === dep && (!isCss || link.rel === "stylesheet")) return;\n' +
+              '\t\t\t}\n' +
+              '\t\t\telse if (document.querySelector(`link[href="${dep}"]${cssSelector}`)) return;\n' +
+              '\t\t\tconst link = document.createElement("link");\n' +
+              '\t\t\tlink.rel = isCss ? "stylesheet" : scriptRel;\n' +
+              '\t\t\tif (!isCss) link.as = "script";\n' +
+              '\t\t\tlink.crossOrigin = "";\n' +
+              '\t\t\tlink.href = dep;\n' +
+              '\t\t\tif (cspNonce) link.setAttribute("nonce", cspNonce);\n' +
+              '\t\t\tdocument.head.appendChild(link);\n' +
+              '\t\t\tif (isCss) return new Promise((res, rej) => {\n' +
+              '\t\t\t\tlink.addEventListener("load", res);\n' +
+              '\t\t\t\tlink.addEventListener("error", () => rej(/* @__PURE__ */ new Error(`Unable to preload CSS for ${dep}`)));\n' +
+              '\t\t\t});\n' +
+              '\t\t}));\n' +
+              '\t}\n' +
+              '\tfunction handlePreloadError(err) {\n' +
+              '\t\tconst e = new Event("vite:preloadError", { cancelable: true });\n' +
+              '\t\te.payload = err;\n' +
+              '\t\twindow.dispatchEvent(e);\n' +
+              '\t\tif (!e.defaultPrevented) throw err;\n' +
+              '\t}\n' +
+              '\treturn promise.then((res) => {\n' +
+              '\t\tfor (const item of res || []) {\n' +
+              '\t\t\tif (item.status !== "rejected") continue;\n' +
+              '\t\t\thandlePreloadError(item.reason);\n' +
+              '\t\t}\n' +
+              '\t\treturn baseModule().catch(handlePreloadError);\n' +
+              '\t});\n' +
+              '}',
+            insertPreload: true,
+            optimizeModulePreloadRelativePaths: false,
+            renderBuiltUrl: false,
+            isRelativeBase: false
+          }
+        },
+        {
+          name: 'vite:terser',
+          applyToEnvironment: [Function: applyToEnvironment],
+          renderChunk: [AsyncFunction: renderChunk],
+          closeBundle: [Function: closeBundle]
+        },
+        {
+          name: 'vite:license',
+          generateBundle: [AsyncFunction: generateBundle]
+        },
+        {
+          name: 'native:manifest-envs',
+          buildStart: [Function: buildStart]
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-manifest',
+          _options: {
+            root: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+            outPath: 'manifest.json',
+            isOutputOptionsForLegacyChunks: undefined,
+            cssEntries: [Function: cssEntries]
+          }
+        },
+        {
+          name: 'native:manifest-compatible',
+          generateBundle: [Function: generateBundle]
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-reporter',
+          _options: {
+            root: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+            isTty: false,
+            isLib: false,
+            assetsDir: 'assets/',
+            chunkLimit: 500,
+            logInfo: [Function (anonymous)],
+            reportCompressedSize: true,
+            warnLargeChunks: true
+          }
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-load-fallback',
+          _options: undefined
+        }
+      ],
+      optimizeDepsPluginNames: []
+    },
+    ssr: {
+      define: undefined,
+      resolve: {
+        externalConditions: [ 'node', 'module-sync' ],
+        extensions: [
+          '.mjs',  '.js',
+          '.mts',  '.ts',
+          '.jsx',  '.tsx',
+          '.json'
+        ],
+        dedupe: [],
+        noExternal: [ 'laravel-vite-plugin' ],
+        external: [],
+        preserveSymlinks: false,
+        tsconfigPaths: false,
+        alias: [
+          { find: '@', replacement: '/resources/js' },
+          {
+            find: /^\/?@vite\/env/,
+            replacement: '/@fs/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/vite/dist/client/env.mjs'
+          },
+          {
+            find: /^\/?@vite\/client/,
+            replacement: '/@fs/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/vite/dist/client/client.mjs'
+          }
+        ],
+        mainFields: [ 'module', 'jsnext:main', 'jsnext' ],
+        conditions: [ 'module', 'node', 'development|production' ],
+        builtins: [
+          '_http_agent',         '_http_client',        '_http_common',
+          '_http_incoming',      '_http_outgoing',      '_http_server',
+          '_stream_duplex',      '_stream_passthrough', '_stream_readable',
+          '_stream_transform',   '_stream_wrap',        '_stream_writable',
+          '_tls_common',         '_tls_wrap',           'assert',
+          'assert/strict',       'async_hooks',         'buffer',
+          'child_process',       'cluster',             'console',
+          'constants',           'crypto',              'dgram',
+          'diagnostics_channel', 'dns',                 'dns/promises',
+          'domain',              'events',              'fs',
+          'fs/promises',         'http',                'http2',
+          'https',               'inspector',           'inspector/promises',
+          'module',              'net',                 'os',
+          'path',                'path/posix',          'path/win32',
+          'perf_hooks',          'process',             'punycode',
+          'querystring',         'readline',            'readline/promises',
+          'repl',                'stream',              'stream/consumers',
+          'stream/promises',     'stream/web',          'string_decoder',
+          'sys',                 'timers',              'timers/promises',
+          'tls',                 'trace_events',        'tty',
+          'url',                 'util',                'util/types',
+          'v8',                  'vm',                  'wasi',
+          'worker_threads',      'zlib',                /^node:/,
+          /^bun:/
+        ]
+      },
+      keepProcessEnv: true,
+      consumer: 'server',
+      optimizeDeps: {
+        include: [],
+        exclude: [],
+        needsInterop: [],
+        rolldownOptions: { resolve: { symlinks: true }, output: { topLevelVar: true } },
+        extensions: [],
+        disabled: undefined,
+        holdUntilCrawlEnd: true,
+        force: false,
+        ignoreOutdatedRequests: false,
+        noDiscovery: true,
+        rollupOptions: [Getter/Setter],
+        esbuildOptions: { preserveSymlinks: false }
+      },
+      dev: {
+        warmup: [],
+        sourcemap: { js: true },
+        sourcemapIgnoreList: [Function: isInNodeModules],
+        preTransformRequests: false,
+        createEnvironment: [Function: defaultCreateDevEnvironment],
+        recoverable: false,
+        moduleRunnerTransform: true
+      },
+      build: {
+        target: [
+          'chrome111',
+          'edge111',
+          'firefox114',
+          'safari16.4',
+          'ios16.4'
+        ],
+        polyfillModulePreload: true,
+        modulePreload: { polyfill: true },
+        outDir: 'public/build',
+        assetsDir: 'assets',
+        assetsInlineLimit: 0,
+        sourcemap: false,
+        terserOptions: {},
+        rolldownOptions: {
+          platform: 'node',
+          onwarn: [Function: onwarn],
+          input: [ 'resources/css/app.css', 'resources/js/app.tsx' ]
+        },
+        commonjsOptions: { include: [ /node_modules/ ], extensions: [ '.js', '.cjs' ] },
+        dynamicImportVarsOptions: { exclude: [ /node_modules/ ] },
+        write: true,
+        emptyOutDir: null,
+        copyPublicDir: true,
+        license: false,
+        manifest: 'manifest.json',
+        lib: false,
+        ssrManifest: false,
+        ssrEmitAssets: false,
+        reportCompressedSize: true,
+        chunkSizeWarningLimit: 500,
+        watch: null,
+        cssCodeSplit: true,
+        minify: false,
+        rollupOptions: {
+          platform: 'node',
+          onwarn: [Function: onwarn],
+          input: [ 'resources/css/app.css', 'resources/js/app.tsx' ]
+        },
+        ssr: true,
+        emitAssets: true,
+        createEnvironment: [Function: createEnvironment],
+        cssTarget: [
+          'chrome111',
+          'edge111',
+          'firefox114',
+          'safari16.4',
+          'ios16.4'
+        ],
+        cssMinify: 'lightningcss'
+      },
+      plugins: [
+        {
+          name: 'vite:watch-package-data',
+          buildStart: [Function: buildStart],
+          buildEnd: [Function: buildEnd],
+          watchChange: [Function: watchChange]
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-alias',
+          _options: {
+            entries: [
+              { find: '@', replacement: '/resources/js' },
+              {
+                find: /^\/?@vite\/env/,
+                replacement: '/@fs/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/vite/dist/client/env.mjs'
+              },
+              {
+                find: /^\/?@vite\/client/,
+                replacement: '/@fs/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/vite/dist/client/client.mjs'
+              }
+            ]
+          }
+        },
+        {
+          name: 'vite:react-babel',
+          enforce: 'pre',
+          config: [Function: config],
+          configResolved: [Function: configResolved],
+          options: [Function: options],
+          transform: {
+            filter: {
+              id: {
+                include: /\.[tj]sx?(?:\?.*)?$/,
+                exclude: /\/node_modules\//
+              }
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:react-refresh-fbm',
+          enforce: 'pre',
+          transformIndexHtml: { handler: [Function: handler], order: 'pre' }
+        },
+        {
+          name: 'vite:react-refresh',
+          enforce: 'pre',
+          config: [Function: config],
+          resolveId: {
+            filter: { id: /^\/@react\-refresh$/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: { id: /^\/@react\-refresh$/ },
+            handler: [Function: handler]
+          },
+          transformIndexHtml: [Function: transformIndexHtml]
+        },
+        {
+          name: '@tailwindcss/vite:scan',
+          enforce: 'pre',
+          configureServer: [Function: configureServer],
+          configResolved: [AsyncFunction: configResolved]
+        },
+        {
+          name: '@tailwindcss/vite:generate:build',
+          apply: 'build',
+          enforce: 'pre',
+          transform: {
+            filter: {
+              id: {
+                exclude: [
+                  /\/\.vite\//,
+                  /[?&](?:worker|sharedworker|raw|url)\b/,
+                  /\?commonjs-proxy/
+                ],
+                include: [
+                  /\.css(?:\?.*)?$/,
+                  /&lang\.css/,
+                  /[?&]index=\d+\.css$/
+                ]
+              }
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: '@laravel/vite-plugin-wayfinder',
+          enforce: 'pre',
+          buildStart: [Function: buildStart],
+          handleHotUpdate: [AsyncFunction: handleHotUpdate]
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-module-preload-polyfill',
+          _options: { isServer: true }
+        },
+        {
+          name: 'vite:resolve-builtin:get-environment',
+          buildStart: [Function: buildStart],
+          perEnvironmentStartEndDuringDev: true
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-resolve',
+          _options: {
+            resolveOptions: {
+              isBuild: true,
+              isProduction: true,
+              asSrc: true,
+              preferRelative: false,
+              isRequire: undefined,
+              root: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+              scan: false,
+              mainFields: [ 'module', 'jsnext:main', 'jsnext', 'main' ],
+              conditions: [ 'module', 'node', 'development|production' ],
+              externalConditions: [ 'node', 'module-sync' ],
+              extensions: [
+                '.mjs',  '.js',
+                '.mts',  '.ts',
+                '.jsx',  '.tsx',
+                '.json'
+              ],
+              tryIndex: true,
+              tryPrefix: undefined,
+              preserveSymlinks: false,
+              tsconfigPaths: false
+            },
+            environmentConsumer: 'server',
+            environmentName: 'ssr',
+            builtins: [
+              '_http_agent',
+              '_http_client',
+              '_http_common',
+              '_http_incoming',
+              '_http_outgoing',
+              '_http_server',
+              '_stream_duplex',
+              '_stream_passthrough',
+              '_stream_readable',
+              '_stream_transform',
+              '_stream_wrap',
+              '_stream_writable',
+              '_tls_common',
+              '_tls_wrap',
+              'assert',
+              'assert/strict',
+              'async_hooks',
+              'buffer',
+              'child_process',
+              'cluster',
+              'console',
+              'constants',
+              'crypto',
+              'dgram',
+              'diagnostics_channel',
+              'dns',
+              'dns/promises',
+              'domain',
+              'events',
+              'fs',
+              'fs/promises',
+              'http',
+              'http2',
+              'https',
+              'inspector',
+              'inspector/promises',
+              'module',
+              'net',
+              'os',
+              'path',
+              'path/posix',
+              'path/win32',
+              'perf_hooks',
+              'process',
+              'punycode',
+              'querystring',
+              'readline',
+              'readline/promises',
+              'repl',
+              'stream',
+              'stream/consumers',
+              'stream/promises',
+              'stream/web',
+              'string_decoder',
+              'sys',
+              'timers',
+              'timers/promises',
+              'tls',
+              'trace_events',
+              'tty',
+              'url',
+              'util',
+              'util/types',
+              'v8',
+              'vm',
+              'wasi',
+              'worker_threads',
+              'zlib',
+              /^node:/,
+              /^bun:/
+            ],
+            external: [],
+            noExternal: [ 'laravel-vite-plugin' ],
+            dedupe: [],
+            disableCache: false,
+            legacyInconsistentCjsInterop: undefined,
+            finalizeBareSpecifier: undefined,
+            finalizeOtherSpecifiers: undefined,
+            resolveSubpathImports: [Function: resolveSubpathImports],
+            yarnPnp: false
+          },
+          getOrder: [AsyncFunction: wrappedHook],
+          load: [AsyncFunction: wrappedHook],
+          resolveId: [AsyncFunction: wrappedHook],
+          transform: [AsyncFunction: wrappedHook],
+          watchChange: [AsyncFunction: wrappedHook],
+          perEnvironmentWatchChangeDuringDev: true
+        },
+        {
+          name: 'vite:html-inline-proxy',
+          resolveId: {
+            filter: { id: /[?&]html-proxy\b/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: { id: /[?&]html-proxy\b/ },
+            handler: [Function: handler]
+          }
+        },
+        {
+          name: 'vite:css',
+          buildStart: [Function: buildStart],
+          buildEnd: [Function: buildEnd],
+          load: {
+            filter: {
+              id: /\.(css|less|sass|scss|styl|stylus|pcss|postcss|sss)(?:$|\?)/
+            },
+            handler: [AsyncFunction: handler]
+          },
+          transform: {
+            filter: {
+              id: {
+                include: /\.(css|less|sass|scss|styl|stylus|pcss|postcss|sss)(?:$|\?)/,
+                exclude: [
+                  /[?&]commonjs-proxy/,
+                  /[?&](?:worker|sharedworker|raw|url)\b/
+                ]
+              }
+            },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-transform',
+          _options: {
+            root: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+            include: [ /\.(m?ts|[jt]sx)$/ ],
+            exclude: [ /\.js$/ ],
+            jsxRefreshInclude: [ /\.[tj]sx?(?:\?.*)?$/ ],
+            jsxRefreshExclude: [ /\/node_modules\// ],
+            isServerConsumer: true,
+            jsxInject: undefined,
+            transformOptions: {
+              jsx: {
+                development: false,
+                runtime: 'automatic',
+                importSource: undefined,
+                refresh: false
+              },
+              sourcemap: true
+            },
+            yarnPnp: false
+          }
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-json',
+          _options: { namedExports: true, stringify: 'auto', minify: true },
+          getOrder: [AsyncFunction: wrappedHook],
+          load: [AsyncFunction: wrappedHook],
+          resolveId: [AsyncFunction: wrappedHook],
+          transform: [AsyncFunction: wrappedHook],
+          watchChange: [AsyncFunction: wrappedHook]
+        },
+        {
+          name: 'vite:wasm-helper',
+          resolveId: {
+            filter: { id: /^ vite\/wasm\-helper\.js$/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: {
+              id: [
+                /^ vite\/wasm\-helper\.js$/,
+                /(?<![?#].*)\.wasm\?init/
+              ]
+            },
+            handler: [AsyncFunction: handler]
+          },
+          renderChunk: {
+            filter: { code: /__VITE_WASM_INIT__([\w$]+)__/g },
+            handler: [AsyncFunction: handler]
+          }
+        },
+        {
+          name: 'vite:worker',
+          buildStart: [Function: buildStart],
+          load: {
+            filter: { id: /(?:\?|&)(worker|sharedworker)(?:&|$)/ },
+            handler: [AsyncFunction: handler]
+          },
+          transform: {
+            filter: { id: /(?:\?|&)worker_file&type=(\w+)(?:&|$)/ },
+            handler: [AsyncFunction: handler]
+          },
+          renderChunk: [Function: renderChunk],
+          generateBundle: [Function: generateBundle],
+          watchChange: [Function: watchChange]
+        },
+        {
+          name: 'vite:asset',
+          perEnvironmentStartEndDuringDev: true,
+          buildStart: [Function: buildStart],
+          resolveId: {
+            filter: {
+              id: [
+                /(\?|&)url(?:&|$)/,
+                /\.(apng|bmp|png|jpe?g|jfif|pjpeg|pjp|gif|svg|ico|webp|avif|cur|jxl|mp4|webm|ogg|mp3|wav|flac|aac|opus|mov|m4a|vtt|woff2?|eot|ttf|otf|webmanifest|pdf|txt)(\?.*)?$/i
+              ]
+            },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: {
+              id: {
+                include: [
+                  /(\?|&)raw(?:&|$)/,
+                  /(\?|&)url(?:&|$)/,
+                  /\.(apng|bmp|png|jpe?g|jfif|pjpeg|pjp|gif|svg|ico|webp|avif|cur|jxl|mp4|webm|ogg|mp3|wav|flac|aac|opus|mov|m4a|vtt|woff2?|eot|ttf|otf|webmanifest|pdf|txt)(\?.*)?$/i
+                ],
+                exclude: /^\0/
+              }
+            },
+            handler: [AsyncFunction: handler]
+          },
+          renderChunk: [Function: renderChunk],
+          generateBundle: [Function: generateBundle],
+          watchChange: [Function: watchChange]
+        },
+        {
+          name: 'vite:forward-console',
+          apply: 'serve',
+          configureServer: [Function: configureServer]
+        },
+        {
+          name: '@inertiajs/vite',
+          config: [Function: config],
+          configResolved: [Function: configResolved],
+          transform: [Function: transform],
+          configureServer: [Function: configureServer]
+        },
+        {
+          name: 'vite:react-virtual-preamble',
+          resolveId: {
+            order: 'pre',
+            filter: { id: /^@vitejs\/plugin\-react\/preamble$/ },
+            handler: [Function: handler]
+          },
+          load: {
+            filter: { id: /^ @vitejs\/plugin\-react\/preamble$/ },
+            handler: [Function: handler]
+          }
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-wasm-fallback',
+          _options: undefined,
+          getOrder: [AsyncFunction: wrappedHook],
+          load: [AsyncFunction: wrappedHook],
+          resolveId: [AsyncFunction: wrappedHook],
+          transform: [AsyncFunction: wrappedHook],
+          watchChange: [AsyncFunction: wrappedHook]
+        },
+        { name: 'vite:define', options: [Function: options] },
+        {
+          name: 'vite:css-post',
+          renderStart: [Function: renderStart],
+          transform: {
+            filter: {
+              id: {
+                include: /\.(css|less|sass|scss|styl|stylus|pcss|postcss|sss)(?:$|\?)/,
+                exclude: [
+                  /[?&]commonjs-proxy/,
+                  /[?&](?:worker|sharedworker|raw|url)\b/
+                ]
+              }
+            },
+            handler: [AsyncFunction: handler]
+          },
+          renderChunk: [AsyncFunction: renderChunk],
+          augmentChunkHash: [Function: augmentChunkHash],
+          generateBundle: [AsyncFunction: generateBundle]
+        },
+        {
+          name: 'vite:build-html',
+          transform: {
+            filter: { id: /\.html$/ },
+            handler: [AsyncFunction: handler]
+          },
+          generateBundle: [AsyncFunction: generateBundle]
+        },
+        {
+          name: 'vite:prepare-out-dir',
+          options: [Function: options],
+          renderStart: { order: 'pre', handler: [Function: handler] }
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-dynamic-import-vars',
+          _options: {
+            include: undefined,
+            exclude: [ /node_modules/ ],
+            resolver: [Function: resolver],
+            sourcemap: false
+          }
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-import-glob',
+          _options: {
+            root: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+            sourcemap: false,
+            restoreQueryExtension: false
+          }
+        },
+        {
+          name: 'laravel',
+          enforce: 'post',
+          config: [Function: config],
+          configResolved: [Function: configResolved],
+          transform: [Function: transform],
+          configureServer: [Function: configureServer]
+        },
+        {
+          name: 'vite:react:config-post',
+          enforce: 'post',
+          config: [Function: config]
+        },
+        {
+          name: 'vite:build-import-analysis',
+          renderChunk: [Function: renderChunk],
+          generateBundle: [AsyncFunction: generateBundle]
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-build-import-analysis',
+          _options: {
+            preloadCode: `const scriptRel = 'modulepreload';const assetsURL = function(dep) { return "/build/"+dep };const seen = {};export const __vitePreload = function preload(baseModule, deps, importerUrl) {\n` +
+              '\tlet promise = Promise.resolve();\n' +
+              '\tif (__VITE_IS_MODERN__ && deps && deps.length > 0) {\n' +
+              '\t\tconst links = document.getElementsByTagName("link");\n' +
+              '\t\tconst cspNonceMeta = document.querySelector("meta[property=csp-nonce]");\n' +
+              '\t\tconst cspNonce = cspNonceMeta?.nonce || cspNonceMeta?.getAttribute("nonce");\n' +
+              '\t\tfunction allSettled(promises) {\n' +
+              '\t\t\treturn Promise.all(promises.map((p) => Promise.resolve(p).then((value) => ({\n' +
+              '\t\t\t\tstatus: "fulfilled",\n' +
+              '\t\t\t\tvalue\n' +
+              '\t\t\t}), (reason) => ({\n' +
+              '\t\t\t\tstatus: "rejected",\n' +
+              '\t\t\t\treason\n' +
+              '\t\t\t}))));\n' +
+              '\t\t}\n' +
+              '\t\tpromise = allSettled(deps.map((dep) => {\n' +
+              '\t\t\tdep = assetsURL(dep, importerUrl);\n' +
+              '\t\t\tif (dep in seen) return;\n' +
+              '\t\t\tseen[dep] = true;\n' +
+              '\t\t\tconst isCss = dep.endsWith(".css");\n' +
+              '\t\t\tconst cssSelector = isCss ? "[rel=\\"stylesheet\\"]" : "";\n' +
+              '\t\t\tif (!!importerUrl) for (let i = links.length - 1; i >= 0; i--) {\n' +
+              '\t\t\t\tconst link = links[i];\n' +
+              '\t\t\t\tif (link.href === dep && (!isCss || link.rel === "stylesheet")) return;\n' +
+              '\t\t\t}\n' +
+              '\t\t\telse if (document.querySelector(`link[href="${dep}"]${cssSelector}`)) return;\n' +
+              '\t\t\tconst link = document.createElement("link");\n' +
+              '\t\t\tlink.rel = isCss ? "stylesheet" : scriptRel;\n' +
+              '\t\t\tif (!isCss) link.as = "script";\n' +
+              '\t\t\tlink.crossOrigin = "";\n' +
+              '\t\t\tlink.href = dep;\n' +
+              '\t\t\tif (cspNonce) link.setAttribute("nonce", cspNonce);\n' +
+              '\t\t\tdocument.head.appendChild(link);\n' +
+              '\t\t\tif (isCss) return new Promise((res, rej) => {\n' +
+              '\t\t\t\tlink.addEventListener("load", res);\n' +
+              '\t\t\t\tlink.addEventListener("error", () => rej(/* @__PURE__ */ new Error(`Unable to preload CSS for ${dep}`)));\n' +
+              '\t\t\t});\n' +
+              '\t\t}));\n' +
+              '\t}\n' +
+              '\tfunction handlePreloadError(err) {\n' +
+              '\t\tconst e = new Event("vite:preloadError", { cancelable: true });\n' +
+              '\t\te.payload = err;\n' +
+              '\t\twindow.dispatchEvent(e);\n' +
+              '\t\tif (!e.defaultPrevented) throw err;\n' +
+              '\t}\n' +
+              '\treturn promise.then((res) => {\n' +
+              '\t\tfor (const item of res || []) {\n' +
+              '\t\t\tif (item.status !== "rejected") continue;\n' +
+              '\t\t\thandlePreloadError(item.reason);\n' +
+              '\t\t}\n' +
+              '\t\treturn baseModule().catch(handlePreloadError);\n' +
+              '\t});\n' +
+              '}',
+            insertPreload: false,
+            optimizeModulePreloadRelativePaths: false,
+            renderBuiltUrl: false,
+            isRelativeBase: false
+          }
+        },
+        {
+          name: 'vite:license',
+          generateBundle: [AsyncFunction: generateBundle]
+        },
+        {
+          name: 'native:manifest-envs',
+          buildStart: [Function: buildStart]
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-manifest',
+          _options: {
+            root: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+            outPath: 'manifest.json',
+            isOutputOptionsForLegacyChunks: undefined,
+            cssEntries: [Function: cssEntries]
+          }
+        },
+        {
+          name: 'native:manifest-compatible',
+          generateBundle: [Function: generateBundle]
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-reporter',
+          _options: {
+            root: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+            isTty: false,
+            isLib: false,
+            assetsDir: 'assets/',
+            chunkLimit: 500,
+            logInfo: [Function (anonymous)],
+            reportCompressedSize: true,
+            warnLargeChunks: false
+          }
+        },
+        BuiltinPlugin {
+          enforce: undefined,
+          name: 'builtin:vite-load-fallback',
+          _options: undefined
+        }
+      ],
+      optimizeDepsPluginNames: []
+    }
+  },
+  configFile: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/vite.config.ts',
+  configFileDependencies: [
+    '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/vite.config.ts'
+  ],
+  inlineConfig: {
+    root: undefined,
+    base: undefined,
+    mode: undefined,
+    configFile: undefined,
+    configLoader: undefined,
+    logLevel: undefined,
+    clearScreen: undefined,
+    build: { rolldownOptions: undefined, rollupOptions: [Getter/Setter] },
+    worker: { rolldownOptions: undefined, rollupOptions: [Getter/Setter] },
+    optimizeDeps: { rolldownOptions: undefined, rollupOptions: [Getter/Setter] }
+  },
+  root: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+  decodedBase: '/build/',
+  rawBase: '/build/',
+  cacheDir: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/.vite',
+  command: 'build',
+  mode: 'production',
+  isBundled: true,
+  isWorker: false,
+  mainConfig: null,
+  bundleChain: [],
+  isProduction: true,
+  css: {
+    transformer: 'postcss',
+    preprocessorMaxWorkers: true,
+    devSourcemap: false
+  },
+  json: { namedExports: true, stringify: 'auto' },
+  esbuild: { jsxDev: false, charset: 'utf8', legalComments: 'none' },
+  builder: undefined,
+  preview: {
+    port: 4173,
+    strictPort: false,
+    host: undefined,
+    allowedHosts: [
+      '__laravel_vite_placeholder__.test',
+      '__laravel_vite_placeholder__.test'
+    ],
+    https: undefined,
+    open: false,
+    proxy: undefined,
+    cors: {
+      origin: [
+        /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/,
+        'http://localhost',
+        /^https?:\/\/.*\.test(:\d+)?$/
+      ]
+    },
+    headers: {}
+  },
+  envDir: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+  env: {
+    VITE_APP_NAME: 'Laravel',
+    BASE_URL: '/build/',
+    MODE: 'production',
+    DEV: false,
+    PROD: true
+  },
+  assetsInclude: [Function: assetsInclude],
+  rawAssetsInclude: [],
+  logger: {
+    hasWarned: false,
+    info: [Function: info],
+    warn: [Function: warn],
+    warnOnce: [Function: warnOnce],
+    error: [Function: error],
+    clearScreen: [Function: clearScreen],
+    hasErrorLogged: [Function: hasErrorLogged]
+  },
+  packageCache: Map(1) {
+    'fnpd_/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app' => {
+      dir: '/home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app',
+      data: {
+        '$schema': 'https://www.schemastore.org/package.json',
+        private: true,
+        type: 'module',
+        scripts: {
+          build: 'vite build',
+          'build:ssr': 'vite build && vite build --ssr',
+          dev: 'vite',
+          format: 'prettier --write resources/',
+          'format:check': 'prettier --check resources/',
+          lint: 'eslint . --fix',
+          'lint:check': 'eslint .',
+          'types:check': 'tsc --noEmit'
+        },
+        devDependencies: {
+          '@eslint/js': '^9.19.0',
+          '@laravel/vite-plugin-wayfinder': '^0.1.3',
+          '@stylistic/eslint-plugin': '^5.10.0',
+          '@types/node': '^22.13.5',
+          'babel-plugin-react-compiler': '^1.0.0',
+          eslint: '^9.17.0',
+          'eslint-config-prettier': '^10.0.1',
+          'eslint-import-resolver-typescript': '^4.4.4',
+          'eslint-plugin-import': '^2.32.0',
+          'eslint-plugin-react': '^7.37.3',
+          'eslint-plugin-react-hooks': '^7.0.0',
+          prettier: '^3.4.2',
+          'prettier-plugin-tailwindcss': '^0.6.11',
+          'typescript-eslint': '^8.23.0'
+        },
+        dependencies: {
+          '@headlessui/react': '^2.2.0',
+          '@inertiajs/react': '^3.0.0',
+          '@inertiajs/vite': '^3.0.0',
+          '@radix-ui/react-avatar': '^1.1.3',
+          '@radix-ui/react-checkbox': '^1.1.4',
+          '@radix-ui/react-collapsible': '^1.1.3',
+          '@radix-ui/react-dialog': '^1.1.6',
+          '@radix-ui/react-dropdown-menu': '^2.1.6',
+          '@radix-ui/react-label': '^2.1.2',
+          '@radix-ui/react-navigation-menu': '^1.2.5',
+          '@radix-ui/react-select': '^2.1.6',
+          '@radix-ui/react-separator': '^1.1.2',
+          '@radix-ui/react-slot': '^1.2.3',
+          '@radix-ui/react-toggle': '^1.1.2',
+          '@radix-ui/react-toggle-group': '^1.1.2',
+          '@radix-ui/react-tooltip': '^1.1.8',
+          '@tailwindcss/vite': '^4.1.11',
+          '@types/react': '^19.2.0',
+          '@types/react-dom': '^19.2.0',
+          '@vitejs/plugin-react': '^5.2.0',
+          'class-variance-authority': '^0.7.1',
+          clsx: '^2.1.1',
+          concurrently: '^9.0.1',
+          globals: '^15.14.0',
+          'input-otp': '^1.4.2',
+          'laravel-vite-plugin': '^3.0.0',
+          'lucide-react': '^0.475.0',
+          react: '^19.2.0',
+          'react-countup': '^6.5.3',
+          'react-dom': '^19.2.0',
+          'react-icons': '^5.6.0',
+          'react-intersection-observer': '^10.0.3',
+          sonner: '^2.0.0',
+          'tailwind-merge': '^3.0.1',
+          tailwindcss: '^4.0.0',
+          'tw-animate-css': '^1.4.0',
+          typescript: '^5.7.2',
+          vite: '^8.0.0'
+        },
+        optionalDependencies: {
+          '@rollup/rollup-linux-x64-gnu': '4.9.5',
+          '@rollup/rollup-win32-x64-msvc': '4.9.5',
+          '@tailwindcss/oxide-linux-x64-gnu': '^4.0.1',
+          '@tailwindcss/oxide-win32-x64-msvc': '^4.0.1',
+          'lightningcss-linux-x64-gnu': '^1.29.1',
+          'lightningcss-win32-x64-msvc': '^1.29.1'
+        }
+      },
+      hasSideEffects: [Function: hasSideEffects],
+      setResolvedCache: [Function: setResolvedCache],
+      getResolvedCache: [Function: getResolvedCache]
+    },
+    set: [Function (anonymous)]
+  },
+  appType: 'spa',
+  experimental: {
+    importGlobRestoreExtension: false,
+    renderBuiltUrl: undefined,
+    hmrPartialAccept: false,
+    bundledDev: false
+  },
+  future: undefined,
+  dev: {
+    warmup: [],
+    sourcemap: { js: true },
+    sourcemapIgnoreList: [Function: isInNodeModules],
+    preTransformRequests: false,
+    createEnvironment: [Function: defaultCreateDevEnvironment],
+    recoverable: false,
+    moduleRunnerTransform: false
+  },
+  devtools: { config: { host: 'localhost' }, enabled: false },
+  webSocketToken: 'H6oqxCsH2Klu',
+  getSortedPlugins: [Function: getSortedPlugins],
+  getSortedPluginHooks: [Function: getSortedPluginHooks],
+  createResolver: [Function: createResolver],
+  fsDenyGlob: [Function: arrayMatcher],
+  safeModulePaths: Set(0) {},
+  Symbol(vite:resolved-config): true
+}
+vite v8.0.7 building client environment for production...
+[plugin @laravel/vite-plugin-wayfinder] Types generated for actions, routes, form variants
+2026-04-08T19:38:41.979Z vite:resolve 0.59ms tailwindcss -> null
+2026-04-08T19:38:41.980Z vite:resolve 0.41ms tw-animate-css -> null
+[2Ktransforming...✓ 2298 modules transformed.
+✗ Build failed in 4.97s
+error during build:
+Build failed with 4 errors:
+
+[31m[UNRESOLVED_IMPORT] Error:[0m Could not resolve '../css/events.css' in resources/js/pages/events.tsx
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m resources/js/pages/events.tsx:4:8 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m4 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m"../css/events.css"[38;5;249m;[0m
+ [38;5;240m  │[0m        ─────────┬─────────  
+ [38;5;240m  │[0m                 ╰─────────── Module not found.
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: 'resources/js/pages/events.tsx' is imported by the following path:
+ [38;5;240m  │[0m         - resources/js/pages/events.tsx
+ [38;5;240m  │[0m         - resources/js/app.tsx
+[38;5;246m───╯[0m
+
+[31m[UNRESOLVED_IMPORT] Error:[0m Could not resolve '../css/services.css' in resources/js/pages/services.tsx
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m resources/js/pages/services.tsx:4:8 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m4 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m"../css/services.css"[38;5;249m;[0m
+ [38;5;240m  │[0m        ──────────┬──────────  
+ [38;5;240m  │[0m                  ╰──────────── Module not found.
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: 'resources/js/pages/services.tsx' is imported by the following path:
+ [38;5;240m  │[0m         - resources/js/pages/services.tsx
+ [38;5;240m  │[0m         - resources/js/app.tsx
+[38;5;246m───╯[0m
+
+[31m[UNRESOLVED_IMPORT] Error:[0m Could not resolve '../css/about.css' in resources/js/pages/about.tsx
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m resources/js/pages/about.tsx:4:8 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m4 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m"../css/about.css"[38;5;249m;[0m
+ [38;5;240m  │[0m        ─────────┬────────  
+ [38;5;240m  │[0m                 ╰────────── Module not found.
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: 'resources/js/pages/about.tsx' is imported by the following path:
+ [38;5;240m  │[0m         - resources/js/pages/about.tsx
+ [38;5;240m  │[0m         - resources/js/app.tsx
+[38;5;246m───╯[0m
+
+[31m[UNRESOLVED_IMPORT] Error:[0m Could not resolve '../css/contact.css' in resources/js/pages/contact.tsx
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m resources/js/pages/contact.tsx:5:8 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m5 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m"../css/contact.css"[38;5;249m;[0m
+ [38;5;240m  │[0m        ──────────┬─────────  
+ [38;5;240m  │[0m                  ╰─────────── Module not found.
+ [38;5;240m  │[0m 
+ [38;5;240m  │[0m [38;5;115mHelp[0m: 'resources/js/pages/contact.tsx' is imported by the following path:
+ [38;5;240m  │[0m         - resources/js/pages/contact.tsx
+ [38;5;240m  │[0m         - resources/js/app.tsx
+[38;5;246m───╯[0m
+
+    at aggregateBindingErrorsIntoJsError (file:///home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/rolldown/dist/shared/error-DBGOT6sf.mjs:48:18)
+    at unwrapBindingResult (file:///home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/rolldown/dist/shared/error-DBGOT6sf.mjs:18:128)
+    at #build (file:///home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/rolldown/dist/shared/rolldown-build-hRnqgxyz.mjs:3313:34)
+    at async buildEnvironment (file:///home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/vite/dist/node/chunks/node.js:32954:64)
+    at async Object.build (file:///home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/vite/dist/node/chunks/node.js:33376:19)
+    at async Object.buildApp (file:///home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/vite/dist/node/chunks/node.js:33373:153)
+    at async CAC.<anonymous> (file:///home/mwangi-brian/Desktop/mwangi.work/www.2connect.co.ke/app/node_modules/vite/dist/node/cli.js:778:3) {
+  errors: [Getter/Setter]
+}
