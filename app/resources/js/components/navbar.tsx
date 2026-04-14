@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 
