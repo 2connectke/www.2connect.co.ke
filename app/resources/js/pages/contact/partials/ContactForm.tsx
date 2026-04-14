@@ -1,5 +1,7 @@
+// Contact/partials/ContactForm.tsx
 import React, { useState } from 'react';
 import FormField from './FormField';
+import { Send, CheckCircle } from "lucide-react";
 
 interface ContactFormData {
     name: string;
@@ -11,6 +13,9 @@ interface ContactFormData {
 
 const ContactForm = () => {
     const [formType, setFormType] = useState("general");
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+
     const [formData, setFormData] = useState<ContactFormData>({
         name: "",
         email: "",
@@ -23,119 +28,170 @@ const ContactForm = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log({ formType, ...formData });
-        alert("Thank you for reaching out to 2Connect! We'll get back to you soon.");
+        setIsSubmitting(true);
 
-        setFormData({
-            name: "",
-            email: "",
-            phone: "",
-            organization: "",
-            message: "",
-        });
-        setFormType("general");
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        console.log({ formType, ...formData });
+        setIsSuccess(true);
+        setIsSubmitting(false);
+
+        // Reset after showing success
+        setTimeout(() => {
+            setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                organization: "",
+                message: "",
+            });
+            setFormType("general");
+            setIsSuccess(false);
+        }, 3000);
     };
 
     const formTypeOptions = [
-        { value: "general", label: "General Inquiry" },
-        { value: "volunteer", label: "Becoming a Volunteer" },
-        { value: "partner", label: "Becoming a Partner" }
+        { value: "general", label: "General Inquiry", description: "Questions about our programs" },
+        { value: "volunteer", label: "Volunteer Application", description: "Join our team" },
+        { value: "partner", label: "Partnership Proposal", description: "Collaborate with us" }
     ];
 
+    if (isSuccess) {
+        return (
+            <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-12 text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle className="w-8 h-8 text-green-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Message Sent!</h3>
+                <p className="text-slate-600">
+                    Thank you for reaching out. We'll get back to you within 24 hours.
+                </p>
+            </div>
+        );
+    }
+
     return (
-        <form className="flex-1 min-w-[450px] bg-white p-8 rounded-2xl shadow-[0_6px_20px_rgba(0,0,0,0.08)] flex flex-col gap-4" onSubmit={handleSubmit}>
-            <FormField
-                label="Full Name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                required
-            />
+        <form
+            onSubmit={handleSubmit}
+            className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8"
+        >
+            <div className="mb-8">
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                    Send us a Message
+                </h3>
+                <p className="text-slate-600">
+                    Fill out the form below and we'll respond as soon as possible.
+                </p>
+            </div>
 
-            <FormField
-                label="Email Address"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-            />
+            <div className="space-y-6">
+                {/* Inquiry Type Selection - Card Style */}
+                <div>
+                    <label className="block text-sm font-semibold text-slate-900 mb-3">
+                        I am contacting you about
+                    </label>
+                    <div className="grid sm:grid-cols-3 gap-3">
+                        {formTypeOptions.map((option) => (
+                            <button
+                                key={option.value}
+                                type="button"
+                                onClick={() => setFormType(option.value)}
+                                className={`p-4 rounded-xl border-2 text-left transition-all ${formType === option.value
+                                        ? 'border-blue-500 bg-blue-50 text-blue-900'
+                                        : 'border-slate-200 hover:border-slate-300 text-slate-700'
+                                    }`}
+                            >
+                                <div className="font-semibold text-sm">{option.label}</div>
+                                <div className="text-xs mt-1 opacity-80">{option.description}</div>
+                            </button>
+                        ))}
+                    </div>
+                </div>
 
-            <FormField
-                label="Phone Number"
-                name="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={handleChange}
-            />
-
-            <FormField
-                label="I am contacting you about"
-                name="formType"
-                type="select"
-                value={formType}
-                onChange={(e) => setFormType(e.target.value)}
-                options={formTypeOptions}
-            />
-
-            {/* Volunteer Fields */}
-            {formType === "volunteer" && (
-                <FormField
-                    label="Skills / Interests"
-                    name="message"
-                    type="textarea"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell us how you'd like to contribute"
-                    required
-                />
-            )}
-
-            {/* Partner Fields */}
-            {formType === "partner" && (
-                <>
+                <div className="grid sm:grid-cols-2 gap-6">
                     <FormField
-                        label="Organization Name"
-                        name="organization"
+                        label="Full Name"
+                        name="name"
                         type="text"
-                        value={formData.organization}
+                        value={formData.name}
                         onChange={handleChange}
                         required
+                        placeholder="John Doe"
                     />
 
                     <FormField
-                        label="Partnership Proposal"
-                        name="message"
-                        type="textarea"
-                        value={formData.message}
+                        label="Email Address"
+                        name="email"
+                        type="email"
+                        value={formData.email}
                         onChange={handleChange}
-                        placeholder="Tell us about your organization and partnership idea"
                         required
+                        placeholder="john@example.com"
                     />
-                </>
-            )}
+                </div>
 
-            {/* General Message */}
-            {formType === "general" && (
+                <div className="grid sm:grid-cols-2 gap-6">
+                    <FormField
+                        label="Phone Number"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+254 XXX XXX XXX"
+                    />
+
+                    {formType === "partner" && (
+                        <FormField
+                            label="Organization Name"
+                            name="organization"
+                            type="text"
+                            value={formData.organization}
+                            onChange={handleChange}
+                            required
+                            placeholder="Company/NGO Name"
+                        />
+                    )}
+                </div>
+
                 <FormField
-                    label="Message"
+                    label={
+                        formType === "volunteer" ? "Skills & Interests" :
+                            formType === "partner" ? "Partnership Proposal" :
+                                "Your Message"
+                    }
                     name="message"
                     type="textarea"
                     value={formData.message}
                     onChange={handleChange}
                     required
+                    placeholder={
+                        formType === "volunteer" ? "Tell us about your skills and how you'd like to contribute..." :
+                            formType === "partner" ? "Describe your organization and partnership idea..." :
+                                "How can we help you?"
+                    }
                 />
-            )}
 
-            <button
-                type="submit"
-                className="mt-4 py-3 px-6 bg-[#1a73e8] text-white font-semibold rounded-xl cursor-pointer transition-all duration-300 hover:bg-[#155ab6] hover:-translate-y-0.5"
-            >
-                Send Message
-            </button>
+                <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-4 px-6 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-400 text-white font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 hover:shadow-blue-600/30 hover:-translate-y-0.5"
+                >
+                    {isSubmitting ? (
+                        <>
+                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                            Sending...
+                        </>
+                    ) : (
+                        <>
+                            <Send className="w-5 h-5" />
+                            Send Message
+                        </>
+                    )}
+                </button>
+            </div>
         </form>
     );
 };

@@ -6,8 +6,8 @@ const CTASection = () => {
     return (
         <section className="py-16 sm:py-20 px-4 sm:px-[5%] relative overflow-hidden">
             <div className="absolute inset-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1e90ff] to-[#1a1a1a]"></div>
-                <div className="absolute inset-0 opacity-10 [background-image:radial-gradient(circle_at_2px_2px,white_1px,transparent_0)] [background-size:40px_40px]"></div>
+                <div className="absolute inset-0 bg-linear-to-br from-brand-primary to-brand-dark"></div>
+                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_2px_2px,white_1px,transparent_0)] bg-size-[40px_40px]"></div>
             </div>
 
             <motion.div

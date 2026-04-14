@@ -1,5 +1,5 @@
 import { Head } from '@inertiajs/react';
-import HeroSection from './partials/HeroSection';
+import AboutHero from './partials/AboutHero';
 import OurStory from './partials/OurStory';
 import PurposeCards from './partials/PurposeCards';
 import Differentiators from './partials/Differentiators';
@@ -11,7 +11,7 @@ export default function About() {
     return (
         <div className="w-full overflow-x-hidden font-sans bg-[#f8fafc] text-[#1a1a1a] leading-relaxed">
             <Head title="About Us | 2Connect" />
-            <HeroSection />
+            <AboutHero />
             <OurStory />
             <PurposeCards />
             <Differentiators />

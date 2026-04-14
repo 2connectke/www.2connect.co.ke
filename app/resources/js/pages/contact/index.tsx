@@ -1,24 +1,40 @@
+// Contact/index.tsx
 import { Head } from "@inertiajs/react";
+import ContactHero from "./partials/ContactHero";
 import ContactInfo from "./partials/ContactInfo";
 import ContactForm from "./partials/ContactForm";
 
 export default function Contact() {
     return (
-        <div className="max-w-[1200px] mx-auto py-12 px-4 font-['Helvetica','Arial',sans-serif] text-[#333] bg-[#f9f9f9] min-h-screen">
+        <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white font-sans text-slate-800">
             <Head title="Contact Us | 2Connect" />
 
-            <h1 className="text-center text-3xl sm:text-4xl md:text-5xl mb-2 text-[#1a73e8] font-bold">
-                Contact Us
-            </h1>
+            {/* Hero Section - Full width, atmospheric */}
+            <ContactHero />
 
-            <p className="text-center text-base sm:text-lg mb-10 text-[#555] max-w-2xl mx-auto">
-                Have a question, want to volunteer, or interested in partnering with us?
-                We'd love to hear from you.
-            </p>
+            {/* Main Content - Two column layout */}
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div className="grid lg:grid-cols-5 gap-12 items-start">
 
-            <div className="flex gap-8 flex-wrap justify-center md:flex-nowrap">
-                <ContactInfo />
-                <ContactForm />
+                    {/* Left Column: Contact Info & Context (2/5 width) */}
+                    <div className="lg:col-span-2 space-y-8">
+                        <div className="prose prose-slate">
+                            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+                                Let's Start a Conversation
+                            </h2>
+                            <p className="text-lg text-slate-600 leading-relaxed">
+                                Whether you're looking to volunteer, partner with us, or just want to learn more about our work, we're here to help.
+                            </p>
+                        </div>
+
+                        <ContactInfo />
+                    </div>
+
+                    {/* Right Column: Form (3/5 width) */}
+                    <div className="lg:col-span-3">
+                        <ContactForm />
+                    </div>
+                </div>
             </div>
         </div>
     );

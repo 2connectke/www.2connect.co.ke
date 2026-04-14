@@ -22,7 +22,7 @@ export default function Navbar() {
         <nav className="flex items-center justify-between py-4 px-8 md:px-16 bg-white border-b border-brand-border sticky top-0 z-[1000]">
             <div className="flex items-center">
                 <Link href="/">
-                    <img src="/assets/images/co.png" alt="2Connect" className="h-10 w-auto" />
+                    <img src="/assets/images/connect_logo.png" alt="2Connect" className="h-10 w-auto" />
                 </Link>
             </div>
 

@@ -1,3 +1,4 @@
+// Contact/partials/FormField.tsx (Updated styling)
 import React from 'react';
 
 interface FormFieldProps {
@@ -21,11 +22,21 @@ const FormField = ({
     placeholder = '',
     options = []
 }: FormFieldProps) => {
-    const baseInputClasses = "mt-2 p-3 px-4 border border-[#ccc] rounded-xl text-[0.95rem] transition-all duration-300 focus:outline-none focus:border-[#1a73e8] focus:shadow-[0_0_8px_rgba(26,115,232,0.2)]";
+    const baseInputClasses = `
+        w-full mt-2 px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl
+        text-slate-900 placeholder:text-slate-400
+        transition-all duration-200
+        focus:outline-none focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10
+        hover:border-slate-300
+    `;
 
     return (
-        <label className="flex flex-col font-medium text-[0.95rem] text-[#333]">
-            {label}
+        <div>
+            <label className="block text-sm font-semibold text-slate-700">
+                {label}
+                {required && <span className="text-red-500 ml-1">*</span>}
+            </label>
+
             {type === 'textarea' ? (
                 <textarea
                     name={name}
@@ -33,7 +44,8 @@ const FormField = ({
                     onChange={onChange}
                     required={required}
                     placeholder={placeholder}
-                    className={`${baseInputClasses} resize-y min-h-[120px]`}
+                    rows={5}
+                    className={`${baseInputClasses} resize-none`}
                 />
             ) : type === 'select' ? (
                 <select
@@ -60,7 +72,7 @@ const FormField = ({
                     className={baseInputClasses}
                 />
             )}
-        </label>
+        </div>
     );
 };
 

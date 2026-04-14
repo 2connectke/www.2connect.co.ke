@@ -1,22 +1,35 @@
 import { Link } from '@inertiajs/react';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 const CTASection = () => {
     return (
-        <section className="bg-[#1e90ff] py-12 sm:py-14 md:py-16 px-4 sm:px-6 md:px-16 text-center">
-            <div className="max-w-[700px] mx-auto text-white px-4 sm:px-0">
-                <h2 className="text-2xl sm:text-3xl md:text-[2.5rem] font-bold mb-3 sm:mb-4">Join the Movement</h2>
-                <p className="text-base sm:text-lg md:text-xl opacity-95 mb-8 sm:mb-10 leading-relaxed">
-                    Whether you want to volunteer, partner with us, or lead change on your campus — there is a place for you at 2Connect.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
-                    <Link href="/volunteer" className="px-6 sm:px-8 py-2.5 sm:py-3 bg-white text-[#1e90ff] no-underline rounded-lg font-bold transition-all duration-300 border-2 border-white hover:bg-transparent hover:text-white hover:-translate-y-0.5 text-sm sm:text-base">
-                        Join as a Volunteer
+        <section className="py-16 sm:py-20 px-4 sm:px-[5%] relative overflow-hidden">
+            <div className="absolute inset-0">
+                <div className="absolute inset-0 bg-linear-to-br from-brand-primary to-brand-dark"></div>
+                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_2px_2px,white_1px,transparent_0)] bg-size-[40px_40px]"></div>
+            </div>
+
+            <motion.div
+                className="relative z-10 max-w-3xl mx-auto text-center text-white"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+            >
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6">Join the Movement</h2>
+                <p className="text-xl text-white/80 mb-10 leading-relaxed">Whether you want to volunteer, partner with us, or lead change on your campus—there is a place for you at 2Connect.</p>
+
+                <div className="flex flex-wrap gap-4 justify-center">
+                    <Link href="/volunteer" className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#1e90ff] rounded-full font-bold shadow-lg transition-all hover:-translate-y-1 hover:shadow-2xl hover:bg-white/90">
+                        <span>Join as Volunteer</span>
+                        <ArrowRight size={20} />
                     </Link>
-                    <Link href="/partner" className="px-6 sm:px-8 py-2.5 sm:py-3 bg-transparent text-white no-underline rounded-lg font-bold border-2 border-white/50 transition-all duration-300 hover:bg-white hover:text-[#1e90ff] hover:border-white text-sm sm:text-base">
-                        Partner With Us
+                    <Link href="/partner" className="inline-flex items-center gap-3 px-8 py-4 bg-transparent text-white rounded-full font-bold border-2 border-white/30 transition-all hover:bg-white/10 hover:border-white/50 hover:-translate-y-1">
+                        <span>Partner With Us</span>
                     </Link>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 };

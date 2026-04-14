@@ -1,6 +1,6 @@
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
-import HeroSection from './partials/HeroSection';
+import WelcomeHero from './partials/WelcomeHero';
 import WhoWeAre from './partials/WhoWeAre';
 import WhatWeOffer from './partials/WhatWeOffer';
 import UpcomingEvents from './partials/UpcomingEvents';
@@ -12,7 +12,7 @@ export default function Welcome() {
     return (
         <>
             <Head title="Home | 2Connect" />
-            <HeroSection currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
+            <WelcomeHero currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
             <WhoWeAre />
             <WhatWeOffer />
             <UpcomingEvents />
