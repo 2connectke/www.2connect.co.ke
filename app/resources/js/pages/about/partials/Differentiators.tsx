@@ -1,113 +1,164 @@
 import { motion } from 'framer-motion';
-import { Zap, Heart, TrendingUp, Shield } from 'lucide-react';
+import {
+    ArrowRight,
+    HeartPulse,
+    Network,
+    ShieldCheck,
+    Sparkles,
+    Workflow,
+} from 'lucide-react';
 
 const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-100px" },
-    transition: { duration: 0.8, ease: "easeOut" as const }
+    viewport: { once: true, margin: '-100px' },
+    transition: { duration: 0.8, ease: 'easeOut' as const },
 };
 
 const staggerContainer = {
     initial: {},
     whileInView: {
         transition: {
-            staggerChildren: 0.15
-        }
+            staggerChildren: 0.15,
+        },
     },
-    viewport: { once: true, margin: "-50px" }
-};
-
-const scaleIn = {
-    initial: { opacity: 0, scale: 0.8 },
-    whileInView: { opacity: 1, scale: 1 },
-    viewport: { once: true },
-    transition: { duration: 0.6, ease: "easeOut" }
+    viewport: { once: true, margin: '-50px' },
 };
 
 const Differentiators = () => {
     const differentiators = [
         {
-            icon: Zap,
-            title: "Structured Volunteer Journeys",
-            description: "Purpose-driven pathways that transform volunteering into career-building experiences"
+            icon: Workflow,
+            label: 'Pathway',
+            title: 'Structured Volunteer Journeys',
+            description:
+                'Every volunteer moves through a guided experience: discovery, preparation, placement, reflection, and growth.',
         },
         {
-            icon: Heart,
-            title: "Youth-Centered Wellness",
-            description: "Mental health support and wellbeing resources integrated into every engagement"
+            icon: HeartPulse,
+            label: 'Care',
+            title: 'Youth-Centered Wellness',
+            description:
+                'We design service around the whole person, with support systems that protect energy, dignity, and wellbeing.',
         },
         {
-            icon: TrendingUp,
-            title: "Talent-to-Impact Pipeline",
-            description: "Connecting skills development with real community needs"
+            icon: Network,
+            label: 'Match',
+            title: 'Talent-to-Impact Pipeline',
+            description:
+                'Young people are matched to real needs where their skills can grow while communities receive reliable support.',
         },
         {
-            icon: Shield,
-            title: "2CFP Training Model",
-            description: "Deployment-ready volunteers through our certified training framework"
-        }
+            icon: ShieldCheck,
+            label: 'Trust',
+            title: '2CFP Training Model',
+            description:
+                'Our preparation model gives partners volunteers who are values-led, ready to serve, and easier to deploy.',
+        },
     ];
 
     return (
-        <section className="py-16 sm:py-20 px-4 sm:px-[5%] bg-white">
-            <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-12">
-                <motion.span className="inline-block text-[0.85rem] font-bold uppercase tracking-[0.2em] text-brand-primary mb-3" {...fadeInUp}>Our Approach</motion.span>
-                <motion.h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-brand-dark leading-tight tracking-tight" {...fadeInUp} transition={{ delay: 0.1 }}>
-                    What Makes Us <span className="text-brand-primary">Different</span>
-                </motion.h2>
-            </div>
+        <section className="relative overflow-hidden bg-white px-4 pt-16 pb-24 sm:px-[5%] sm:pt-20 sm:pb-32">
+            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-14">
+                <motion.div
+                    className="lg:sticky lg:top-28 lg:self-start"
+                    {...fadeInUp}
+                >
+                    <span className="mb-4 inline-flex items-center gap-3 text-[0.78rem] font-bold tracking-[0.22em] text-brand-primary uppercase">
+                        <span className="h-px w-10 bg-brand-accent"></span>
+                        Our approach
+                    </span>
+                    <h2 className="text-4xl leading-[1.05] font-black tracking-tight text-brand-dark sm:text-5xl md:text-6xl">
+                        What makes us different is the system behind the
+                        service.
+                    </h2>
+                    <p className="mt-6 max-w-xl text-lg leading-[1.85] text-brand-medium">
+                        2Connect is not simply listing opportunities. We are
+                        building a youth-led infrastructure where preparation,
+                        care, matching, and partner trust work together.
+                    </p>
 
-            <motion.div
-                className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-                variants={staggerContainer}
-                initial="initial"
-                whileInView="whileInView"
-                viewport={{ once: true }}
-            >
-                {differentiators.map((item, index) => (
-                    <motion.div
-                        key={index}
-                        className="relative bg-white border border-brand-border rounded-3xl p-8 overflow-hidden transition-all duration-400 flex flex-col justify-between shadow-brand hover:-translate-y-1.5 hover:shadow-brand group"
-                        variants={scaleIn}
-                    >
-                        <div>
-                            <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-brand-primary mb-6 shadow-brand">
-                                <item.icon size={32} strokeWidth={1.5} />
+                    <div className="mt-7 overflow-hidden rounded-[8px] bg-brand-dark text-white shadow-brand-lg">
+                        <div className="grid grid-cols-[0.85fr_1fr]">
+                            <img
+                                src="/assets/images/education.jpg"
+                                alt="Young people learning through 2Connect programs"
+                                className="h-full min-h-[190px] w-full object-cover"
+                            />
+                            <div className="flex flex-col justify-between p-5">
+                                <Sparkles
+                                    className="text-brand-accent"
+                                    size={26}
+                                    strokeWidth={1.6}
+                                />
+                                <p className="mt-8 text-lg leading-tight font-bold">
+                                    Designed for both sides of impact.
+                                </p>
+                                <div className="mt-5 flex flex-wrap gap-2 text-xs font-bold tracking-[0.14em] text-white/75 uppercase">
+                                    <span>Volunteer</span>
+                                    <span className="text-brand-accent">+</span>
+                                    <span>Community</span>
+                                </div>
                             </div>
-                            <h3 className="text-xl font-bold mb-3 text-brand-dark">{item.title}</h3>
-                            <p className="text-brand-dark text-[0.95rem] leading-relaxed">{item.description}</p>
                         </div>
-                        <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-linear-to-br from-transparent via-white/10 to-transparent rotate-45 opacity-0 group-hover:animate-[shine_0.6s_ease-in-out]"></div>
+                    </div>
+                </motion.div>
+
+                <motion.div
+                    className="grid gap-3 lg:pt-1"
+                    variants={staggerContainer}
+                    initial="initial"
+                    whileInView="whileInView"
+                    viewport={{ once: true }}
+                >
+                    {differentiators.map((item, index) => (
+                        <motion.div
+                            key={item.title}
+                            className="group grid gap-4 rounded-[8px] border border-brand-border bg-[#f8fafc] p-4 shadow-brand transition-all duration-300 hover:-translate-y-1 hover:border-brand-primary/40 hover:bg-white hover:shadow-brand-lg sm:grid-cols-[92px_1fr] sm:p-5"
+                            variants={fadeInUp}
+                        >
+                            <div className="flex items-start justify-between sm:block">
+                                <div className="flex h-11 w-11 items-center justify-center rounded-[8px] bg-white text-brand-primary shadow-brand">
+                                    <item.icon size={24} strokeWidth={1.6} />
+                                </div>
+                                <span className="text-3xl leading-none font-black text-brand-primary/10 sm:mt-5 sm:block">
+                                    0{index + 1}
+                                </span>
+                            </div>
+                            <div>
+                                <span className="text-xs font-black tracking-[0.2em] text-brand-accent uppercase">
+                                    {item.label}
+                                </span>
+                                <h3 className="mt-1.5 text-xl leading-tight font-black text-brand-dark">
+                                    {item.title}
+                                </h3>
+                                <p className="mt-2 text-[0.9rem] leading-relaxed text-brand-medium">
+                                    {item.description}
+                                </p>
+                            </div>
+                        </motion.div>
+                    ))}
+
+                    <motion.div
+                        className="rounded-[8px] border border-brand-primary/20 bg-white p-5 shadow-brand"
+                        variants={fadeInUp}
+                    >
+                        <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+                            <div>
+                                <h3 className="text-xl font-black text-brand-dark">
+                                    Digital-first, relationship-centered.
+                                </h3>
+                                <p className="mt-2 max-w-2xl text-[0.92rem] leading-relaxed text-brand-medium">
+                                    Technology helps us coordinate, but the
+                                    experience stays human: guided journeys,
+                                    responsible placement, and feedback loops
+                                    that improve every engagement.
+                                </p>
+                            </div>
+                        </div>
                     </motion.div>
-                ))}
-
-                {/* Additional bento items */}
-                <motion.div className="lg:col-span-2 bg-brand-dark text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden group shadow-brand hover:-translate-y-1.5 transition-all duration-400" variants={scaleIn}>
-                    <div className="relative z-10">
-                        <h3 className="text-2xl font-bold mb-4">Digital-First, Youth-Led Ecosystem</h3>
-                        <p className="opacity-80 mb-8 leading-relaxed">Technology-powered platform connecting volunteers with opportunities through seamless digital experiences</p>
-                        <div className="flex gap-3 flex-wrap">
-                            {['Mobile App', 'Web Platform', 'AI Matching'].map(tech => (
-                                <span key={tech} className="bg-white/10 px-4 py-2 rounded-full text-sm border border-white/20">{tech}</span>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
                 </motion.div>
-
-                <motion.div className="lg:col-span-2 bg-white border border-brand-border rounded-3xl p-8 sm:p-12 shadow-brand hover:-translate-y-1.5 transition-all duration-400 overflow-hidden group" variants={scaleIn}>
-                    <div className="relative z-10">
-                        <h3 className="text-2xl font-bold mb-4 text-brand-dark">Dual Impact Design</h3>
-                        <p className="text-brand-medium mb-8 leading-relaxed">Every program creates value for both the community and the volunteer—ensuring sustainable, mutual growth</p>
-                        <div className="flex items-center gap-4">
-                            <div className="bg-brand-primary/10 text-brand-primary px-6 py-4 rounded-xl font-bold text-sm">Community</div>
-                            <div className="text-brand-light font-bold">⟷</div>
-                            <div className="bg-brand-accent/10 text-brand-accent px-6 py-4 rounded-xl font-bold text-sm">Volunteer</div>
-                        </div>
-                    </div>
-                </motion.div>
-            </motion.div>
+            </div>
         </section>
     );
 };
