@@ -51,7 +51,7 @@ const OurStory = () => {
                             Since
                         </div>
                         <div className="font-display text-5xl leading-none font-bold tracking-[-0.04em]">
-                            2020
+                            2023
                         </div>
                     </Reveal>
                 </div>
