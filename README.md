@@ -81,15 +81,15 @@ Where things live:
 - Page titles and descriptions for search and social sharing: `app/src/data/seo.json`.
 - Photos: `app/public/assets/images/`, named `2connect-<category>-<nn>.jpg`.
 
-## Deploying to Cloudflare Pages
+## Deploying
 
-| Setting | Value |
-|---|---|
-| Root directory | `app` |
-| Build command | `npm run build` |
-| Build output directory | `dist` |
+The site is hosted on Cloudflare Pages (project `2connect`) at https://2connect.co.ke.
 
-Optional environment variables:
+Every push to `main` deploys automatically through GitHub Actions (`.github/workflows/deploy.yml`): it installs, runs `npm run build` in `app/`, and uploads `app/dist/`. Watch progress under the repository's **Actions** tab. To redeploy without a code change, open **Actions → Deploy to Cloudflare Pages → Run workflow**.
+
+The workflow needs a repository secret named `CLOUDFLARE_API_TOKEN`: a Cloudflare API token with **Account → Cloudflare Pages → Edit** permission.
+
+Build settings, if they are ever needed:
 
 - `SITE_URL`: the live address used in canonical links, share previews and the sitemap. Defaults to `https://2connect.co.ke`.
-- `PRODUCTION_BRANCH`: the branch whose deploys search engines may index. Defaults to `main`; preview deploys of other branches are marked `noindex`.
+- `PRODUCTION_BRANCH`: the branch whose deploys search engines may index. Defaults to `main`.
