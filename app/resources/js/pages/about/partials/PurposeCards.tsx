@@ -1,78 +1,109 @@
-import { motion } from 'framer-motion';
+import Eyebrow from '@/components/site/eyebrow';
+import { Reveal, RevealLines } from '@/components/site/reveal';
 
-const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-100px" },
-    transition: { duration: 0.8, ease: "easeOut" as const }
-};
+const statements = [
+    {
+        label: 'Our mission',
+        text: 'To give young people the opportunities, skills and support to make change that lasts, right where they live.',
+        dot: 'bg-sun',
+    },
+    {
+        label: 'Our vision',
+        text: 'A connected generation of young leaders who care about people, building a better Kenya and a better world.',
+        dot: 'bg-azure',
+    },
+];
+
+const values = [
+    {
+        name: 'Purpose driven innovation',
+        detail: 'When the old way isn’t working for our communities, we try a new one.',
+    },
+    {
+        name: 'Collaboration',
+        detail: 'Nothing big gets done alone. We build with you, not for you.',
+    },
+    {
+        name: 'Integrity',
+        detail: 'We say what we do and we do what we say. Always in the open.',
+    },
+    {
+        name: 'Empowerment',
+        detail: 'Every young person gets the tools, and the trust, to lead.',
+    },
+    {
+        name: 'Sustainability',
+        detail: 'We build things that keep going long after the event photos are posted.',
+    },
+];
 
 const PurposeCards = () => {
-    const cards = [
-        {
-            title: "Mission",
-            content: "To empower young people with opportunities, skills, and support to create positive and lasting change in their communities.",
-            gradient: "from-blue-500 to-blue-400"
-        },
-        {
-            title: "Vision",
-            content: "A connected generation of socially conscious leaders transforming Kenya and the world.",
-            gradient: "from-blue-600 to-blue-500"
-        },
-        {
-            title: "Values",
-            content: ["Purpose-Driven Innovation", "Collaboration", "Integrity", "Empowerment", "Sustainability"],
-            gradient: "from-blue-700 to-blue-600",
-            isList: true
-        }
-    ];
-
     return (
-        <section className="py-16 sm:py-20 px-4 sm:px-[5%] bg-gradient-to-b from-[#f8fafc] to-white">
-            <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-12">
-                <motion.span
-                    className="inline-block text-[0.85rem] font-bold uppercase tracking-[0.2em] text-[#1e90ff] mb-3"
-                    {...fadeInUp}
-                >
-                    Why We Exist
-                </motion.span>
-                <motion.h2
-                    className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1a1a1a] leading-tight tracking-tight mb-4"
-                    {...fadeInUp}
-                    transition={{ delay: 0.1 }}
-                >
-                    Our Purpose
-                </motion.h2>
-            </div>
+        <section className="relative overflow-hidden bg-ink py-28 text-white sm:py-36">
+            <div className="relative container-wide">
+                <Eyebrow tone="light">Why we exist</Eyebrow>
+                <RevealLines
+                    className="mt-6 text-display-lg"
+                    lines={[
+                        'Purpose',
+                        <span key="v" className="text-sun">
+                            ndio vibe.
+                        </span>,
+                    ]}
+                />
 
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {cards.map((card, index) => (
-                    <motion.div
-                        key={index}
-                        className="relative bg-white rounded-3xl p-8 sm:p-12 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] overflow-hidden transition-all duration-400 group hover:-translate-y-2 hover:shadow-[0_20px_25px_-5px_rgba(30,144,255,0.1)]"
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.15, duration: 0.6 }}
-                    >
-                        <div className={`absolute top-0 left-0 right-0 h-1 transition-all duration-300 group-hover:h-full group-hover:opacity-[0.05] bg-gradient-to-r ${card.gradient}`}></div>
-                        <div className="relative z-10">
-                            <h3 className="text-2xl font-bold mb-6 text-[#1a1a1a]">{card.title}</h3>
-                            {card.isList ? (
-                                <ul className="flex flex-col gap-3 list-none p-0">
-                                    {card.content.map((item, i) => (
-                                        <li key={i} className="flex items-center gap-3 text-[#4a4a4a] text-[0.95rem]">
-                                            <span className="w-2 h-2 bg-[#1e90ff] rounded-full shrink-0"></span>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            ) : (
-                                <p className="text-[#4a4a4a] leading-relaxed">{card.content}</p>
-                            )}
+                <div className="mt-16 grid divide-y divide-white/10 overflow-hidden rounded-[32px] border border-white/10 bg-ink-soft lg:grid-cols-2 lg:divide-x lg:divide-y-0">
+                    {statements.map((item, index) => (
+                        <Reveal
+                            key={item.label}
+                            delay={index * 0.1}
+                            className="p-8 sm:p-12 lg:p-14"
+                        >
+                            <div className="flex items-center gap-3 text-xs font-semibold tracking-[0.22em] text-white/60 uppercase">
+                                <span className={`size-2.5 rounded-full ${item.dot}`} />
+                                {item.label}
+                            </div>
+                            <p className="mt-8 font-display text-[clamp(1.75rem,2.8vw,2.75rem)] leading-[1.1] font-semibold tracking-[-0.03em]">
+                                {item.text}
+                            </p>
+                        </Reveal>
+                    ))}
+                </div>
+
+                <div className="mt-20 grid gap-10 lg:grid-cols-12">
+                    <Reveal className="lg:col-span-4">
+                        <div className="flex items-center gap-3 text-xs font-semibold tracking-[0.22em] text-white/60 uppercase">
+                            <span className="size-2.5 rounded-full bg-white" />
+                            Our values
                         </div>
-                    </motion.div>
-                ))}
+                        <p className="mt-6 max-w-sm text-lg leading-relaxed text-white/60">
+                            Five things we hold on to in every programme, every
+                            partnership and every placement.
+                        </p>
+                    </Reveal>
+                    <ol className="lg:col-span-8">
+                        {values.map((value, index) => (
+                            <Reveal
+                                as="li"
+                                key={value.name}
+                                delay={index * 0.06}
+                                className="group flex items-baseline gap-6 border-t border-white/10 py-6 last:border-b sm:gap-10"
+                            >
+                                <span className="w-8 shrink-0 text-sm font-semibold text-white/40 tabular-nums">
+                                    0{index + 1}
+                                </span>
+                                <span className="flex flex-1 flex-col gap-3 transition-transform duration-700 ease-out-expo group-hover:translate-x-3 md:flex-row md:items-baseline md:justify-between md:gap-10">
+                                    <span className="font-display text-[clamp(1.9rem,4vw,3.5rem)] leading-none font-bold tracking-[-0.035em] transition-colors duration-700 group-hover:text-sun">
+                                        {value.name}
+                                    </span>
+                                    <span className="max-w-xs text-[0.95rem] leading-relaxed text-white/55">
+                                        {value.detail}
+                                    </span>
+                                </span>
+                            </Reveal>
+                        ))}
+                    </ol>
+                </div>
             </div>
         </section>
     );

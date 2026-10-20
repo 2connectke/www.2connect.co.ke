@@ -7,7 +7,7 @@ import PublicLayout from '@/layouts/public-layout';
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
-    title: (title) => (title ? `${title} - ${appName}` : appName),
+    title: (title) => (title ? `${title} · ${appName}` : appName),
     layout: () => PublicLayout,
     strictMode: true,
     withApp(app: React.ReactElement) {
