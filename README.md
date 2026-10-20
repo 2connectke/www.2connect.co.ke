@@ -63,3 +63,33 @@ A connected generation of socially conscious leaders transforming Kenya and the 
 2Connect is a movement of young changemakers transforming the landscape of social impact in Kenya. Whether you are an individual looking to serve, a student wanting to lead on campus, or an organization looking for talent, there is a place for you.
 
 **Your Action. Your Impact.**
+
+---
+
+## Working on the site
+
+The site is a React + Vite app in `app/`. From that folder:
+
+- `npm install` once, then `npm run dev` for a local server with live reload.
+- `npm run build` writes the finished site to `app/dist/`, with one HTML file per page.
+- `npm run preview` serves `dist/` the way Cloudflare Pages does, including redirects and the 404 page.
+
+Where things live:
+
+- Pages: `app/src/pages/`, components: `app/src/components/`, styles: `app/src/app.css`.
+- Text and events for the site: `app/src/data/site.ts`.
+- Page titles and descriptions for search and social sharing: `app/src/data/seo.json`.
+- Photos: `app/public/assets/images/`, named `2connect-<category>-<nn>.jpg`.
+
+## Deploying to Cloudflare Pages
+
+| Setting | Value |
+|---|---|
+| Root directory | `app` |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+
+Optional environment variables:
+
+- `SITE_URL`: the live address used in canonical links, share previews and the sitemap. Defaults to `https://2connect.co.ke`.
+- `PRODUCTION_BRANCH`: the branch whose deploys search engines may index. Defaults to `main`; preview deploys of other branches are marked `noindex`.
