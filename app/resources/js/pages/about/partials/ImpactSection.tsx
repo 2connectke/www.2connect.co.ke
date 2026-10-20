@@ -1,164 +1,125 @@
-import { motion } from 'framer-motion';
-import { Building2, CheckCircle2, Handshake, Users } from 'lucide-react';
+import { Building2, Users } from 'lucide-react';
+import Eyebrow from '@/components/site/eyebrow';
+import { Reveal, RevealLines } from '@/components/site/reveal';
 
-const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: '-100px' },
-    transition: { duration: 0.8, ease: 'easeOut' as const },
-};
+const sides = [
+    {
+        icon: Users,
+        label: 'Side one',
+        title: 'Young people',
+        description:
+            'Looking for purpose, experience, a network, and a safe way into work that matters.',
+        className: 'bg-sun text-ink',
+        iconClass: 'bg-ink text-sun',
+    },
+    {
+        icon: Building2,
+        label: 'Side two',
+        title: 'Organisations',
+        description:
+            'Looking for people who care, show up on time and serve with heart, week after week.',
+        className: 'bg-azure-deep text-white',
+        iconClass: 'bg-white text-azure-deep',
+    },
+];
+
+const bridgeSteps = [
+    {
+        title: 'Listen first',
+        description:
+            'We find out what partners and communities really need before anyone is placed.',
+    },
+    {
+        title: 'Prepare the people',
+        description:
+            'Volunteers get orientation, structure and the confidence to walk in ready.',
+    },
+    {
+        title: 'Keep showing up',
+        description:
+            'After every engagement we check in, reflect together and open the next door.',
+    },
+];
 
 const ImpactSection = () => {
-    const bridgeSteps = [
-        {
-            title: 'Listen to the need',
-            description:
-                'We understand what partners and communities actually require before placing people into the work.',
-        },
-        {
-            title: 'Prepare the people',
-            description:
-                'Volunteers receive structure, orientation, and confidence before they enter service environments.',
-        },
-        {
-            title: 'Support the work',
-            description:
-                'The journey continues through feedback, reflection, and stronger pathways after each engagement.',
-        },
-    ];
-
     return (
-        <section className="relative overflow-hidden bg-[#f8fafc] px-4 pt-20 pb-16 sm:px-[5%] sm:pt-24 sm:pb-20">
-            <div className="relative mx-auto max-w-7xl">
-                <motion.div
-                    className="grid grid-cols-1 gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16"
-                    {...fadeInUp}
-                >
-                    <div>
-                        <span className="mb-4 inline-flex items-center gap-3 text-[0.78rem] font-bold tracking-[0.22em] text-brand-primary uppercase">
-                            <span className="h-px w-10 bg-brand-accent"></span>
-                            Our impact
-                        </span>
-                        <h2 className="text-4xl leading-[1.05] font-black tracking-tight text-brand-dark sm:text-5xl md:text-6xl">
-                            Bridging the gap with care, structure, and trust.
-                        </h2>
-                        <p className="mt-6 text-lg leading-[1.85] text-brand-medium">
-                            We mobilise youth energy into service that
-                            communities can rely on, while making sure young
-                            people are prepared, supported, and empowered to
-                            keep growing.
-                        </p>
-                    </div>
-
-                    <div className="relative overflow-hidden rounded-[8px] bg-brand-dark shadow-brand-lg">
-                        <img
-                            src="/assets/images/community.jpg"
-                            alt="2Connect community engagement"
-                            className="h-[360px] w-full object-cover opacity-80 sm:h-[420px]"
+        <section className="relative overflow-hidden bg-paper py-28 sm:py-36">
+            <div className="container-wide">
+                <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+                    <div className="lg:col-span-7">
+                        <Eyebrow>Our impact</Eyebrow>
+                        <RevealLines
+                            className="mt-6 text-display-lg text-ink"
+                            lines={['Bridging the gap', 'with care and trust.']}
                         />
-                        <div className="absolute inset-0 bg-linear-to-t from-brand-dark via-brand-dark/45 to-transparent"></div>
-                        <div className="absolute right-0 bottom-0 left-0 p-6 text-white sm:p-8">
-                            <p className="max-w-xl text-2xl leading-tight font-black">
-                                A bridge is only useful when both sides can move
-                                across it with confidence.
-                            </p>
-                        </div>
                     </div>
-                </motion.div>
-
-                <div className="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-[1fr_auto_1fr] lg:items-stretch">
-                    <motion.div
-                        className="rounded-[8px] border border-brand-border bg-white p-6 shadow-brand sm:p-8"
-                        initial={{ opacity: 0, x: -40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7 }}
-                    >
-                        <div className="flex items-center gap-4">
-                            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-primary/10 text-brand-primary">
-                                <Users size={30} />
-                            </div>
-                            <div>
-                                <span className="text-xs font-black tracking-[0.2em] text-brand-accent uppercase">
-                                    Side one
-                                </span>
-                                <h3 className="text-2xl font-black text-brand-dark">
-                                    Young people
-                                </h3>
-                            </div>
-                        </div>
-                        <p className="mt-5 leading-relaxed text-brand-medium">
-                            Seeking purpose, experience, networks, and a safe
-                            path into meaningful contribution.
+                    <Reveal className="lg:col-span-5" delay={0.15}>
+                        <p className="max-w-md text-lg leading-relaxed text-body">
+                            We turn youth energy into help communities can count
+                            on, and we make sure the young people giving it are
+                            ready, supported and still growing.
                         </p>
-                    </motion.div>
-
-                    <motion.div
-                        className="relative flex min-h-28 items-center justify-center lg:min-h-full"
-                        initial={{ opacity: 0, scale: 0.85 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7, delay: 0.15 }}
-                    >
-                        <div className="absolute h-full w-px bg-linear-to-b from-brand-primary to-brand-accent lg:h-px lg:w-40"></div>
-                        <div className="relative z-10 flex h-20 w-20 items-center justify-center rounded-full border border-white bg-brand-primary text-white shadow-brand-lg">
-                            <Handshake size={34} strokeWidth={1.6} />
-                        </div>
-                    </motion.div>
-
-                    <motion.div
-                        className="rounded-[8px] border border-brand-border bg-white p-6 shadow-brand sm:p-8"
-                        initial={{ opacity: 0, x: 40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7, delay: 0.1 }}
-                    >
-                        <div className="flex items-center gap-4">
-                            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-accent/15 text-brand-accent">
-                                <Building2 size={30} />
-                            </div>
-                            <div>
-                                <span className="text-xs font-black tracking-[0.2em] text-brand-primary uppercase">
-                                    Side two
-                                </span>
-                                <h3 className="text-2xl font-black text-brand-dark">
-                                    Organizations
-                                </h3>
-                            </div>
-                        </div>
-                        <p className="mt-5 leading-relaxed text-brand-medium">
-                            Looking for committed, values-driven volunteers who
-                            can serve with clarity and consistency.
-                        </p>
-                    </motion.div>
+                    </Reveal>
                 </div>
 
-                <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-                    {bridgeSteps.map((step, index) => (
-                        <motion.div
-                            key={step.title}
-                            className="rounded-[8px] border border-brand-border bg-white p-6 shadow-brand"
-                            initial={{ opacity: 0, y: 24 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.55, delay: index * 0.08 }}
+                {/* The bridge: two sides, one navy overlap */}
+                <div className="relative mt-16 grid gap-4 lg:grid-cols-2 lg:gap-0">
+                    {sides.map((side, index) => (
+                        <Reveal
+                            key={side.title}
+                            delay={index * 0.1}
+                            className={`relative overflow-hidden rounded-[32px] p-8 sm:p-12 ${side.className} ${
+                                index === 0 ? 'lg:rounded-r-none lg:pr-28' : 'lg:rounded-l-none lg:pl-28'
+                            }`}
                         >
-                            <div className="mb-5 flex items-center justify-between">
-                                <CheckCircle2
-                                    className="text-brand-primary"
-                                    size={26}
-                                />
-                                <span className="text-sm font-black text-brand-primary/30">
-                                    0{index + 1}
-                                </span>
+                            <span
+                                className={`grid size-14 place-items-center rounded-full ${side.iconClass}`}
+                            >
+                                <side.icon size={26} strokeWidth={1.7} />
+                            </span>
+                            <span className="mt-10 block text-xs font-semibold tracking-[0.22em] uppercase opacity-70">
+                                {side.label}
+                            </span>
+                            <h3 className="mt-2 text-display-md">{side.title}</h3>
+                            <p className="mt-5 max-w-sm text-lg leading-relaxed opacity-85">
+                                {side.description}
+                            </p>
+                        </Reveal>
+                    ))}
+
+                    <div className="pointer-events-none absolute top-1/2 left-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 lg:block">
+                        <Reveal y={0} delay={0.3}>
+                            <div className="grid size-36 place-items-center rounded-full bg-navy shadow-[0_30px_80px_-20px_rgba(11,18,54,0.7)] ring-[10px] ring-paper">
+                                <svg viewBox="0 0 72 72" className="size-10">
+                                    <path
+                                        d="M36 0 C40 28 44 32 72 36 C44 40 40 44 36 72 C32 44 28 40 0 36 C28 32 32 28 36 0 Z"
+                                        fill="white"
+                                    />
+                                </svg>
                             </div>
-                            <h4 className="text-xl font-black text-brand-dark">
+                        </Reveal>
+                    </div>
+                </div>
+
+                <div className="mt-16 grid border-t border-ink/10 md:grid-cols-3">
+                    {bridgeSteps.map((step, index) => (
+                        <Reveal
+                            key={step.title}
+                            delay={index * 0.08}
+                            className={`border-ink/10 py-10 md:pr-10 ${
+                                index > 0 ? 'border-t md:border-t-0 md:border-l md:pl-10' : ''
+                            }`}
+                        >
+                            <span className="font-display text-sm font-semibold text-sun-deep tabular-nums">
+                                0{index + 1}
+                            </span>
+                            <h4 className="mt-4 font-display text-3xl font-bold tracking-tight text-ink">
                                 {step.title}
                             </h4>
-                            <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-medium">
+                            <p className="mt-3 leading-relaxed text-body">
                                 {step.description}
                             </p>
-                        </motion.div>
+                        </Reveal>
                     ))}
                 </div>
             </div>

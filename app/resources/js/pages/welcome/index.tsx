@@ -1,22 +1,21 @@
-import { Head } from '@inertiajs/react';
-import { useState } from 'react';
-import WelcomeHero from './partials/WelcomeHero';
-import WhoWeAre from './partials/WhoWeAre';
-import WhatWeOffer from './partials/WhatWeOffer';
-import UpcomingEvents from './partials/UpcomingEvents';
-import CTASection from './partials/CTASection';
+import JoinCta from '@/components/site/join-cta';
+import Bridge from './partials/Bridge';
+import EventsRail from './partials/EventsRail';
+import HomeHero from './partials/HomeHero';
+import Journey from './partials/Journey';
+import Manifesto from './partials/Manifesto';
+import Pillars from './partials/Pillars';
 
 export default function Welcome() {
-    const [currentSlide, setCurrentSlide] = useState(0);
-
     return (
         <>
-            <Head title="Home | 2Connect" />
-            <WelcomeHero currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
-            <WhoWeAre />
-            <WhatWeOffer />
-            <UpcomingEvents />
-            <CTASection />
+            <HomeHero />
+            <Manifesto />
+            <Pillars />
+            <Journey />
+            <Bridge />
+            <EventsRail />
+            <JoinCta />
         </>
     );
 }

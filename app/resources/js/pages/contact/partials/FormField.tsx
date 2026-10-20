@@ -1,17 +1,19 @@
-// Contact/partials/FormField.tsx (Updated styling)
-import React from 'react';
+import type { ChangeEvent } from 'react';
 
 interface FormFieldProps {
     label: string;
     name: string;
-    type?: 'text' | 'email' | 'tel' | 'select' | 'textarea';
+    type?: 'text' | 'email' | 'tel' | 'textarea';
     value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
+    onChange: (
+        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
     required?: boolean;
     placeholder?: string;
-    options?: Array<{ value: string; label: string }>;
+    autoComplete?: string;
 }
 
+/** Soft filled field with an animated sun underline on focus. */
 const FormField = ({
     label,
     name,
@@ -20,58 +22,49 @@ const FormField = ({
     onChange,
     required = false,
     placeholder = '',
-    options = []
+    autoComplete,
 }: FormFieldProps) => {
-    const baseInputClasses = `
-        w-full mt-2 px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl
-        text-slate-900 placeholder:text-slate-400
-        transition-all duration-200
-        focus:outline-none focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10
-        hover:border-slate-300
-    `;
+    const id = `contact-${name}`;
+    const inputClasses =
+        'peer block w-full rounded-t-2xl border-0 border-b-2 border-ink/10 bg-paper px-5 pt-3 pb-4 text-[1.05rem] text-ink placeholder:text-ink/35 transition-colors duration-300 outline-none hover:bg-sand/70 focus:border-transparent focus:bg-white';
 
     return (
         <div>
-            <label className="block text-sm font-semibold text-slate-700">
+            <label htmlFor={id} className="block px-1 pb-2 text-sm font-semibold text-ink">
                 {label}
-                {required && <span className="text-red-500 ml-1">*</span>}
+                {required && (
+                    <span className="ml-1 text-sun-deep" aria-hidden>
+                        *
+                    </span>
+                )}
             </label>
-
-            {type === 'textarea' ? (
-                <textarea
-                    name={name}
-                    value={value}
-                    onChange={onChange}
-                    required={required}
-                    placeholder={placeholder}
-                    rows={5}
-                    className={`${baseInputClasses} resize-none`}
-                />
-            ) : type === 'select' ? (
-                <select
-                    name={name}
-                    value={value}
-                    onChange={onChange}
-                    required={required}
-                    className={baseInputClasses}
-                >
-                    {options.map(option => (
-                        <option key={option.value} value={option.value}>
-                            {option.label}
-                        </option>
-                    ))}
-                </select>
-            ) : (
-                <input
-                    type={type}
-                    name={name}
-                    value={value}
-                    onChange={onChange}
-                    required={required}
-                    placeholder={placeholder}
-                    className={baseInputClasses}
-                />
-            )}
+            <div className="relative">
+                {type === 'textarea' ? (
+                    <textarea
+                        id={id}
+                        name={name}
+                        value={value}
+                        onChange={onChange}
+                        required={required}
+                        placeholder={placeholder}
+                        rows={5}
+                        className={`${inputClasses} resize-none`}
+                    />
+                ) : (
+                    <input
+                        id={id}
+                        type={type}
+                        name={name}
+                        value={value}
+                        onChange={onChange}
+                        required={required}
+                        placeholder={placeholder}
+                        autoComplete={autoComplete}
+                        className={inputClasses}
+                    />
+                )}
+                <span className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-sun transition-transform duration-500 ease-out-expo peer-focus:scale-x-100" />
+            </div>
         </div>
     );
 };

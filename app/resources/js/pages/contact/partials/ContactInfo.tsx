@@ -1,71 +1,63 @@
-// Contact/partials/ContactInfo.tsx
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { ArrowUpRight } from 'lucide-react';
+import Eyebrow from '@/components/site/eyebrow';
+import { Reveal } from '@/components/site/reveal';
+import { contact, socials } from '@/data/site';
+
+const details = [
+    { label: 'Email us', value: contact.email, href: `mailto:${contact.email}` },
+    { label: 'Call or WhatsApp', value: contact.phone, href: contact.phoneHref },
+    { label: 'Find us', value: contact.location, href: null },
+    { label: 'Office hours', value: contact.hours, href: null },
+];
 
 const ContactInfo = () => {
-    const contactDetails = [
-        {
-            icon: Mail,
-            label: "Email",
-            value: "2connectke@gmail.com",
-            href: "mailto:2connectke@gmail.com"
-        },
-        {
-            icon: Phone,
-            label: "Phone",
-            value: "+254 111 646 177",
-            href: "tel:+254111646177"
-        },
-        {
-            icon: MapPin,
-            label: "Location",
-            value: "Nairobi, Kenya",
-            href: "#"
-        },
-        {
-            icon: Clock,
-            label: "Hours",
-            value: "Mon - Fri, 9AM - 5PM EAT",
-            href: null
-        }
-    ];
-
     return (
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-            <h3 className="text-lg font-semibold text-slate-900 mb-6">
-                Contact Information
-            </h3>
+        <div>
+            <Eyebrow>Reach us directly</Eyebrow>
 
-            <div className="space-y-4">
-                {contactDetails.map((item, index) => {
-                    const Content = (
-                        <div className="flex items-start gap-4 group">
-                            <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
-                                <item.icon className="w-5 h-5 text-blue-600" />
-                            </div>
-                            <div>
-                                <p className="text-xs font-medium text-slate-500 uppercase tracking-wider">
-                                    {item.label}
-                                </p>
-                                <p className="text-slate-900 font-medium mt-0.5">
+            <dl className="mt-8 divide-y divide-ink/10 border-y border-ink/10">
+                {details.map((item, index) => (
+                    <Reveal key={item.label} delay={index * 0.06} className="py-6">
+                        <dt className="text-sm text-body">{item.label}</dt>
+                        <dd className="mt-2">
+                            {item.href ? (
+                                <a
+                                    href={item.href}
+                                    className="group inline-flex items-center gap-3 font-display text-[clamp(1.5rem,2.4vw,2.25rem)] leading-tight font-semibold tracking-[-0.03em] break-all text-ink"
+                                >
+                                    <span className="relative pb-1">
+                                        {item.value}
+                                        <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-sun transition-transform duration-700 ease-out-expo group-hover:scale-x-100" />
+                                    </span>
+                                    <ArrowUpRight className="shrink-0 text-sun-deep transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                                </a>
+                            ) : (
+                                <span className="font-display text-[clamp(1.5rem,2.4vw,2.25rem)] leading-tight font-semibold tracking-[-0.03em] text-ink">
                                     {item.value}
-                                </p>
-                            </div>
-                        </div>
-                    );
+                                </span>
+                            )}
+                        </dd>
+                    </Reveal>
+                ))}
+            </dl>
 
-                    return item.href ? (
-                        <a
-                            key={index}
-                            href={item.href}
-                            className="block hover:opacity-80 transition-opacity"
-                        >
-                            {Content}
-                        </a>
-                    ) : (
-                        <div key={index}>{Content}</div>
-                    );
-                })}
-            </div>
+            <Reveal delay={0.3} className="mt-10">
+                <p className="text-sm text-body">Or slide into our DMs</p>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                    {socials.map((social) => (
+                        <li key={social.label}>
+                            <a
+                                href={social.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex rounded-full border border-ink/15 px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-ink hover:bg-ink hover:text-white"
+                            >
+                                {social.label}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </Reveal>
         </div>
     );
 };

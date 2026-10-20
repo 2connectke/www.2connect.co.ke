@@ -1,68 +1,96 @@
-import { motion } from 'framer-motion';
-import { Sparkles, Quote } from 'lucide-react';
-
-const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-100px" },
-    transition: { duration: 0.8, ease: "easeOut" as const }
-};
-
-const staggerContainer = {
-    initial: {},
-    whileInView: {
-        transition: {
-            staggerChildren: 0.15
-        }
-    },
-    viewport: { once: true, margin: "-50px" }
-};
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import Eyebrow from '@/components/site/eyebrow';
+import { Reveal, RevealLines } from '@/components/site/reveal';
 
 const OurStory = () => {
-    return (
-        <section className="py-16 sm:py-20 px-4 sm:px-[5%] bg-white">
-            <div className="max-w-350 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-                <motion.div
-                    className="relative"
-                    {...fadeInUp}
-                >
-                    <div className="relative rounded-3xl overflow-hidden shadow-xl">
-                        <img src="/assets/images/SI2CONNECT.jpg" alt="2Connect volunteers in action" className="w-full h-full object-cover block" />
-                        <div className="absolute inset-0 border-[3px] border-brand-primary rounded-3xl translate-x-3 translate-y-3 sm:translate-x-5 sm:translate-y-5 -z-10"></div>
-                    </div>
-                    <div className="absolute -bottom-5 -right-2 sm:-right-5 bg-white p-3 sm:p-4 rounded-xl shadow-lg flex items-center gap-3 font-bold text-brand-dark z-10">
-                        <Sparkles size={24} className="text-brand-accent" />
-                        <span className="text-sm sm:text-base">Since 2020</span>
-                    </div>
-                </motion.div>
+    const ref = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ['start end', 'end start'],
+    });
+    const backY = useTransform(scrollYProgress, [0, 1], ['10%', '-10%']);
+    const frontY = useTransform(scrollYProgress, [0, 1], ['-6%', '14%']);
 
-                <motion.div
-                    className="flex flex-col gap-6"
-                    variants={staggerContainer}
-                    initial="initial"
-                    whileInView="whileInView"
-                    viewport={{ once: true }}
-                >
-                    <motion.span className="text-[0.85rem] font-bold uppercase tracking-[0.2em] text-brand-primary" variants={fadeInUp}>Our Story</motion.span>
-                    <motion.h2 className="flex flex-col gap-1 sm:gap-2" variants={fadeInUp}>
-                        <span className="text-xl sm:text-2xl font-medium text-brand-medium">More Than Volunteering—</span>
-                        <span className="text-4xl sm:text-5xl md:text-6xl font-black text-brand-dark leading-tight">A Movement</span>
-                    </motion.h2>
-                    <motion.p className="text-lg text-brand-medium leading-[1.8]" variants={fadeInUp}>
-                        2Connect is a youth-driven volunteering and engagement platform designed to connect
-                        young people to meaningful service, career pathways, and community-led social impact.
-                    </motion.p>
-                    <motion.p className="text-lg text-brand-medium leading-[1.8]" variants={fadeInUp}>
-                        We bring people together through purpose-driven volunteering, digital engagement,
-                        and relationship-centered experiences that transform both communities and the young
-                        people who serve within them.
-                    </motion.p>
-                    <motion.div className="bg-brand-bg-light p-6 sm:p-8 rounded-xl border-l-[6px] border-brand-primary mt-4" variants={fadeInUp}>
-                        <Quote size={32} className="text-brand-primary mb-4 opacity-40" />
-                        <p className="text-lg italic text-brand-dark leading-[1.6]">Volunteering is not a one-off activity. It is a structured journey that builds
-                            skills, wellbeing, networks, and long-term civic particPress space to playipation.</p>
+    return (
+        <section className="relative overflow-hidden bg-paper py-28 sm:py-36">
+            <div className="container-wide grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
+                {/* Layered photo composition */}
+                <div ref={ref} className="relative lg:col-span-6">
+                    <motion.div
+                        style={{ y: backY }}
+                        className="relative ml-auto aspect-[4/5] w-[78%] overflow-hidden rounded-[32px] bg-ink"
+                    >
+                        <img
+                            src="/assets/images/2connect-hike-03.jpg"
+                            alt="2Connect members on a group hike"
+                            className="h-full w-full object-cover"
+                        />
                     </motion.div>
-                </motion.div>
+                    <motion.div
+                        style={{ y: frontY }}
+                        className="absolute bottom-[-6%] left-0 aspect-square w-[46%] overflow-hidden rounded-full border-[10px] border-paper bg-ink shadow-[0_30px_60px_-30px_rgba(11,18,54,0.5)]"
+                    >
+                        <img
+                            src="/assets/images/2connect-portrait-02.jpg"
+                            alt="A smiling 2Connect member"
+                            className="h-full w-full object-cover"
+                        />
+                    </motion.div>
+                    <Reveal
+                        delay={0.45}
+                        className="absolute right-0 bottom-[6%] max-w-[15rem] rounded-[22px] bg-azure-deep px-5 py-4 font-display text-lg leading-tight font-semibold tracking-tight text-white shadow-[0_20px_40px_-20px_rgba(11,18,54,0.5)] sm:max-w-[17rem] sm:text-xl"
+                    >
+                        From campus to community, tuko pamoja.
+                    </Reveal>
+                    <Reveal
+                        delay={0.3}
+                        className="absolute top-8 left-[8%] rounded-[24px] bg-sun px-6 py-5 text-ink shadow-[0_20px_40px_-20px_rgba(11,18,54,0.5)]"
+                    >
+                        <div className="text-xs font-semibold tracking-[0.2em] uppercase">
+                            Since
+                        </div>
+                        <div className="font-display text-5xl leading-none font-bold tracking-[-0.04em]">
+                            2020
+                        </div>
+                    </Reveal>
+                </div>
+
+                <div className="lg:col-span-6 lg:pl-8">
+                    <Eyebrow>Our story</Eyebrow>
+                    <RevealLines
+                        className="mt-6 text-display-lg text-ink"
+                        lines={[
+                            'More than',
+                            'volunteering.',
+                            <span key="m" className="text-azure-deep">
+                                A movement.
+                            </span>,
+                        ]}
+                    />
+                    <Reveal delay={0.15}>
+                        <p className="mt-8 max-w-xl text-lg leading-relaxed text-body">
+                            2Connect started with a simple idea. Young people in
+                            Kenya have the energy, the ideas and the heart.
+                            What’s usually missing is a door to walk through.
+                        </p>
+                        <p className="mt-5 max-w-xl text-lg leading-relaxed text-body">
+                            So we built one. We connect you to service that
+                            actually matters, help you pick up real skills along
+                            the way, and introduce you to people who can open the
+                            next door for you. Your mtaa wins, and so do you.
+                        </p>
+                    </Reveal>
+                    <Reveal delay={0.25}>
+                        <blockquote className="relative mt-10 max-w-xl border-l-[3px] border-sun pl-6">
+                            <p className="font-display text-2xl leading-snug font-semibold tracking-tight text-ink sm:text-[1.7rem]">
+                                “Volunteering isn’t a one day thing. It’s a
+                                journey that grows your skills, your wellbeing,
+                                your network and your place in your community.”
+                            </p>
+                        </blockquote>
+                    </Reveal>
+                </div>
             </div>
         </section>
     );

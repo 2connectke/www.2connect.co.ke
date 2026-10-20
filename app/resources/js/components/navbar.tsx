@@ -1,11 +1,18 @@
 import { Link, usePage } from '@inertiajs/react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import Brand from '@/components/site/brand';
+import ButtonLink from '@/components/site/button-link';
+import { contact } from '@/data/site';
+
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 const navItems = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
-    { href: '/services', label: 'Services' },
+    { href: '/services', label: 'What we do' },
     { href: '/events', label: 'Events' },
+    { href: '/gallery', label: 'Gallery' },
     { href: '/contact', label: 'Contact' },
 ];
 
@@ -16,7 +23,7 @@ export default function Navbar() {
 
     useEffect(() => {
         const updateScrollState = () => {
-            setIsScrolled(window.scrollY > 16);
+            setIsScrolled(window.scrollY > 24);
         };
 
         updateScrollState();
@@ -41,129 +48,154 @@ export default function Navbar() {
         return url.startsWith(path);
     };
 
-    const linkClasses = (path: string) => {
-        const base =
-            "relative inline-flex h-9 items-center px-4 text-[0.95rem] font-medium no-underline transition-colors duration-200 after:absolute after:right-4 after:-bottom-0.5 after:left-4 after:h-0.5 after:rounded-full after:bg-[#0b2f5b] after:transition-transform after:duration-300 after:content-[''] hover:text-brand-dark hover:after:scale-x-100";
-        const state = isActive(path)
-            ? 'text-brand-dark after:scale-x-100'
-            : 'text-brand-medium after:scale-x-0';
-
-        return `${base} ${state}`;
-    };
-
-    const mobileLinkClasses = (path: string) => {
-        const base =
-            "relative text-3xl font-black text-brand-dark no-underline transition-colors duration-200 after:absolute after:right-0 after:-bottom-2 after:left-0 after:h-0.5 after:rounded-full after:bg-[#0b2f5b] after:transition-transform after:duration-300 after:content-['']";
-        const state = isActive(path)
-            ? 'after:scale-x-100'
-            : 'text-brand-medium after:scale-x-0';
-
-        return `${base} ${state}`;
-    };
-
     return (
-        <div
-            className={`fixed top-0 right-0 left-0 z-[1000] transition-[padding] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        <header
+            className={`fixed inset-x-0 top-0 z-[1000] transition-[padding] duration-700 ease-out-expo ${
                 isScrolled ? 'px-3 pt-3 sm:px-5' : 'p-0'
             }`}
         >
             <nav
-                className={`relative z-[1002] mx-auto bg-white/95 backdrop-blur-sm transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                className={`relative z-[1002] mx-auto border transition-all duration-700 ease-out-expo ${
                     isScrolled
-                        ? 'max-w-7xl rounded-[18px] border border-brand-border/70 shadow-[0_18px_45px_rgba(26,26,26,0.08)]'
-                        : 'max-w-full rounded-none border-b border-brand-border shadow-sm'
-                }`}
+                        ? 'max-w-6xl rounded-full border-ink/10 bg-paper shadow-[0_20px_50px_-20px_rgba(11,18,54,0.25)]'
+                        : 'max-w-full rounded-none border-transparent bg-transparent'
+                } ${isOpen ? '!border-transparent !bg-transparent !shadow-none' : ''}`}
             >
                 <div
-                    className={`flex items-center justify-between px-4 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] sm:px-6 md:px-8 ${
-                        isScrolled ? 'py-3' : 'py-4'
+                    className={`flex items-center justify-between transition-all duration-700 ease-out-expo ${
+                        isScrolled
+                            ? 'py-2 pr-2 pl-5'
+                            : 'px-[clamp(1rem,4vw,4rem)] py-5'
                     }`}
                 >
-                    <div className="flex items-center">
-                        <Link href="/" aria-label="2Connect home">
-                            <img
-                                src="/assets/images/connect_logo.png"
-                                alt="2Connect"
-                                className={`w-auto transition-all duration-300 ${
-                                    isScrolled ? 'h-9' : 'h-10'
-                                }`}
-                            />
-                        </Link>
-                    </div>
+                    <Brand
+                        tone={isOpen ? 'light' : 'dark'}
+                        onClick={() => setIsOpen(false)}
+                    />
 
-                    <button
-                        className="z-[1003] flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full md:hidden"
-                        onClick={() => setIsOpen(!isOpen)}
-                        aria-label="Toggle menu"
-                        aria-expanded={isOpen}
-                        type="button"
-                    >
-                        <div
-                            className={`h-0.5 w-6 rounded-sm bg-brand-dark transition-all duration-300 ${isOpen ? 'translate-y-2 rotate-45' : ''}`}
-                        ></div>
-                        <div
-                            className={`h-0.5 w-6 rounded-sm bg-brand-dark transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}
-                        ></div>
-                        <div
-                            className={`h-0.5 w-6 rounded-sm bg-brand-dark transition-all duration-300 ${isOpen ? '-translate-y-2 -rotate-45' : ''}`}
-                        ></div>
-                    </button>
-
-                    <ul className="hidden list-none items-center gap-1 md:flex">
+                    <ul className="hidden list-none items-center gap-1 lg:flex">
                         {navItems.map((item) => (
                             <li key={item.href}>
                                 <Link
                                     href={item.href}
-                                    className={linkClasses(item.href)}
+                                    className={`relative isolate inline-flex h-10 items-center rounded-full px-4 text-[0.92rem] font-medium transition-colors duration-300 ${
+                                        isActive(item.href)
+                                            ? 'text-ink'
+                                            : 'text-ink/60 hover:text-ink'
+                                    }`}
                                 >
+                                    {isActive(item.href) && (
+                                        <motion.span
+                                            layoutId="nav-active"
+                                            className="absolute inset-0 -z-10 rounded-full bg-ink/[0.06]"
+                                            transition={{ duration: 0.6, ease: EASE }}
+                                        />
+                                    )}
                                     {item.label}
                                 </Link>
                             </li>
                         ))}
-                        <li className="md:ml-3">
-                            <Link
-                                href="/contact"
-                                className="inline-flex items-center justify-center rounded-full border-2 border-brand-primary bg-brand-primary px-5 py-2.5 text-[0.85rem] font-bold tracking-wider text-white uppercase transition-all duration-300 hover:bg-white hover:text-brand-primary"
-                            >
-                                Get Connected
-                            </Link>
-                        </li>
                     </ul>
+
+                    <div className="flex items-center gap-2">
+                        <ButtonLink
+                            href="/contact"
+                            className="hidden py-1 pl-5 text-sm sm:inline-flex [&>span:last-child]:size-8"
+                        >
+                            Get connected
+                        </ButtonLink>
+
+                        <button
+                            className={`relative z-[1003] grid size-11 cursor-pointer place-items-center rounded-full transition-colors duration-500 lg:hidden ${
+                                isOpen ? 'bg-white text-ink' : 'bg-ink text-white'
+                            }`}
+                            onClick={() => setIsOpen(!isOpen)}
+                            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+                            aria-expanded={isOpen}
+                            type="button"
+                        >
+                            <span
+                                className={`absolute h-[1.5px] w-5 rounded-full bg-current transition-transform duration-500 ease-out-expo ${
+                                    isOpen ? 'rotate-45' : '-translate-y-[4px]'
+                                }`}
+                            />
+                            <span
+                                className={`absolute h-[1.5px] w-5 rounded-full bg-current transition-transform duration-500 ease-out-expo ${
+                                    isOpen ? '-rotate-45' : 'translate-y-[4px]'
+                                }`}
+                            />
+                        </button>
+                    </div>
                 </div>
             </nav>
 
-            <div
-                className={`fixed inset-0 z-[1001] bg-white transition-all duration-300 md:hidden ${
-                    isOpen
-                        ? 'pointer-events-auto translate-y-0 opacity-100'
-                        : 'pointer-events-none -translate-y-4 opacity-0'
-                }`}
-                aria-hidden={!isOpen}
-            >
-                <div className="flex min-h-screen flex-col items-center justify-center px-6 pt-28 pb-10">
-                    <ul className="flex list-none flex-col items-center gap-8">
-                        {navItems.map((item) => (
-                            <li key={item.href}>
-                                <Link
-                                    href={item.href}
-                                    className={mobileLinkClasses(item.href)}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        className="fixed inset-0 z-[1001] overflow-hidden bg-ink text-white lg:hidden"
+                        initial={{ clipPath: 'circle(0% at calc(100% - 2.5rem) 2.5rem)' }}
+                        animate={{ clipPath: 'circle(150% at calc(100% - 2.5rem) 2.5rem)' }}
+                        exit={{ clipPath: 'circle(0% at calc(100% - 2.5rem) 2.5rem)' }}
+                        transition={{ duration: 0.8, ease: EASE }}
+                    >
+
+                        <div className="relative flex h-full flex-col justify-between px-6 pt-28 pb-10">
+                            <ul className="flex list-none flex-col gap-1">
+                                {navItems.map((item, index) => (
+                                    <li key={item.href} className="overflow-hidden">
+                                        <motion.div
+                                            initial={{ y: '110%' }}
+                                            animate={{ y: '0%' }}
+                                            transition={{
+                                                duration: 0.8,
+                                                ease: EASE,
+                                                delay: 0.15 + index * 0.06,
+                                            }}
+                                        >
+                                            <Link
+                                                href={item.href}
+                                                onClick={() => setIsOpen(false)}
+                                                className={`flex items-baseline gap-4 font-display text-[clamp(2.6rem,12vw,4.5rem)] leading-[1.05] font-bold tracking-[-0.04em] ${
+                                                    isActive(item.href)
+                                                        ? 'text-sun'
+                                                        : 'text-white'
+                                                }`}
+                                            >
+                                                <span className="font-sans text-xs font-medium tracking-normal text-white/40">
+                                                    0{index + 1}
+                                                </span>
+                                                {item.label}
+                                            </Link>
+                                        </motion.div>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, ease: EASE, delay: 0.5 }}
+                                className="space-y-6"
+                            >
+                                <ButtonLink
+                                    href="/contact"
                                     onClick={() => setIsOpen(false)}
                                 >
-                                    {item.label}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-
-                    <Link
-                        href="/contact"
-                        className="mt-10 inline-flex items-center justify-center rounded-full border-2 border-brand-primary bg-brand-primary px-8 py-3.5 text-sm font-bold tracking-[0.18em] text-white uppercase transition-all duration-300 hover:bg-white hover:text-brand-primary"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Get Connected
-                    </Link>
-                </div>
-            </div>
-        </div>
+                                    Get connected
+                                </ButtonLink>
+                                <div className="space-y-1 text-sm text-white/60">
+                                    <a href={`mailto:${contact.email}`} className="block">
+                                        {contact.email}
+                                    </a>
+                                    <a href={contact.phoneHref} className="block">
+                                        {contact.phone}
+                                    </a>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </header>
     );
 }
