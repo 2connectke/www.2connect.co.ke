@@ -106,18 +106,7 @@ export default [
         },
     },
     {
-        ignores: [
-            'vendor',
-            'node_modules',
-            'public',
-            'bootstrap/ssr',
-            'tailwind.config.js',
-            'vite.config.ts',
-            'resources/js/actions/**',
-            'resources/js/components/ui/*',
-            'resources/js/routes/**',
-            'resources/js/wayfinder/**',
-        ],
+        ignores: ['node_modules', 'dist', 'public', 'photo-originals', 'vite.config.ts'],
     },
     prettier, // Turn off all rules that might conflict with Prettier
     {

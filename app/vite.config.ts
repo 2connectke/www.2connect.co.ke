@@ -1,25 +1,28 @@
-import inertia from '@inertiajs/vite';
-import { wayfinder } from '@laravel/vite-plugin-wayfinder';
+import { fileURLToPath } from 'node:url';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite';
 
+/**
+ * `npm run build` writes the site to dist/; scripts/prerender.mjs then turns
+ * index.html into one HTML file per page for Cloudflare Pages.
+ */
 export default defineConfig({
+    resolve: {
+        alias: {
+            '@': fileURLToPath(new URL('./src', import.meta.url)),
+        },
+    },
     plugins: [
-        laravel({
-            input: ['resources/css/app.css', 'resources/js/app.tsx'],
-            refresh: true,
-        }),
-        inertia(),
         react({
             babel: {
                 plugins: ['babel-plugin-react-compiler'],
             },
         }),
         tailwindcss(),
-        wayfinder({
-            formVariants: true,
-        }),
     ],
+    build: {
+        assetsDir: 'build/assets',
+        manifest: true,
+    },
 });
