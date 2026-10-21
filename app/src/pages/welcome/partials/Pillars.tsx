@@ -66,10 +66,10 @@ const Pillars = () => {
                                     className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1400ms] ease-out-expo ${
                                         isActive
                                             ? 'scale-100 opacity-100'
-                                            : 'scale-110 opacity-100 lg:opacity-45 lg:grayscale'
+                                            : 'scale-110 opacity-100'
                                     }`}
                                 />
-                                <div className="absolute inset-0 bg-ink/55" />
+                                <div className="absolute inset-0 bg-linear-to-t from-ink/85 via-ink/35 to-ink/25" />
 
                                 <div className="relative flex h-full flex-col justify-between p-7 sm:p-9">
                                     <div className="flex items-start justify-between">

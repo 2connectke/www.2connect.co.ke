@@ -75,8 +75,8 @@ const HomeHero = () => {
                     <OverlapMark
                         still
                         images={[
-                            '/assets/images/2connect-gathering-01.jpg',
-                            '/assets/images/2connect-hike-02.jpg',
+                            '/assets/images/2connect-outreach-02.jpg',
+                            '/assets/images/2connect-portrait-01.jpg',
                         ]}
                     />
                 </motion.div>

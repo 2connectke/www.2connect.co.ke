@@ -75,8 +75,10 @@ export const pillars: {
         title: 'Volunteer Matching',
         short: 'Your skill, mtaa yetu.',
         description:
-            'Tell us what you’re good at and what you care about. We’ll match you with work where you actually make a difference, from tree planting to tutoring to health outreach.',
-        image: '/assets/images/2connect-outreach-01.jpg',
+            'Tell us what you’re good at and what you care about. We’ll match you with volunteer opportunities where you actually make a difference, from tree planting to tutoring to health outreach.',
+        image: '/assets/images/2connect-outreach-02.jpg',
+        // Faces sit near the top of this photo; keep them in frame.
+        imagePosition: 'center 15%',
     },
     {
         number: '02',
@@ -84,7 +86,7 @@ export const pillars: {
         short: 'Mental health first, kisha tunaenda kazi.',
         description:
             'Giving your time can take a lot out of you. So we built in wellness support, safe peer groups where you can talk openly, and real professionals when you need them.',
-        image: '/assets/images/2connect-meetup-01.jpg',
+        image: '/assets/images/2connect-meetup-07.jpg',
     },
     {
         number: '03',
@@ -100,9 +102,8 @@ export const pillars: {
         short: 'Lead your campus. Change your county.',
         description:
             'Start or run a 2Connect club on campus, lead a chapter, organise big events and work side by side with partner organisations. Real experience you can talk about in any interview.',
-        image: '/assets/images/2connect-outreach-02.jpg',
-        // Faces sit near the top of this photo; keep them in frame.
-        imagePosition: 'center 15%',
+        image: '/assets/images/2connect-portrait-02.jpg',
+        imagePosition: 'center 25%',
     },
 ];
 
@@ -120,7 +121,7 @@ export const journey = [
     {
         title: 'Serve',
         description:
-            'We place you with people who need exactly what you bring.',
+            'We connect you with a volunteer opportunity that needs exactly what you bring.',
     },
     {
         title: 'Reflect',
@@ -144,6 +145,7 @@ export interface SiteEvent {
     time?: string;
     location: string;
     image: string;
+    imagePosition?: string;
     description: string;
 }
 
@@ -157,7 +159,8 @@ export const events: SiteEvent[] = [
         month: 'Oct',
         time: '10:00 AM to 6:00 PM',
         location: 'Ihit Coworking, Dennis Pritt',
-        image: '/assets/images/2connect-outreach-01.jpg',
+        image: '/assets/images/2connect-outreach-02.jpg',
+        imagePosition: 'center 15%',
         description:
             'Gloves on, music up. We’re cleaning up our neighbourhood together, and you’ll leave with new friends and a full heart.',
     },
@@ -194,7 +197,8 @@ export const events: SiteEvent[] = [
         day: '12',
         month: 'May',
         location: 'Kiambu County',
-        image: '/assets/images/2connect-outreach-02.jpg',
+        image: '/assets/images/2connect-portrait-01.jpg',
+        imagePosition: 'center 30%',
         description:
             'We’re supporting local clinics with health education, outreach and an extra set of hands where it’s needed most.',
     },

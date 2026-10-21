@@ -11,14 +11,22 @@ import Eyebrow from '@/components/site/eyebrow';
 import { Reveal, RevealLines } from '@/components/site/reveal';
 import { Link } from '@/lib/router';
 
-const services = [
+const services: {
+    icon: typeof Users;
+    title: string;
+    tagline: string;
+    description: string;
+    image: string;
+    imagePosition?: string;
+}[] = [
     {
         icon: Users,
         title: 'Volunteer Matching',
         tagline: 'The right person, in the right place.',
         description:
-            'Tell us what you are good at and what you care about. We find you work that needs exactly that, at times that fit your life, so you spend your energy where it counts.',
-        image: '/assets/images/2connect-outreach-01.jpg',
+            'Tell us what you are good at and what you care about. We find you volunteer opportunities that need exactly that, at times that fit your life, so you spend your energy where it counts.',
+        image: '/assets/images/2connect-portrait-01.jpg',
+        imagePosition: 'center 30%',
     },
     {
         icon: HeartPulse,
@@ -26,14 +34,14 @@ const services = [
         tagline: 'Hata wanaosaidia wanahitaji msaada.',
         description:
             'Free wellness sessions, peer groups and safe spaces to talk. Showing up for others is heavy sometimes, and you should never carry it alone.',
-        image: '/assets/images/2connect-meetup-02.jpg',
+        image: '/assets/images/2connect-meetup-07.jpg',
     },
     {
         icon: GraduationCap,
         title: 'Volunteer Training Academy',
         tagline: 'Skills you can put on your CV, and actually use.',
         description:
-            'Practical, certified training in leadership, running projects and working with communities. The kind of experience employers keep asking you for.',
+            'Practical, certified training in leadership, running projects and working with communities, so you serve with confidence and grow while you do it.',
         image: '/assets/images/2connect-gathering-01.jpg',
     },
     {
@@ -41,16 +49,17 @@ const services = [
         title: 'Internships and Attachments',
         tagline: 'Usimalize campus bila story ya impact.',
         description:
-            'Start or lead a 2Connect club on your campus, run a regional chapter and work side by side with partner organisations before you even graduate.',
-        image: '/assets/images/2connect-portrait-01.jpg',
+            'Do your attachment as a volunteer with one of our partner organisations, start a 2Connect club on your campus or lead a regional chapter, all before you graduate.',
+        image: '/assets/images/2connect-portrait-02.jpg',
+        imagePosition: 'center 25%',
     },
     {
         icon: Handshake,
         title: 'NGO and Community Partnerships',
-        tagline: 'People who show up, ready to work.',
+        tagline: 'Volunteers who show up, ready to serve.',
         description:
-            'We team up with NGOs and grassroots groups who need reliable hands. We send prepared volunteers, stay close to the work and keep checking in.',
-        image: '/assets/images/2connect-outreach-02.jpg',
+            'We team up with NGOs and grassroots groups who need reliable hands. We connect them with trained volunteers, stay close to the projects and keep checking in.',
+        image: '/assets/images/2connect-meetup-05.jpg',
     },
     {
         icon: Megaphone,
@@ -58,7 +67,8 @@ const services = [
         tagline: 'Our streets, our problems, our fix.',
         description:
             'Cleanups, awareness drives and campaigns led by young people, taking on the real problems we see in our neighbourhoods every day.',
-        image: '/assets/images/2connect-hike-01.jpg',
+        image: '/assets/images/2connect-outreach-02.jpg',
+        imagePosition: 'center 15%',
     },
 ];
 
@@ -77,7 +87,8 @@ const ServicesList = () => {
                     </div>
                     <Reveal className="lg:col-span-5" delay={0.15}>
                         <p className="max-w-md text-lg leading-relaxed text-body">
-                            Every programme works both ways. The community gets
+                            2Connect links young volunteers with communities and
+                            organisations that need them. The community gets
                             real help, and you walk away with skills, friends
                             and a story worth telling.
                         </p>
@@ -115,6 +126,10 @@ const ServicesList = () => {
                                     <div className="relative hidden h-24 w-0 overflow-hidden rounded-2xl transition-[width] duration-700 ease-out-expo group-hover:w-40 lg:block">
                                         <img
                                             src={service.image}
+                                            style={{
+                                                objectPosition:
+                                                    service.imagePosition,
+                                            }}
                                             alt=""
                                             className="absolute inset-0 h-full w-40 max-w-none scale-110 object-cover transition-transform duration-1000 ease-out-expo group-hover:scale-100"
                                         />
