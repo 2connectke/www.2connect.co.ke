@@ -1,16 +1,69 @@
 {
     "site_name": "2Connect",
+    "alternate_names": ["2Connect Kenya", "2Connect KE", "2Connect Volunteers"],
     "tagline": "Your action. Your impact.",
     "locale": "en_KE",
+    "language": "en-KE",
+    "description": "2Connect connects young people in Kenya with volunteer opportunities in their communities, then trains them, looks after their wellbeing and helps them grow as leaders.",
     "image": {
         "path": "/og/2connect-og.jpg",
         "width": 1200,
         "height": 630,
         "alt": "Young 2Connect volunteers beside the words: More than volunteering. A movement."
     },
+    "keywords": [
+        "volunteer opportunities in Kenya",
+        "youth volunteering in Nairobi",
+        "volunteer with an NGO in Kenya",
+        "community service for students",
+        "volunteer training Kenya",
+        "youth mental wellness support",
+        "campus volunteering clubs",
+        "volunteer attachments for students",
+        "community cleanups Nairobi",
+        "youth leadership Kenya"
+    ],
+    "knows_about": [
+        "Youth volunteering",
+        "Volunteer matching",
+        "Community service",
+        "Volunteer training",
+        "Youth mental health and wellbeing",
+        "Peer support",
+        "Youth leadership",
+        "Campus clubs",
+        "NGO and community partnerships",
+        "Environmental cleanups"
+    ],
+    "programmes": [
+        {
+            "name": "Volunteer Matching",
+            "description": "We match young people with volunteer opportunities that fit their skills, interests and schedule."
+        },
+        {
+            "name": "Connect+ Wellness",
+            "description": "Free wellness sessions, peer groups and safe spaces for volunteers."
+        },
+        {
+            "name": "Volunteer Training Academy (2CFP)",
+            "description": "Practical, certified training in leadership, project management and working with communities."
+        },
+        {
+            "name": "Internships and Attachments",
+            "description": "Volunteer attachments with partner organisations, campus clubs and regional chapters for students."
+        },
+        {
+            "name": "NGO and Community Partnerships",
+            "description": "Trained, reliable volunteers for NGOs and grassroots groups, with follow-up after every project."
+        },
+        {
+            "name": "Impact Campaigns",
+            "description": "Youth-led cleanups, awareness drives and campaigns in neighbourhoods across Kenya."
+        }
+    ],
     "organization": {
         "name": "2Connect",
-        "description": "A volunteering movement of young Kenyans. We connect young people to meaningful service, prepare them through training, support their wellbeing, and help them grow as leaders.",
+        "description": "A youth-led volunteering movement in Kenya. We connect young people to meaningful volunteer opportunities, prepare them through training, support their wellbeing and help them grow as leaders.",
         "email": "2connectke@gmail.com",
         "telephone": "+254111646177",
         "locality": "Nairobi",
@@ -19,6 +72,7 @@
         "founder": {
             "name": "Kevin Wanjiru",
             "job_title": "CEO & Founder",
+            "image": "/assets/images/2connect-founder.jpg",
             "same_as": ["https://www.linkedin.com/in/wanjiru-kevin/"]
         },
         "same_as": []
@@ -27,42 +81,48 @@
         "home": {
             "path": "/",
             "title": "Volunteer opportunities for young people in Kenya",
-            "description": "Find volunteer opportunities in Kenya that grow your skills and your CV. Free training, wellness support, campus clubs and internships for young changemakers.",
+            "description": "2Connect connects young people in Kenya with volunteer opportunities that fit their skills, with free training, wellness support and campus clubs.",
+            "social_description": "Your action. Your impact. Join young Kenyans volunteering in their communities, getting trained and growing as leaders with 2Connect.",
             "schema": "WebPage"
         },
         "about": {
             "path": "/about",
             "label": "About",
-            "title": "About us, a youth movement built in Kenya",
-            "description": "Meet 2Connect, a movement of young Kenyans who show up for their communities. Our story, our mission and a word from our founder, Kevin Wanjiru.",
+            "title": "About us, a youth volunteering movement in Kenya",
+            "description": "2Connect is a youth-led volunteering movement started in Nairobi in 2023. Read our story, our mission and values, and a note from founder Kevin Wanjiru.",
+            "social_description": "More than volunteering, a movement. How 2Connect brings young Kenyans and the communities that need them together, and stays with both.",
             "schema": "AboutPage"
         },
         "services": {
             "path": "/services",
             "label": "What we do",
-            "title": "Volunteering, training, wellness and internships",
-            "description": "Volunteer matching, 2CFP training, free wellness and peer support, internships and campus clubs. Find your way in and build experience that counts.",
+            "title": "Volunteering, training, wellness and attachments",
+            "description": "Volunteer matching, 2CFP volunteer training, free wellness and peer support, attachments, NGO partnerships and impact campaigns for young Kenyans.",
+            "social_description": "Six ways in: get matched to volunteer work that fits you, get trained, get support, and lead on your campus. Pick your way in with 2Connect.",
             "schema": "WebPage"
         },
         "events": {
             "path": "/events",
             "label": "Events",
             "title": "Volunteer events, cleanups and workshops in Kenya",
-            "description": "Cleanups, wellness workshops, leadership trainings and meetups across Kenya. Find a 2Connect event near you, bring a friend and show up.",
+            "description": "Join community cleanups, youth wellness workshops, campus leadership trainings and volunteer meetups across Kenya. Find a 2Connect event and show up.",
+            "social_description": "Your weekend, sorted. Cleanups, workshops, trainings and meetups with young people who care like you do. Find your next 2Connect event.",
             "schema": "CollectionPage"
         },
         "gallery": {
             "path": "/gallery",
             "label": "Gallery",
-            "title": "Gallery, moments from our community",
-            "description": "Photos from 2Connect cleanups, workshops, trainings and outreach across Kenya. See what young people showing up together looks like.",
+            "title": "Photos of youth volunteering across Kenya",
+            "description": "Photos from 2Connect cleanups, outreach, meetups and trainings. See young volunteers in Kenya showing up for their communities, together.",
+            "social_description": "What showing up together looks like. Moments from 2Connect volunteers at cleanups, outreach days, meetups and trainings across Kenya.",
             "schema": "CollectionPage"
         },
         "contact": {
             "path": "/contact",
             "label": "Contact",
-            "title": "Contact us to volunteer or partner",
-            "description": "Want to volunteer, partner with us or start a campus club? Email 2connectke@gmail.com or call +254 111 646 177. We would love to hear from you.",
+            "title": "Volunteer or partner with us, get in touch",
+            "description": "Volunteer with 2Connect, partner with us as an organisation or start a campus club. Email 2connectke@gmail.com or call +254 111 646 177.",
+            "social_description": "Got a cause, or want to serve one? Tell us what you care about and we will find the right volunteer opportunity for you, or volunteers for you.",
             "schema": "ContactPage"
         }
     }
