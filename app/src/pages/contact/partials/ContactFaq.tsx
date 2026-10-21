@@ -9,7 +9,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const faqs = [
     {
         question: 'Who can volunteer with 2Connect?',
-        answer: 'Any young person who wants their time to mean something. Still on campus, freshly graduated, working, or figuring things out, you are welcome. We match you with work that fits your skills, your interests and your schedule.',
+        answer: 'Any young person who wants their time to mean something. Still on campus, freshly graduated, working, or figuring things out, you are welcome. We match you with volunteer opportunities that fit your skills, your interests and your schedule.',
     },
     {
         question: 'Do I need experience before I start?',

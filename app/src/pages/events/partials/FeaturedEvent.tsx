@@ -11,6 +11,7 @@ const FeaturedEvent = ({ event }: { event: SiteEvent }) => {
                 <div className="relative aspect-[4/3] overflow-hidden lg:order-2 lg:col-span-7 lg:aspect-auto">
                     <img
                         src={event.image}
+                        style={{ objectPosition: event.imagePosition }}
                         alt={event.title}
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-out-expo group-hover:scale-105"
                     />

@@ -9,6 +9,7 @@ const EventCard = ({ event }: { event: SiteEvent }) => {
                 <div className="relative aspect-[16/10] overflow-hidden rounded-[28px] bg-ink">
                     <img
                         src={event.image}
+                        style={{ objectPosition: event.imagePosition }}
                         alt={event.title}
                         className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out-expo group-hover:scale-110"
                     />

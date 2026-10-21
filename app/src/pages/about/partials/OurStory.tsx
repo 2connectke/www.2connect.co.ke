@@ -22,9 +22,9 @@ const OurStory = () => {
                         className="relative ml-auto aspect-[4/5] w-[78%] overflow-hidden rounded-[32px] bg-ink"
                     >
                         <img
-                            src="/assets/images/2connect-hike-03.jpg"
-                            alt="2Connect members on a group hike"
-                            className="h-full w-full object-cover"
+                            src="/assets/images/2connect-portrait-03.jpg"
+                            alt="A 2Connect member at a community meetup"
+                            className="h-full w-full object-cover object-[center_20%]"
                         />
                     </motion.div>
                     <motion.div
@@ -34,7 +34,7 @@ const OurStory = () => {
                         <img
                             src="/assets/images/2connect-portrait-02.jpg"
                             alt="A smiling 2Connect member"
-                            className="h-full w-full object-cover"
+                            className="h-full w-full object-cover object-[center_25%]"
                         />
                     </motion.div>
                     <Reveal
