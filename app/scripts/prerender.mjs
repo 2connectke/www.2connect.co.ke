@@ -351,11 +351,35 @@ for (const [name, page] of Object.entries(seo.pages)) {
     );
 }
 
+// Share tags for links to pages that don't exist, so even a mistyped link
+// still previews as 2Connect rather than a blank card.
+const siteImage = base + seo.image.path;
+const siteTitle = `${seo.site_name} · ${seo.tagline}`;
+const notFoundMeta = `<meta name="robots" content="noindex">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="${escape(seo.site_name)}">
+        <meta property="og:locale" content="${escape(seo.locale)}">
+        <meta property="og:title" content="${escape(siteTitle)}">
+        <meta property="og:description" content="${escape(seo.description)}">
+        <meta property="og:url" content="${escape(`${base}/`)}">
+        <meta property="og:image" content="${escape(siteImage)}">
+        <meta property="og:image:secure_url" content="${escape(siteImage)}">
+        <meta property="og:image:type" content="image/jpeg">
+        <meta property="og:image:width" content="${seo.image.width}">
+        <meta property="og:image:height" content="${seo.image.height}">
+        <meta property="og:image:alt" content="${escape(seo.image.alt)}">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="${escape(siteTitle)}">
+        <meta name="twitter:description" content="${escape(seo.description)}">
+        <meta name="twitter:image" content="${escape(siteImage)}">
+        <meta name="twitter:image:alt" content="${escape(seo.image.alt)}">
+`;
+
 // Not found page: the site's styles, no app code. Cloudflare Pages serves it with a 404 status.
 write(
     '404.html',
     template
-        .replace(META_SLOT, '<meta name="robots" content="noindex">\n')
+        .replace(META_SLOT, notFoundMeta)
         .replace(/\s*<script type="module"[^>]*><\/script>/g, '')
         .replace(/\s*<link rel="modulepreload"[^>]*>/g, '')
         .replace(TITLE, `<title>Page not found · ${seo.site_name}</title>`)
