@@ -1,0 +1,71 @@
+# Pipeline for the GitLab deployment repo (gitlab.com/2connect1/2connect_main).
+#
+#   dev  -> Cloudflare Pages project "2connect-sandbox" (https://2connect-sandbox.pages.dev)
+#   main -> Cloudflare Pages project "2connect"         (https://2connect.co.ke)
+#
+# dev is fed automatically from GitHub main (see .github/workflows/deploy.yml).
+# Production only changes when a merge request from dev is merged into main.
+#
+# Needs one CI/CD variable, CLOUDFLARE_API_TOKEN (masked and protected): a
+# Cloudflare API token with Account > Cloudflare Pages > Edit permission.
+# Both dev and main must be protected branches so the token reaches them.
+
+default:
+  image: node:22
+  cache:
+    key:
+      files: [app/package-lock.json]
+    paths: [app/.npm/]
+  before_script:
+    - cd app
+    - npm ci --cache .npm --prefer-offline
+
+variables:
+  CLOUDFLARE_ACCOUNT_ID: 64e4033d9c8b3b285656f2d1392b1380
+  WRANGLER_VERSION: 4.20.0
+
+stages: [check, deploy]
+
+check:
+  stage: check
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "main"
+  variables:
+    # Tells scripts/prerender.mjs which branch it is building, so only main
+    # is indexable and the sandbox gets noindex.
+    CF_PAGES_BRANCH: $CI_COMMIT_BRANCH
+  script:
+    - npm run types:check
+    - npm run lint:check
+    - npm run format:check
+    - npm run build
+  artifacts:
+    paths: [app/dist/]
+    expire_in: 1 week
+
+deploy-sandbox:
+  stage: deploy
+  needs: [check]
+  rules:
+    - if: $CI_COMMIT_BRANCH == "dev"
+  environment:
+    name: sandbox
+    url: https://2connect-sandbox.pages.dev
+  resource_group: sandbox
+  script:
+    # Creates the sandbox project on the first run; a no-op after that.
+    - npx wrangler@$WRANGLER_VERSION pages project create 2connect-sandbox --production-branch dev || true
+    - npx wrangler@$WRANGLER_VERSION pages deploy dist --project-name 2connect-sandbox --branch dev
+
+deploy-production:
+  stage: deploy
+  needs: [check]
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+  environment:
+    name: production
+    url: https://2connect.co.ke
+  resource_group: production
+  script:
+    - npx wrangler@$WRANGLER_VERSION pages deploy dist --project-name 2connect --branch main

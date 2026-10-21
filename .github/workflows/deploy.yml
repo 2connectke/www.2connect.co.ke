@@ -1,26 +1,26 @@
-# Builds the site in app/ and deploys it to the "2connect" Cloudflare Pages
-# project (https://2connect.co.ke) on every push to main.
+# Checks every pull request and push to main. When main passes, the exact
+# commit is pushed to the `dev` branch of the GitLab deployment repo
+# (gitlab.com/2connect1/2connect_main), whose own pipeline deploys it to the
+# sandbox. Production is deployed from GitLab main only (see .gitlab-ci.yml).
 #
-# Needs one repository secret, CLOUDFLARE_API_TOKEN: a Cloudflare API token
-# with Account > Cloudflare Pages > Edit permission.
+# Needs one repository secret, GITLAB_SSH_PRIVATE_KEY: the private half of a
+# GitLab deploy key on 2connect1/2connect_main with write access, allowed to
+# push to the protected `dev` branch.
 
-name: Deploy to Cloudflare Pages
+name: CI
 
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
 
-# Never run two production deploys at once; the newest push wins.
-concurrency:
-  group: cloudflare-pages-production
-  cancel-in-progress: true
-
 jobs:
-  deploy:
+  check:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -36,13 +36,39 @@ jobs:
 
       - run: npm ci
 
+      - run: npm run types:check
+
+      - run: npm run lint:check
+
+      - run: npm run format:check
+
       - run: npm run build
 
-      - name: Deploy
-        uses: cloudflare/wrangler-action@v3
+  promote-to-gitlab:
+    needs: check
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    # One push at a time, in order, so dev never moves backwards.
+    concurrency:
+      group: gitlab-promote
+      cancel-in-progress: false
+    steps:
+      # Full history, so GitLab receives a normal fast-forward.
+      - uses: actions/checkout@v4
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: 64e4033d9c8b3b285656f2d1392b1380
-          wranglerVersion: '4.20.0'
-          workingDirectory: app
-          command: pages deploy dist --project-name 2connect --branch main
+          fetch-depth: 0
+
+      - name: Push main to GitLab dev
+        env:
+          GITLAB_SSH_PRIVATE_KEY: ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$GITLAB_SSH_PRIVATE_KEY" > ~/.ssh/gitlab
+          chmod 600 ~/.ssh/gitlab
+          # GitLab's published host key, pinned rather than scanned.
+          echo 'gitlab.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfuCHKVTjquxvt6CM6tdG4SLp1Btn/nOeHHE5UOzRdf' > ~/.ssh/known_hosts
+          export GIT_SSH_COMMAND='ssh -i ~/.ssh/gitlab -o IdentitiesOnly=yes'
+          git remote add gitlab git@gitlab.com:2connect1/2connect_main.git
+          # No --force: if dev was changed on GitLab directly, fail loudly
+          # instead of overwriting it.
+          git push gitlab "$GITHUB_SHA:refs/heads/dev"
