@@ -167,7 +167,7 @@ function metaTags(name, page, title) {
         <meta property="og:url" content="${escape(url)}">
         <meta property="og:image" content="${escape(image)}">
         <meta property="og:image:secure_url" content="${escape(image)}">
-        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:type" content="image/jpeg">
         <meta property="og:image:width" content="${seo.image.width}">
         <meta property="og:image:height" content="${seo.image.height}">
         <meta property="og:image:alt" content="${escape(seo.image.alt)}">
