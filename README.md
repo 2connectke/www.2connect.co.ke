@@ -83,11 +83,18 @@ Where things live:
 
 ## Deploying
 
-The site is hosted on Cloudflare Pages (project `2connect`) at https://2connect.co.ke.
+Code moves through three places before it reaches the live site:
 
-Every push to `main` deploys automatically through GitHub Actions (`.github/workflows/deploy.yml`): it installs, runs `npm run build` in `app/`, and uploads `app/dist/`. Watch progress under the repository's **Actions** tab. To redeploy without a code change, open **Actions → Deploy to Cloudflare Pages → Run workflow**.
+1. **GitHub `main`** (this repo). Every pull request and push runs type checks, lint, format check and a build (`.github/workflows/deploy.yml`). When `main` passes, the commit is pushed to the `dev` branch of the GitLab deployment repo, [2connect1/2connect_main](https://gitlab.com/2connect1/2connect_main).
+2. **GitLab `dev`** deploys to the sandbox, Cloudflare Pages project `2connect-sandbox` at https://2connect-sandbox.pages.dev. The sandbox is never indexed by search engines. Check changes here first.
+3. **GitLab `main`** deploys to production, Cloudflare Pages project `2connect` at https://2connect.co.ke. It only changes when a merge request from `dev` is merged, and only the maintainer can merge.
 
-The workflow needs a repository secret named `CLOUDFLARE_API_TOKEN`: a Cloudflare API token with **Account → Cloudflare Pages → Edit** permission.
+The GitLab pipeline lives in `.gitlab-ci.yml`.
+
+Secrets:
+
+- GitHub repository secret `GITLAB_SSH_PRIVATE_KEY`: the private half of a GitLab deploy key with write access that may push to the protected `dev` branch.
+- GitLab CI/CD variable `CLOUDFLARE_API_TOKEN` (masked, protected): a Cloudflare API token with **Account → Cloudflare Pages → Edit** permission.
 
 Build settings, if they are ever needed:
 
