@@ -17,9 +17,10 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
-const seo = JSON.parse(
-    fs.readFileSync(path.join(root, 'src/data/seo.json'), 'utf8'),
-);
+const readJson = (file) =>
+    JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
+const seo = readJson('src/data/seo.json');
+const faqs = readJson('src/data/faq.json');
 const manifest = JSON.parse(
     fs.readFileSync(path.join(dist, '.vite/manifest.json'), 'utf8'),
 );
@@ -72,25 +73,64 @@ function jsonLd(name, page) {
             '@type': 'NGO',
             '@id': `${base}/#organization`,
             name: org.name,
+            alternateName: seo.alternate_names,
             url: `${base}/`,
-            logo: `${base}/icon-512.png`,
+            logo: {
+                '@type': 'ImageObject',
+                url: `${base}/icon-512.png`,
+                width: 512,
+                height: 512,
+            },
             image: base + seo.image.path,
             description: org.description,
             slogan: seo.tagline,
             email: org.email,
             telephone: org.telephone,
             foundingDate: org.founding_date,
+            foundingLocation: {
+                '@type': 'Place',
+                name: `${org.locality}, Kenya`,
+            },
             areaServed: { '@type': 'Country', name: 'Kenya' },
             address: {
                 '@type': 'PostalAddress',
                 addressLocality: org.locality,
                 addressCountry: org.country,
             },
+            contactPoint: {
+                '@type': 'ContactPoint',
+                contactType: 'volunteer and partnership enquiries',
+                email: org.email,
+                telephone: org.telephone,
+                areaServed: org.country,
+                availableLanguage: ['English', 'Swahili'],
+            },
             founder: {
                 '@type': 'Person',
                 name: org.founder.name,
                 jobTitle: org.founder.job_title,
+                image: base + org.founder.image,
                 sameAs: org.founder.same_as,
+            },
+            knowsAbout: seo.knows_about,
+            keywords: seo.keywords.join(', '),
+            hasOfferCatalog: {
+                '@type': 'OfferCatalog',
+                name: 'Volunteer programmes',
+                itemListElement: seo.programmes.map((programme) => ({
+                    '@type': 'Offer',
+                    itemOffered: {
+                        '@type': 'Service',
+                        name: programme.name,
+                        description: programme.description,
+                        provider: { '@id': `${base}/#organization` },
+                        areaServed: { '@type': 'Country', name: 'Kenya' },
+                        audience: {
+                            '@type': 'PeopleAudience',
+                            audienceType: 'Young people and students',
+                        },
+                    },
+                })),
             },
             sameAs: org.same_as.length ? org.same_as : null,
         }).filter(([, value]) => value !== null),
@@ -103,7 +143,9 @@ function jsonLd(name, page) {
             '@id': `${base}/#website`,
             url: `${base}/`,
             name: seo.site_name,
-            inLanguage: 'en-KE',
+            alternateName: seo.alternate_names,
+            description: seo.description,
+            inLanguage: seo.language,
             publisher: { '@id': `${base}/#organization` },
         },
         {
@@ -112,16 +154,40 @@ function jsonLd(name, page) {
             url,
             name: `${page.title} · ${seo.site_name}`,
             description: page.description,
-            inLanguage: 'en-KE',
+            inLanguage: seo.language,
             isPartOf: { '@id': `${base}/#website` },
             about: { '@id': `${base}/#organization` },
-            primaryImageOfPage: base + seo.image.path,
+            primaryImageOfPage: {
+                '@type': 'ImageObject',
+                url: base + seo.image.path,
+                width: seo.image.width,
+                height: seo.image.height,
+                caption: seo.image.alt,
+            },
+            ...(name !== 'home' && {
+                breadcrumb: { '@id': `${url}#breadcrumb` },
+            }),
         },
     ];
+
+    if (name === 'contact') {
+        graph.push({
+            '@type': 'FAQPage',
+            '@id': `${url}#faq`,
+            url,
+            inLanguage: seo.language,
+            mainEntity: faqs.map((faq) => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+            })),
+        });
+    }
 
     if (name !== 'home') {
         graph.push({
             '@type': 'BreadcrumbList',
+            '@id': `${url}#breadcrumb`,
             itemListElement: [
                 {
                     '@type': 'ListItem',
@@ -152,29 +218,38 @@ function metaTags(name, page, title) {
     const url = urlFor(page.path);
     const image = base + seo.image.path;
     const robots = indexable
-        ? 'index, follow, max-image-preview:large, max-snippet:-1'
+        ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
         : 'noindex, nofollow';
+    // Search results get the precise description; link previews get a
+    // livelier one written for people scrolling a feed.
+    const social = page.social_description ?? page.description;
 
     return `<meta name="description" content="${escape(page.description)}">
         <meta name="robots" content="${robots}">
         <link rel="canonical" href="${escape(url)}">
+        <link rel="alternate" hreflang="${escape(seo.language)}" href="${escape(url)}">
+        <link rel="alternate" hreflang="x-default" href="${escape(url)}">
+        <meta name="application-name" content="${escape(seo.site_name)}">
+        <meta name="apple-mobile-web-app-title" content="${escape(seo.site_name)}">
+        <meta name="geo.region" content="${escape(seo.organization.country)}">
+        <meta name="geo.placename" content="${escape(seo.organization.locality)}">
 
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="${escape(seo.site_name)}">
         <meta property="og:locale" content="${escape(seo.locale)}">
         <meta property="og:title" content="${escape(title)}">
-        <meta property="og:description" content="${escape(page.description)}">
+        <meta property="og:description" content="${escape(social)}">
         <meta property="og:url" content="${escape(url)}">
         <meta property="og:image" content="${escape(image)}">
         <meta property="og:image:secure_url" content="${escape(image)}">
-        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:type" content="image/jpeg">
         <meta property="og:image:width" content="${seo.image.width}">
         <meta property="og:image:height" content="${seo.image.height}">
         <meta property="og:image:alt" content="${escape(seo.image.alt)}">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="${escape(title)}">
-        <meta name="twitter:description" content="${escape(page.description)}">
+        <meta name="twitter:description" content="${escape(social)}">
         <meta name="twitter:image" content="${escape(image)}">
         <meta name="twitter:image:alt" content="${escape(seo.image.alt)}">
 
@@ -210,6 +285,52 @@ function pagePreloads(name) {
         .join('');
 }
 
+/**
+ * Plain HTML version of the page for browsers and crawlers that don't run
+ * JavaScript: what the page is about, links to every page and how to reach us.
+ */
+function fallback(name, page) {
+    const org = seo.organization;
+    const nav = Object.values(seo.pages)
+        .map(
+            (other) =>
+                `<li><a href="${escape(other.path)}">${escape(other.label ?? 'Home')}</a></li>`,
+        )
+        .join('');
+    let extra = '';
+
+    if (name === 'services' || name === 'home') {
+        extra = `<h2>What we do</h2><ul>${seo.programmes
+            .map(
+                (programme) =>
+                    `<li><strong>${escape(programme.name)}</strong>: ${escape(programme.description)}</li>`,
+            )
+            .join('')}</ul>`;
+    } else if (name === 'contact') {
+        extra = `<h2>Questions, answered</h2>${faqs
+            .map(
+                (faq) =>
+                    `<h3>${escape(faq.question)}</h3><p>${escape(faq.answer)}</p>`,
+            )
+            .join('')}`;
+    }
+
+    return `<noscript>
+            <div style="max-width:42rem;margin:0 auto;padding:2rem 1.5rem;font-family:system-ui,sans-serif;color:#0b1236;line-height:1.6">
+                <nav aria-label="Main"><ul>${nav}</ul></nav>
+                <main>
+                    <h1>${escape(page.title)}</h1>
+                    <p>${escape(page.description)}</p>
+                    <p>${escape(seo.description)}</p>
+                    ${extra}
+                </main>
+                <footer>
+                    <p>${escape(seo.site_name)}, ${escape(org.locality)}, Kenya. Email <a href="mailto:${escape(org.email)}">${escape(org.email)}</a> or call <a href="tel:${escape(org.telephone)}">${escape(org.telephone)}</a>.</p>
+                </footer>
+            </div>
+        </noscript>`;
+}
+
 const write = (file, contents) =>
     fs.writeFileSync(path.join(dist, file), contents);
 
@@ -218,7 +339,11 @@ for (const [name, page] of Object.entries(seo.pages)) {
     const title = `${page.title} · ${seo.site_name}`;
     const html = template
         .replace(META_SLOT, metaTags(name, page, title))
-        .replace(TITLE, `${pagePreloads(name)}<title>${escape(title)}</title>`);
+        .replace(TITLE, `${pagePreloads(name)}<title>${escape(title)}</title>`)
+        .replace(
+            '<div id="app"></div>',
+            `<div id="app"></div>\n        ${fallback(name, page)}`,
+        );
 
     write(
         page.path === '/' ? 'index.html' : `${page.path.slice(1)}.html`,
