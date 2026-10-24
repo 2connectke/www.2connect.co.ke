@@ -106,7 +106,7 @@ export default [
         },
     },
     {
-        ignores: ['node_modules', 'dist', 'public', 'photo-originals', 'vite.config.ts'],
+        ignores: ['node_modules', 'dist', '.wrangler', 'public', 'photo-originals', 'vite.config.ts'],
     },
     prettier, // Turn off all rules that might conflict with Prettier
     {

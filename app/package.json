@@ -6,8 +6,8 @@
         "dev": "vite",
         "build": "vite build && node scripts/prerender.mjs",
         "preview": "npx wrangler pages dev dist",
-        "format": "prettier --write src/ scripts/",
-        "format:check": "prettier --check src/ scripts/",
+        "format": "prettier --write src/ scripts/ functions/ server/",
+        "format:check": "prettier --check src/ scripts/ functions/ server/",
         "lint": "eslint . --fix",
         "lint:check": "eslint .",
         "types:check": "tsc --noEmit"

@@ -1,0 +1,27 @@
+# Settings for functions/api/contact.ts (the contact form).
+#
+# Production and sandbox: add these in the Cloudflare dashboard under
+# Workers & Pages > <project> > Settings > Variables and Secrets, as secrets.
+# Locally: copy this file to .dev.vars (git-ignored), then `npm run build`
+# and `npm run preview`.
+
+# Airtable personal access token with data.records:write on the base.
+AIRTABLE_TOKEN=
+# The base ID, from the base's URL: https://airtable.com/appXXXXXXXXXXXXXX/...
+AIRTABLE_BASE_ID=
+# Table name. Defaults to Messages.
+AIRTABLE_TABLE=Messages
+
+# Resend API key with sending access.
+RESEND_API_KEY=
+# Sender. The domain must be verified in Resend.
+MAIL_FROM=2Connect <hello@2connect.co.ke>
+# Where new messages are sent. Defaults to 2connectke@gmail.com.
+TEAM_INBOX=2connectke@gmail.com
+
+# Turnstile secret key, the pair of TURNSTILE_SITE_KEY in
+# src/pages/contact/partials/ContactForm.tsx. Required on Cloudflare: without
+# it the form refuses every message. Only localhost may leave it empty.
+# For local testing, Cloudflare's always-pass pair is site key
+# 1x00000000000000000000AA and secret 1x0000000000000000000000000000000AA.
+TURNSTILE_SECRET_KEY=
