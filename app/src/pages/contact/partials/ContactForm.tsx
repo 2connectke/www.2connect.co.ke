@@ -8,9 +8,19 @@ import {
 import { useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import OverlapMark from '@/components/site/overlap-mark';
+import { contact } from '@/data/site';
 import FormField from './FormField';
+import Turnstile from './Turnstile';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+
+/**
+ * Public Turnstile site key (Cloudflare dashboard > Turnstile). Leave empty to
+ * skip the spam check, e.g. before the widget exists. The matching secret is
+ * TURNSTILE_SECRET_KEY on the Pages project; set both or neither.
+ */
+// TODO: paste the 2Connect Turnstile site key here.
+const TURNSTILE_SITE_KEY = '0x4AAAAAAFi2LQ1F14bc7ipU';
 
 interface ContactFormData {
     name: string;
@@ -71,6 +81,9 @@ const ContactForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [formData, setFormData] = useState<ContactFormData>(emptyForm);
+    const [error, setError] = useState<string | null>(null);
+    const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+    const [turnstileReset, setTurnstileReset] = useState(0);
 
     const handleChange = (
         e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -78,14 +91,51 @@ const ContactForm = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setError(null);
+
+        if (TURNSTILE_SITE_KEY && !turnstileToken) {
+            setError(
+                'Just a second, we are checking you are not a bot. Try again in a moment.',
+            );
+
+            return;
+        }
+
         setIsSubmitting(true);
 
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    formType,
+                    ...formData,
+                    website: new FormData(e.currentTarget).get('website'),
+                    turnstileToken,
+                }),
+            });
+            const result = (await response.json().catch(() => ({}))) as {
+                error?: string;
+            };
 
-        console.log({ formType, ...formData });
+            if (!response.ok) {
+                throw new Error(result.error);
+            }
+        } catch (err) {
+            setError(
+                (err instanceof Error && err.message) ||
+                    `We could not send your message. Please check your connection, or email us at ${contact.email}.`,
+            );
+            // Tokens are single use, so fetch a new one for the retry.
+            setTurnstileReset((n) => n + 1);
+            setIsSubmitting(false);
+
+            return;
+        }
+
+        setTurnstileToken(null);
         setIsSuccess(true);
         setIsSubmitting(false);
 
@@ -94,7 +144,7 @@ const ContactForm = () => {
             setFormData(emptyForm);
             setFormType('general');
             setIsSuccess(false);
-        }, 6000);
+        }, 10000);
     };
 
     const copy = messageCopy[formType];
@@ -125,7 +175,8 @@ const ContactForm = () => {
                                 ? `, ${formData.name.split(' ')[0]}`
                                 : ''}
                             ! Your message is in. Someone from the team will get
-                            back to you within one working day.
+                            back to you within one working day. We have sent a
+                            confirmation to {formData.email}.
                         </p>
                         <span className="mt-6 rounded-full bg-azure-soft px-4 py-2 font-display text-sm font-semibold text-azure-deep">
                             #TuConnect
@@ -271,6 +322,39 @@ const ContactForm = () => {
                                 placeholder={copy.placeholder}
                             />
                         </div>
+
+                        {/* Honeypot: hidden from people, tempting to bots. */}
+                        <div className="sr-only" aria-hidden>
+                            <label htmlFor="contact-website">
+                                Leave this field empty
+                            </label>
+                            <input
+                                id="contact-website"
+                                type="text"
+                                name="website"
+                                tabIndex={-1}
+                                autoComplete="off"
+                            />
+                        </div>
+
+                        {TURNSTILE_SITE_KEY && (
+                            <div className="mt-6">
+                                <Turnstile
+                                    siteKey={TURNSTILE_SITE_KEY}
+                                    onToken={setTurnstileToken}
+                                    resetSignal={turnstileReset}
+                                />
+                            </div>
+                        )}
+
+                        {error && (
+                            <p
+                                role="alert"
+                                className="mt-6 rounded-2xl bg-sun-soft px-5 py-4 text-sm text-ink"
+                            >
+                                {error}
+                            </p>
+                        )}
 
                         <div className="mt-10 flex flex-col-reverse gap-5 sm:flex-row sm:items-center sm:justify-between">
                             <p className="text-sm text-body">

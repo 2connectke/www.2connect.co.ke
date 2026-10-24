@@ -4,6 +4,7 @@
 /photo-originals
 .DS_Store
 .env
+.dev.vars
 npm-debug.log
 /.idea
 /.vscode
