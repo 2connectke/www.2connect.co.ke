@@ -23,6 +23,7 @@ const components: Record<PageName, string> = {
     events: 'events',
     gallery: 'gallery',
     contact: 'contact',
+    brand: 'brand-styles',
 };
 
 const modules = import.meta.glob<{ default: Page }>('./pages/*/index.tsx');
@@ -42,6 +43,10 @@ async function load(path: string): Promise<Page | null> {
 
 let show: (page: Page, url: string) => void = () => {};
 
+// Path and query of the page on screen, so a change to only the #hash (an
+// in-page link) is left to the browser instead of reloading the page.
+let shownUrl = '';
+
 function App({ initial, url }: { initial: Page; url: string }) {
     const [state, setState] = useState({ page: initial, url });
 
@@ -50,9 +55,12 @@ function App({ initial, url }: { initial: Page; url: string }) {
     }, []);
 
     const Current = state.page;
+    const name = pageNameFor(state.url.split('?')[0]);
+    // Internal pages close with their own notice instead of the public footer.
+    const isPrivate = !!name && 'private' in seo.pages[name];
 
     return (
-        <PublicLayout>
+        <PublicLayout footer={!isPrivate}>
             <Current key={state.url} />
         </PublicLayout>
     );
@@ -70,6 +78,7 @@ async function navigate(url: string, restoreScroll: number | null = null) {
     }
 
     const next = path + target.search;
+    shownUrl = next;
 
     if (restoreScroll === null) {
         history.pushState({ scroll: 0 }, '', next);
@@ -107,6 +116,10 @@ setVisitHandler((url) => {
 });
 
 window.addEventListener('popstate', (event) => {
+    if (window.location.pathname + window.location.search === shownUrl) {
+        return;
+    }
+
     void navigate(window.location.href, event.state?.scroll ?? 0);
 });
 
@@ -121,12 +134,27 @@ async function boot() {
 
     document.title = `${seo.pages[pageNameFor(path)!].title} · ${seo.site_name}`;
     history.scrollRestoration = 'manual';
-    history.replaceState({ scroll: 0 }, '', path + window.location.search);
-    createRoot(document.getElementById('app')!).render(
-        <StrictMode>
-            <App initial={page} url={path + window.location.search} />
-        </StrictMode>,
+    shownUrl = path + window.location.search;
+    history.replaceState({ scroll: 0 }, '', shownUrl + window.location.hash);
+    const root = createRoot(document.getElementById('app')!);
+    flushSync(() =>
+        root.render(
+            <StrictMode>
+                <App initial={page} url={path + window.location.search} />
+            </StrictMode>,
+        ),
     );
+
+    // A link to "#section" opened fresh: the browser looked for the section
+    // before it was rendered, so jump there once the fonts (which change
+    // the page's height) have loaded.
+    if (window.location.hash) {
+        const id = decodeURIComponent(window.location.hash.slice(1));
+
+        void document.fonts.ready.then(() =>
+            document.getElementById(id)?.scrollIntoView(),
+        );
+    }
 }
 
 void boot();

@@ -124,6 +124,13 @@
             "description": "Volunteer with 2Connect, partner with us as an organisation or start a campus club. Email 2connectke@gmail.com or call +254 111 646 177.",
             "social_description": "Got a cause, or want to serve one? Tell us what you care about and we will find the right volunteer opportunity for you, or volunteers for you.",
             "schema": "ContactPage"
+        },
+        "brand": {
+            "path": "/brand-styles",
+            "title": "Brand styles",
+            "description": "Internal 2Connect brand and design guide. Not for public use.",
+            "schema": "WebPage",
+            "private": true
         }
     }
 }

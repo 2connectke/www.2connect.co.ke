@@ -9,7 +9,12 @@ export default function SmoothScroll() {
             return;
         }
 
-        const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+        // anchors: in-page "#section" links glide there, stopping below the navbar.
+        const lenis = new Lenis({
+            duration: 1.15,
+            smoothWheel: true,
+            anchors: { offset: -80 },
+        });
         let frame = requestAnimationFrame(function raf(time) {
             lenis.raf(time);
             frame = requestAnimationFrame(raf);
