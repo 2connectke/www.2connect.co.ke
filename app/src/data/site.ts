@@ -8,7 +8,6 @@ export const contact = {
     hours: 'Monday to Friday, 9AM to 5PM',
 };
 
-// TODO: replace with the real 2Connect profile links.
 export const socials: {
     label: string;
     href: string;
@@ -16,23 +15,17 @@ export const socials: {
 }[] = [
     {
         label: 'Instagram',
-        href: 'https://instagram.com/2connectke',
+        href: 'https://www.instagram.com/2connect.ke',
         network: 'instagram',
     },
     {
-        label: 'TikTok',
-        href: 'https://tiktok.com/@2connectke',
-        network: 'tiktok',
-    },
-    { label: 'X', href: 'https://x.com/2connectke', network: 'x' },
-    {
         label: 'LinkedIn',
-        href: 'https://linkedin.com/company/2connectke',
+        href: 'https://www.linkedin.com/company/2connectke',
         network: 'linkedin',
     },
     {
         label: 'Facebook',
-        href: 'https://facebook.com/2connectke',
+        href: 'https://www.facebook.com/share/1EVA9tGxUx/',
         network: 'facebook',
     },
 ];
