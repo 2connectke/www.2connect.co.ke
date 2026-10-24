@@ -9,6 +9,10 @@
  *   SITE_URL           Live address, default https://2connect.co.ke
  *   PRODUCTION_BRANCH  Branch whose deploys search engines may index, default main.
  *                      Cloudflare preview deploys of other branches get noindex.
+ *
+ * Pages marked "private" in seo.json (the internal brand guide) are always
+ * noindex, carry no sharing tags or structured data, and are left out of the
+ * sitemap and of every page's plain HTML menu.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -42,7 +46,10 @@ const components = {
     events: 'events',
     gallery: 'gallery',
     contact: 'contact',
+    brand: 'brand-styles',
 };
+
+const publicPages = Object.values(seo.pages).filter((page) => !page.private);
 
 const META_SLOT =
     /<!-- page-meta: scripts\/prerender\.mjs writes each page's search and sharing tags here -->\n/;
@@ -215,6 +222,12 @@ function jsonLd(name, page) {
 }
 
 function metaTags(name, page, title) {
+    if (page.private) {
+        return `<meta name="description" content="${escape(page.description)}">
+        <meta name="robots" content="noindex, nofollow, noarchive">
+`;
+    }
+
     const url = urlFor(page.path);
     const image = base + seo.image.path;
     const robots = indexable
@@ -290,8 +303,14 @@ function pagePreloads(name) {
  * JavaScript: what the page is about, links to every page and how to reach us.
  */
 function fallback(name, page) {
+    if (page.private) {
+        return `<noscript>
+            <p style="max-width:42rem;margin:0 auto;padding:2rem 1.5rem;font-family:system-ui,sans-serif;color:#0b1236">This internal page needs JavaScript. It and its contents are the property of 2Connect and shall not be used or shared with the public.</p>
+        </noscript>`;
+    }
+
     const org = seo.organization;
-    const nav = Object.values(seo.pages)
+    const nav = publicPages
         .map(
             (other) =>
                 `<li><a href="${escape(other.path)}">${escape(other.label ?? 'Home')}</a></li>`,
@@ -396,7 +415,7 @@ write(
         ),
 );
 
-const urls = Object.values(seo.pages)
+const urls = publicPages
     .map((page) => `    <url><loc>${escape(urlFor(page.path))}</loc></url>`)
     .join('\n');
 write(

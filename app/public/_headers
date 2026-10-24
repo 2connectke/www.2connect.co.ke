@@ -15,3 +15,9 @@
 
 /sitemap.xml
   Cache-Control: public, max-age=3600
+
+# Internal brand guide: never in search results, even if linked from elsewhere.
+/brand-styles
+  X-Robots-Tag: noindex, nofollow, noarchive
+/brand-styles.html
+  X-Robots-Tag: noindex, nofollow, noarchive
