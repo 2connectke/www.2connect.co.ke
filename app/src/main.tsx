@@ -20,14 +20,13 @@ const components: Record<PageName, string> = {
     home: 'welcome',
     about: 'about',
     services: 'services',
-    volunteerMatching: 'services/volunteer-matching',
     events: 'events',
     gallery: 'gallery',
     contact: 'contact',
     brand: 'brand-styles',
 };
 
-const modules = import.meta.glob<{ default: Page }>('./pages/**/index.tsx');
+const modules = import.meta.glob<{ default: Page }>('./pages/*/index.tsx');
 
 // Mirrors public/_redirects, for in-app links and the dev server.
 const redirects: Record<string, string> = {
@@ -36,13 +35,6 @@ const redirects: Record<string, string> = {
 };
 
 async function load(path: string): Promise<Page | null> {
-    if (path === '/services/volunteer-matching') {
-        const loader =
-            modules['./pages/services/volunteer-matching/index.tsx'];
-
-        return loader ? (await loader()).default : null;
-    }
-
     const name = pageNameFor(path);
     const loader = name && modules[`./pages/${components[name]}/index.tsx`];
 
