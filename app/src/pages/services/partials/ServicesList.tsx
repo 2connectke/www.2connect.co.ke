@@ -100,9 +100,13 @@ const ServicesList = () => {
                 {services.map((service, index) => (
                     <Reveal as="li" key={service.title} delay={index * 0.05}>
                         <Link
-                            href="/contact"
-                            className="group relative block overflow-hidden border-b border-ink/10 transition-colors duration-700 ease-out-expo hover:bg-ink hover:text-white"
-                        >
+        href={
+            service.title === 'Volunteer Matching'
+                ? '/services/volunteer-matching'
+                : '/contact'
+        }
+        className="group relative block overflow-hidden border-b border-ink/10 transition-colors duration-700 ease-out-expo hover:bg-ink hover:text-white"
+    >
                             <div className="container-wide grid items-center gap-6 py-10 md:grid-cols-12 md:gap-8 md:py-12">
                                 <div className="flex items-center gap-5 md:col-span-5">
                                     <span className="font-display text-sm font-semibold tracking-wider text-ink/40 transition-colors group-hover:text-sun">

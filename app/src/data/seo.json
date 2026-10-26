@@ -101,6 +101,13 @@
             "social_description": "Six ways in: get matched to volunteer work that fits you, get trained, get support, and lead on your campus. Pick your way in with 2Connect.",
             "schema": "WebPage"
         },
+        "volunteerMatching": {
+    "path": "/services/volunteer-matching",
+    "title": "Volunteer Matching | Find Your Volunteer Opportunity",
+    "description": "Find volunteer opportunities in Kenya that fit your skills, interests and availability with 2Connect.",
+    "social_description": "Discover meaningful volunteer opportunities that match your skills, interests and schedule.",
+    "schema": "WebPage"
+},
         "events": {
             "path": "/events",
             "label": "Events",
