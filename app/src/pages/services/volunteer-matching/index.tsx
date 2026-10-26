@@ -1,19 +1,18 @@
 
-
-import { useState } from 'react';
 import {
     ArrowDown,
     ArrowLeft,
     ArrowRight,
-    CheckCircle2,
+    // CheckCircle2,
     Clock3,
     Heart,
     MapPin,
     Sparkles,
     Users,
 } from 'lucide-react';
-import PageHero from '@/components/site/page-hero';
+import { useState } from 'react';
 import JoinCta from '@/components/site/join-cta';
+import PageHero from '@/components/site/page-hero';
 import { Link } from '@/lib/router';
 
 const causes = [
