@@ -14,6 +14,8 @@ import { Link } from '@/lib/router';
 const services: {
     icon: typeof Users;
     title: string;
+    /** Own page for this service, if it has one. Otherwise rows lead to contact. */
+    href?: string;
     tagline: string;
     description: string;
     image: string;
@@ -22,6 +24,7 @@ const services: {
     {
         icon: Users,
         title: 'Volunteer Matching',
+        href: '/services/volunteer-matching',
         tagline: 'The right person, in the right place.',
         description:
             'Tell us what you are good at and what you care about. We find you volunteer opportunities that need exactly that, at times that fit your life, so you spend your energy where it counts.',
@@ -100,7 +103,7 @@ const ServicesList = () => {
                 {services.map((service, index) => (
                     <Reveal as="li" key={service.title} delay={index * 0.05}>
                         <Link
-                            href="/contact"
+                            href={service.href ?? '/contact'}
                             className="group relative block overflow-hidden border-b border-ink/10 transition-colors duration-700 ease-out-expo hover:bg-ink hover:text-white"
                         >
                             <div className="container-wide grid items-center gap-6 py-10 md:grid-cols-12 md:gap-8 md:py-12">

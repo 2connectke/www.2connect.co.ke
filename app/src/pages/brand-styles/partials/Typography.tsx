@@ -112,7 +112,7 @@ const Typography = () => (
                 <Reveal
                     key={family.name}
                     delay={index * 0.08}
-                    className={`relative overflow-hidden rounded-[32px] p-8 sm:p-10 ${family.tone}`}
+                    className={`relative overflow-hidden rounded-4xl p-8 sm:p-10 ${family.tone}`}
                 >
                     <p className="text-xs font-semibold tracking-[0.2em] uppercase opacity-60">
                         {family.role} · {family.token}

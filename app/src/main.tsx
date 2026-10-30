@@ -20,13 +20,14 @@ const components: Record<PageName, string> = {
     home: 'welcome',
     about: 'about',
     services: 'services',
+    volunteerMatching: 'services/volunteer-matching',
     events: 'events',
     gallery: 'gallery',
     contact: 'contact',
     brand: 'brand-styles',
 };
 
-const modules = import.meta.glob<{ default: Page }>('./pages/*/index.tsx');
+const modules = import.meta.glob<{ default: Page }>('./pages/**/index.tsx');
 
 // Mirrors public/_redirects, for in-app links and the dev server.
 const redirects: Record<string, string> = {

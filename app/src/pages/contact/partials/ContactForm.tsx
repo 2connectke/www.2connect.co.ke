@@ -6,7 +6,7 @@ import {
     MessageCircle,
 } from 'lucide-react';
 import { useState } from 'react';
-import type { ChangeEvent, FormEvent } from 'react';
+import type { ChangeEvent, SubmitEvent } from 'react';
 import OverlapMark from '@/components/site/overlap-mark';
 import { contact } from '@/data/site';
 import FormField from './FormField';
@@ -91,7 +91,7 @@ const ContactForm = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError(null);
 
@@ -150,7 +150,7 @@ const ContactForm = () => {
     const copy = messageCopy[formType];
 
     return (
-        <div className="relative overflow-hidden rounded-[32px] bg-white p-6 ring-1 ring-ink/10 sm:p-10 lg:p-12">
+        <div className="relative overflow-hidden rounded-4xl bg-white p-6 ring-1 ring-ink/10 sm:p-10 lg:p-12">
             <AnimatePresence mode="wait" initial={false}>
                 {isSuccess ? (
                     <motion.div

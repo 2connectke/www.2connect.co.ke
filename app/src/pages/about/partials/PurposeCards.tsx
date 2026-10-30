@@ -52,7 +52,7 @@ const PurposeCards = () => {
                     ]}
                 />
 
-                <div className="mt-16 grid divide-y divide-white/10 overflow-hidden rounded-[32px] border border-white/10 bg-ink-soft lg:grid-cols-2 lg:divide-x lg:divide-y-0">
+                <div className="mt-16 grid divide-y divide-white/10 overflow-hidden rounded-4xl border border-white/10 bg-ink-soft lg:grid-cols-2 lg:divide-x lg:divide-y-0">
                     {statements.map((item, index) => (
                         <Reveal
                             key={item.label}

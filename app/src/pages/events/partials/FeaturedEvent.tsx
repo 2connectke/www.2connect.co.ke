@@ -7,7 +7,7 @@ import type { SiteEvent } from '@/data/site';
 const FeaturedEvent = ({ event }: { event: SiteEvent }) => {
     return (
         <Reveal y={60} className="px-3 sm:px-5">
-            <article className="group grid overflow-hidden rounded-[32px] bg-ink text-white lg:min-h-[640px] lg:grid-cols-12">
+            <article className="group grid overflow-hidden rounded-4xl bg-ink text-white lg:min-h-[640px] lg:grid-cols-12">
                 <div className="relative aspect-[4/3] overflow-hidden lg:order-2 lg:col-span-7 lg:aspect-auto">
                     <img
                         src={event.image}

@@ -56,7 +56,7 @@ const Philosophy = () => (
             </p>
         }
     >
-        <div className="grid gap-px overflow-hidden rounded-[32px] bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-px overflow-hidden rounded-4xl bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
             {principles.map((principle, index) => (
                 <Reveal
                     key={principle.title}

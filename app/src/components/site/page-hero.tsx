@@ -10,6 +10,8 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 interface PageHeroProps {
     /** Breadcrumb label for the current page. */
     label: string;
+    /** Breadcrumb step between Home and this page, for nested pages. */
+    parent?: { href: string; label: string };
     /** Headline, one entry per line. */
     title: ReactNode[];
     intro?: ReactNode;
@@ -24,6 +26,7 @@ interface PageHeroProps {
 /** Shared hero for inner pages: oversized headline, intro, and a parallax photo band. */
 export default function PageHero({
     label,
+    parent,
     title,
     intro,
     image,
@@ -56,6 +59,17 @@ export default function PageHero({
                             Home
                         </Link>
                         <span className="text-ink/30">/</span>
+                        {parent && (
+                            <>
+                                <Link
+                                    href={parent.href}
+                                    className="transition-colors hover:text-ink"
+                                >
+                                    {parent.label}
+                                </Link>
+                                <span className="text-ink/30">/</span>
+                            </>
+                        )}
                         <span className="text-ink">{label}</span>
                     </Eyebrow>
                 </motion.nav>

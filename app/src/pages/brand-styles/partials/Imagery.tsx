@@ -17,7 +17,7 @@ const Imagery = () => (
     >
         <div className="grid items-end gap-5 sm:grid-cols-12">
             <Reveal className="sm:col-span-5">
-                <div className="aspect-[4/5] overflow-hidden rounded-[32px]">
+                <div className="aspect-[4/5] overflow-hidden rounded-4xl">
                     <img
                         src="/assets/images/2connect-portrait-03.jpg"
                         alt="A 2Connect member at a community meetup"
@@ -27,7 +27,7 @@ const Imagery = () => (
                 </div>
                 <p className="mt-3 text-sm text-body">
                     Portrait frame ·{' '}
-                    <code className="font-mono">rounded-[32px]</code>
+                    <code className="font-mono">rounded-4xl</code>
                 </p>
             </Reveal>
             <Reveal delay={0.08} className="sm:col-span-3">
@@ -44,7 +44,7 @@ const Imagery = () => (
                 </p>
             </Reveal>
             <Reveal delay={0.16} className="sm:col-span-4">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[32px]">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-4xl">
                     <img
                         src="/assets/images/2connect-gathering-01.jpg"
                         alt="2Connect members at an outdoor gathering"

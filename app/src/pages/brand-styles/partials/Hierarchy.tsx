@@ -47,7 +47,7 @@ const Hierarchy = () => (
         }
     >
         <div className="grid gap-12 lg:grid-cols-12">
-            <div className="rounded-[32px] bg-white p-8 ring-1 ring-ink/10 sm:p-12 lg:col-span-7">
+            <div className="rounded-4xl bg-white p-8 ring-1 ring-ink/10 sm:p-12 lg:col-span-7">
                 <Eyebrow>Join the movement</Eyebrow>
                 <Gap label="mt-6" />
                 <h3 className="text-display-md text-ink">

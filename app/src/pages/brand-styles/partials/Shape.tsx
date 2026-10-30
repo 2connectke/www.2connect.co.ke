@@ -10,10 +10,10 @@ const radii = [
         shape: 'rounded-full aspect-[2/1]',
     },
     {
-        token: 'rounded-[32px]',
+        token: 'rounded-4xl',
         name: '32px',
         use: 'Photos, big cards and panels.',
-        shape: 'rounded-[32px] aspect-square',
+        shape: 'rounded-4xl aspect-square',
     },
     {
         token: 'rounded-[28px]',
