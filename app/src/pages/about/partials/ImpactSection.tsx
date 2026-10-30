@@ -68,7 +68,7 @@ const ImpactSection = () => {
                         <Reveal
                             key={side.title}
                             delay={index * 0.1}
-                            className={`relative overflow-hidden rounded-[32px] p-8 sm:p-12 ${side.className} ${
+                            className={`relative overflow-hidden rounded-4xl p-8 sm:p-12 ${side.className} ${
                                 index === 0
                                     ? 'lg:rounded-r-none lg:pr-28'
                                     : 'lg:rounded-l-none lg:pl-28'

@@ -81,7 +81,7 @@ const Motion = () => {
             }
         >
             <div className="grid gap-5 lg:grid-cols-12">
-                <div className="rounded-[32px] bg-white p-8 ring-1 ring-ink/10 lg:col-span-5">
+                <div className="rounded-4xl bg-white p-8 ring-1 ring-ink/10 lg:col-span-5">
                     <div className="mx-auto max-w-[260px]">
                         <Curve />
                     </div>
@@ -95,7 +95,7 @@ const Motion = () => {
                 </div>
 
                 <div className="flex flex-col gap-5 lg:col-span-7">
-                    <div className="rounded-[32px] bg-ink p-8 text-white">
+                    <div className="rounded-4xl bg-ink p-8 text-white">
                         <div className="flex items-center justify-between">
                             <p className="font-display text-xl font-bold">
                                 See the difference
@@ -139,7 +139,7 @@ const Motion = () => {
                         ))}
                     </div>
 
-                    <div className="rounded-[32px] bg-white p-8 ring-1 ring-ink/10">
+                    <div className="rounded-4xl bg-white p-8 ring-1 ring-ink/10">
                         <p className="font-display text-xl font-bold text-ink">
                             Durations
                         </p>

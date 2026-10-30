@@ -19,7 +19,7 @@ const OurStory = () => {
                 <div ref={ref} className="relative lg:col-span-6">
                     <motion.div
                         style={{ y: backY }}
-                        className="relative ml-auto aspect-[4/5] w-[78%] overflow-hidden rounded-[32px] bg-ink"
+                        className="relative ml-auto aspect-[4/5] w-[78%] overflow-hidden rounded-4xl bg-ink"
                     >
                         <img
                             src="/assets/images/2connect-portrait-03.jpg"

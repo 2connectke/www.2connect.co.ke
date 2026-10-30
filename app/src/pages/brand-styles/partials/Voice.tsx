@@ -69,7 +69,7 @@ const Voice = () => (
             </p>
         }
     >
-        <div className="grid gap-px overflow-hidden rounded-[32px] bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-px overflow-hidden rounded-4xl bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
             {traits.map((trait, index) => (
                 <Reveal
                     key={trait.title}

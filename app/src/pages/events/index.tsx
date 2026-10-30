@@ -126,7 +126,7 @@ export default function Events() {
                             transition={{ duration: 0.5, ease: EASE }}
                             className="container-wide"
                         >
-                            <div className="flex flex-col items-center rounded-[32px] bg-paper px-6 py-24 text-center">
+                            <div className="flex flex-col items-center rounded-4xl bg-paper px-6 py-24 text-center">
                                 <span className="relative flex h-10 w-16">
                                     <span className="absolute left-0 size-10 rounded-full bg-sun" />
                                     <span className="absolute right-0 size-10 rounded-full bg-azure" />

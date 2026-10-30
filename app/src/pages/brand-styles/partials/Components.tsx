@@ -28,7 +28,7 @@ function Demo({
     return (
         <div
             className={cn(
-                'flex flex-col rounded-[32px] p-6 sm:p-8',
+                'flex flex-col rounded-4xl p-6 sm:p-8',
                 dark ? 'bg-ink text-white' : 'bg-white ring-1 ring-ink/10',
                 className,
             )}

@@ -19,8 +19,8 @@ const FounderNote = () => {
                     y={40}
                     className="relative mx-auto mb-6 w-full max-w-md lg:order-2 lg:col-span-5 lg:mb-0 lg:max-w-none"
                 >
-                    <div className="absolute -right-4 -bottom-4 size-full rounded-[32px] bg-sun sm:-right-6 sm:-bottom-6" />
-                    <div className="relative aspect-square overflow-hidden rounded-[32px] bg-ink lg:aspect-auto lg:h-full">
+                    <div className="absolute -right-4 -bottom-4 size-full rounded-4xl bg-sun sm:-right-6 sm:-bottom-6" />
+                    <div className="relative aspect-square overflow-hidden rounded-4xl bg-ink lg:aspect-auto lg:h-full">
                         <img
                             src="/assets/images/2connect-founder.jpg"
                             alt="Kevin Wanjiru, founder of 2Connect, speaking at a community event"
