@@ -324,3 +324,73 @@ export const gallery: GalleryItem[] = [
         caption: 'Catching up, checking in, planning what is next.',
     },
 ];
+
+/** Volunteer matching: choices in the preferences form. */
+export const causes = [
+    'Education',
+    'Environment',
+    'Youth empowerment',
+    'Community development',
+];
+export const locations = ['Nairobi', 'Kiambu', 'Mombasa', 'Kisumu', 'Nakuru'];
+
+export interface Opportunity {
+    title: string;
+    cause: string;
+    location: string;
+    format: 'In person' | 'Remote';
+    availability: 'Weekdays' | 'Weekends' | 'Flexible';
+    skills: string[];
+    description: string;
+    image: string;
+}
+
+// Examples, not real listings (like events above). The volunteer matching
+// page labels them as such; keep them out of structured data.
+/** Add new opportunities here. They appear on /services/volunteer-matching. */
+export const opportunities: Opportunity[] = [
+    {
+        title: 'Homework and reading club',
+        cause: 'Education',
+        location: 'Nairobi',
+        format: 'In person',
+        availability: 'Weekends',
+        skills: ['teaching', 'mentoring', 'communication'],
+        description:
+            'Sit with kids after school, help them read and work through homework, and be someone they look forward to seeing.',
+        image: '/assets/images/2connect-outreach-01.jpg',
+    },
+    {
+        title: 'Mtaa cleanup crew',
+        cause: 'Environment',
+        location: 'Nairobi',
+        format: 'In person',
+        availability: 'Weekends',
+        skills: ['teamwork', 'organising', 'outreach'],
+        description:
+            'Gloves on, bags out. Clear a street, a market or a riverbank with a crew from your area, then see the difference.',
+        image: '/assets/images/2connect-outreach-02.jpg',
+    },
+    {
+        title: 'Youth event volunteer',
+        cause: 'Youth empowerment',
+        location: 'Kiambu',
+        format: 'In person',
+        availability: 'Flexible',
+        skills: ['event planning', 'teamwork', 'communication'],
+        description:
+            'Welcome people, run a station and keep the energy up at meetups and trainings for young people.',
+        image: '/assets/images/2connect-meetup-09.jpg',
+    },
+    {
+        title: 'Digital help for community groups',
+        cause: 'Community development',
+        location: 'Remote',
+        format: 'Remote',
+        availability: 'Flexible',
+        skills: ['technology', 'design', 'research', 'writing'],
+        description:
+            'Design a poster, set up a spreadsheet or write a post for a grassroots group that has no one else to ask.',
+        image: '/assets/images/2connect-meetup-04.jpg',
+    },
+];

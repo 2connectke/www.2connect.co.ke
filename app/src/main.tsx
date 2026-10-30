@@ -36,13 +36,6 @@ const redirects: Record<string, string> = {
 };
 
 async function load(path: string): Promise<Page | null> {
-    if (path === '/services/volunteer-matching') {
-        const loader =
-            modules['./pages/services/volunteer-matching/index.tsx'];
-
-        return loader ? (await loader()).default : null;
-    }
-
     const name = pageNameFor(path);
     const loader = name && modules[`./pages/${components[name]}/index.tsx`];
 

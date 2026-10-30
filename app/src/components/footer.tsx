@@ -19,7 +19,10 @@ const columns = [
     {
         title: 'Programs',
         links: [
-            { label: 'Volunteer Matching', href: '/services' },
+            {
+                label: 'Volunteer Matching',
+                href: '/services/volunteer-matching',
+            },
             { label: 'Connect+ Wellness', href: '/services' },
             { label: 'Training Academy', href: '/services' },
             { label: 'Internships', href: '/services' },

@@ -43,6 +43,7 @@ const components = {
     home: 'welcome',
     about: 'about',
     services: 'services',
+    volunteerMatching: 'services/volunteer-matching',
     events: 'events',
     gallery: 'gallery',
     contact: 'contact',
@@ -192,6 +193,16 @@ function jsonLd(name, page) {
     }
 
     if (name !== 'home') {
+        // Home, any parent page (What we do for /services/...), then this page.
+        const trail = [
+            ...publicPages.filter(
+                (other) =>
+                    other.path !== '/' &&
+                    page.path.startsWith(`${other.path}/`),
+            ),
+            page,
+        ];
+
         graph.push({
             '@type': 'BreadcrumbList',
             '@id': `${url}#breadcrumb`,
@@ -202,12 +213,12 @@ function jsonLd(name, page) {
                     name: 'Home',
                     item: `${base}/`,
                 },
-                {
+                ...trail.map((crumb, index) => ({
                     '@type': 'ListItem',
-                    position: 2,
-                    name: page.label ?? page.title,
-                    item: url,
-                },
+                    position: index + 2,
+                    name: crumb.label ?? crumb.title,
+                    item: urlFor(crumb.path),
+                })),
             ],
         });
     }
@@ -350,8 +361,11 @@ function fallback(name, page) {
         </noscript>`;
 }
 
-const write = (file, contents) =>
+// Nested pages (/services/volunteer-matching) need their folder first.
+const write = (file, contents) => {
+    fs.mkdirSync(path.dirname(path.join(dist, file)), { recursive: true });
     fs.writeFileSync(path.join(dist, file), contents);
+};
 
 // Pages. /about is served from about.html, which Cloudflare Pages maps without the extension.
 for (const [name, page] of Object.entries(seo.pages)) {

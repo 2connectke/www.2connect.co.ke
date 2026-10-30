@@ -102,12 +102,13 @@
             "schema": "WebPage"
         },
         "volunteerMatching": {
-    "path": "/services/volunteer-matching",
-    "title": "Volunteer Matching | Find Your Volunteer Opportunity",
-    "description": "Find volunteer opportunities in Kenya that fit your skills, interests and availability with 2Connect.",
-    "social_description": "Discover meaningful volunteer opportunities that match your skills, interests and schedule.",
-    "schema": "WebPage"
-},
+            "path": "/services/volunteer-matching",
+            "label": "Volunteer matching",
+            "title": "Volunteer matching, find volunteer work that fits you",
+            "description": "Tell 2Connect what you are good at, what you care about and when you are free. We match young people in Kenya with volunteer work that fits.",
+            "social_description": "Your skills, your cause, your schedule. Find volunteer work in Kenya that fits you, and let 2Connect connect you to it.",
+            "schema": "WebPage"
+        },
         "events": {
             "path": "/events",
             "label": "Events",
