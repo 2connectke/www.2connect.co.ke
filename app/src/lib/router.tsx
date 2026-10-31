@@ -1,5 +1,5 @@
 /**
- * Minimal client-side router for the site's six pages: in-app links,
+ * Minimal client-side router for the site's pages: in-app links,
  * the current URL, and a "navigate" event other components can listen to.
  * The page loading itself lives in main.tsx.
  */
@@ -43,10 +43,12 @@ export function useUrl() {
 
 export type PageName = keyof typeof seo.pages;
 
-/** Page name for a path, from data/seo.json. */
+/** Page name for a path, from data/seo.json. /articles/<slug> is the articles page too. */
 export function pageNameFor(path: string): PageName | undefined {
-    return (Object.keys(seo.pages) as PageName[]).find(
-        (name) => seo.pages[name].path === path,
+    return (
+        (Object.keys(seo.pages) as PageName[]).find(
+            (name) => seo.pages[name].path === path,
+        ) ?? (/^\/articles\/[a-z0-9-]+$/.test(path) ? 'articles' : undefined)
     );
 }
 

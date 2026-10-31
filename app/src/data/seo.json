@@ -133,6 +133,14 @@
             "social_description": "What showing up together looks like. Moments from 2Connect volunteers at cleanups, outreach days, meetups and trainings across Kenya.",
             "schema": "CollectionPage"
         },
+        "articles": {
+            "path": "/articles",
+            "label": "Articles",
+            "title": "Stories and articles from young volunteers in Kenya",
+            "description": "Stories from 2Connect volunteers, campus clubs and partners, plus practical guides on volunteering, wellness and leadership for young people in Kenya.",
+            "social_description": "Real stories from young Kenyans showing up for their communities. Read what 2Connect volunteers are doing, learning and building.",
+            "schema": "CollectionPage"
+        },
         "contact": {
             "path": "/contact",
             "label": "Contact",
