@@ -44,6 +44,7 @@ const components = {
     about: 'about',
     services: 'services',
     volunteerMatching: 'services/volunteer-matching',
+    volunteerManagement: 'services/volunteer-management',
     events: 'events',
     gallery: 'gallery',
     contact: 'contact',

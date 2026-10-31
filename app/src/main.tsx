@@ -21,6 +21,7 @@ const components: Record<PageName, string> = {
     about: 'about',
     services: 'services',
     volunteerMatching: 'services/volunteer-matching',
+    volunteerManagement: 'services/volunteer-management',
     events: 'events',
     gallery: 'gallery',
     contact: 'contact',
