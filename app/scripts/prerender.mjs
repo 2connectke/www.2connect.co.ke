@@ -25,6 +25,11 @@ const readJson = (file) =>
     JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
 const seo = readJson('src/data/seo.json');
 const faqs = readJson('src/data/faq.json');
+// Written by scripts/articles.mjs from the articles sheet; Vite copies it into dist/.
+const articlesFile = path.join(dist, 'articles.json');
+const articles = fs.existsSync(articlesFile)
+    ? JSON.parse(fs.readFileSync(articlesFile, 'utf8'))
+    : [];
 const manifest = JSON.parse(
     fs.readFileSync(path.join(dist, '.vite/manifest.json'), 'utf8'),
 );
@@ -47,6 +52,7 @@ const components = {
     volunteerManagement: 'services/volunteer-management',
     events: 'events',
     gallery: 'gallery',
+    articles: 'articles',
     contact: 'contact',
     brand: 'brand-styles',
 };
@@ -179,6 +185,23 @@ function jsonLd(name, page) {
         },
     ];
 
+    if (page.article) {
+        graph.push({
+            '@type': 'BlogPosting',
+            '@id': `${url}#article`,
+            mainEntityOfPage: { '@id': `${url}#webpage` },
+            headline: page.article.title,
+            description: page.article.excerpt,
+            image: base + page.article.cover,
+            datePublished: page.article.publishedAt,
+            dateModified: page.article.updatedAt,
+            author: { '@type': 'Person', name: page.article.author },
+            publisher: { '@id': `${base}/#organization` },
+            articleSection: page.article.category,
+            inLanguage: seo.language,
+        });
+    }
+
     if (name === 'contact') {
         graph.push({
             '@type': 'FAQPage',
@@ -241,7 +264,18 @@ function metaTags(name, page, title) {
     }
 
     const url = urlFor(page.path);
-    const image = base + seo.image.path;
+    const article = page.article;
+    const image = base + (article?.cover ?? seo.image.path);
+    const imageAlt = article?.coverAlt ?? seo.image.alt;
+    // Covers vary in size, so only the default share image states its size.
+    const extraTags = article
+        ? `<meta property="article:published_time" content="${escape(article.publishedAt)}">
+        <meta property="article:modified_time" content="${escape(article.updatedAt)}">
+        <meta property="article:section" content="${escape(article.category)}">
+        `
+        : `<meta property="og:image:width" content="${seo.image.width}">
+        <meta property="og:image:height" content="${seo.image.height}">
+        `;
     const robots = indexable
         ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
         : 'noindex, nofollow';
@@ -259,7 +293,7 @@ function metaTags(name, page, title) {
         <meta name="geo.region" content="${escape(seo.organization.country)}">
         <meta name="geo.placename" content="${escape(seo.organization.locality)}">
 
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="${article ? 'article' : 'website'}">
         <meta property="og:site_name" content="${escape(seo.site_name)}">
         <meta property="og:locale" content="${escape(seo.locale)}">
         <meta property="og:title" content="${escape(title)}">
@@ -268,15 +302,13 @@ function metaTags(name, page, title) {
         <meta property="og:image" content="${escape(image)}">
         <meta property="og:image:secure_url" content="${escape(image)}">
         <meta property="og:image:type" content="image/jpeg">
-        <meta property="og:image:width" content="${seo.image.width}">
-        <meta property="og:image:height" content="${seo.image.height}">
-        <meta property="og:image:alt" content="${escape(seo.image.alt)}">
+        ${extraTags}<meta property="og:image:alt" content="${escape(imageAlt)}">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="${escape(title)}">
         <meta name="twitter:description" content="${escape(social)}">
         <meta name="twitter:image" content="${escape(image)}">
-        <meta name="twitter:image:alt" content="${escape(seo.image.alt)}">
+        <meta name="twitter:image:alt" content="${escape(imageAlt)}">
 
         <script type="application/ld+json">${jsonLd(name, page)}</script>
 `;
@@ -330,7 +362,17 @@ function fallback(name, page) {
         .join('');
     let extra = '';
 
-    if (name === 'services' || name === 'home') {
+    if (page.article) {
+        // Already made safe by scripts/articles.mjs.
+        extra = `<p>By ${escape(page.article.author)}, ${escape(page.article.publishedAt)}</p>${page.article.html}`;
+    } else if (name === 'articles') {
+        extra = `<ul>${articles
+            .map(
+                (article) =>
+                    `<li><a href="/articles/${escape(article.slug)}">${escape(article.title)}</a>: ${escape(article.excerpt)}</li>`,
+            )
+            .join('')}</ul>`;
+    } else if (name === 'services' || name === 'home') {
         extra = `<h2>What we do</h2><ul>${seo.programmes
             .map(
                 (programme) =>
@@ -369,7 +411,7 @@ const write = (file, contents) => {
 };
 
 // Pages. /about is served from about.html, which Cloudflare Pages maps without the extension.
-for (const [name, page] of Object.entries(seo.pages)) {
+function writePage(name, page) {
     const title = `${page.title} · ${seo.site_name}`;
     const html = template
         .replace(META_SLOT, metaTags(name, page, title))
@@ -384,6 +426,19 @@ for (const [name, page] of Object.entries(seo.pages)) {
         html,
     );
 }
+
+Object.entries(seo.pages).forEach(([name, page]) => writePage(name, page));
+
+// One page per article, run by the articles page's code.
+const articlePages = articles.map((article) => ({
+    path: `/articles/${article.slug}`,
+    label: article.title,
+    title: article.title,
+    description: article.excerpt,
+    schema: 'WebPage',
+    article,
+}));
+articlePages.forEach((page) => writePage('articles', page));
 
 // Share tags for links to pages that don't exist, so even a mistyped link
 // still previews as 2Connect rather than a blank card.
@@ -430,8 +485,11 @@ write(
         ),
 );
 
-const urls = publicPages
-    .map((page) => `    <url><loc>${escape(urlFor(page.path))}</loc></url>`)
+const urls = [...publicPages, ...articlePages]
+    .map(
+        (page) =>
+            `    <url><loc>${escape(urlFor(page.path))}</loc>${page.article ? `<lastmod>${escape(page.article.updatedAt)}</lastmod>` : ''}</url>`,
+    )
     .join('\n');
 write(
     'sitemap.xml',

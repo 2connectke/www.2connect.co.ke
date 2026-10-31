@@ -78,8 +78,47 @@ Where things live:
 
 - Pages: `app/src/pages/`, components: `app/src/components/`, styles: `app/src/app.css`.
 - Text and events for the site: `app/src/data/site.ts`.
+- Articles: the "2Connect articles" Google Sheet, see [Articles](#articles).
 - Page titles and descriptions for search and social sharing: `app/src/data/seo.json`.
 - Photos: `app/public/assets/images/`, named `2connect-<category>-<nn>.jpg`.
+
+## Articles
+
+Articles are written in Google Docs and listed in the **2Connect articles** Google Sheet. The site reads them when it is built, so every article has its own page that search engines and link previews can read.
+
+```
+Sheet row + Google Doc ──► Apps Script web app (Published rows, Docs as Markdown)
+                                   │
+        npm run build: scripts/articles.mjs checks them and writes public/articles.json
+                                   │
+        scripts/prerender.mjs writes /articles and /articles/<slug> ──► 2connect.co.ke
+```
+
+### Writing and publishing
+
+1. Write the article in a Google Doc. Use the Doc's headings, bold, lists, quotes and links. Images inside the Doc are left out, so pick the cover photo below.
+2. Add a row to the **Articles** tab: title, excerpt (up to 200 characters), category, author, cover, cover alt and the Doc link. The slug and dates fill themselves in.
+3. The cover is a photo already on the site, named like `2connect-outreach-01.jpg` (see `app/public/assets/images/`). New photos are added to the repo first.
+4. Set the status to **Published**. A row with something missing goes back to Draft and says what to fix.
+5. Choose **2Connect > Publish to live site**. The site rebuilds and the article is live in about 3 to 5 minutes.
+
+To take an article down, set it back to Draft and publish again. Never change a slug once an article is live: it is the article's web address.
+
+### Setting it up (once)
+
+1. Create the **2Connect articles** sheet in the 2Connect Google account. Open **Extensions > Apps Script**, paste `app/scripts/apps-script/Code.gs`, turn on **Project Settings > Show "appsscript.json"** and paste `app/scripts/apps-script/appsscript.json`. Reload the sheet and choose **2Connect > Set up sheet**.
+2. In Apps Script choose **Deploy > New deployment > Web app** (it runs as you, for anyone). Copy the web app URL. The Docs only need to be readable by this account.
+3. In GitLab (`2connect1/2connect_main`), **Settings > CI/CD**:
+    - Variables: add `ARTICLES_URL` with the web app URL.
+    - Pipeline trigger tokens: add one, then save it in Apps Script under **Project Settings > Script properties** as `GITLAB_TRIGGER_TOKEN`.
+4. After changing `Code.gs`, choose **Deploy > Manage deployments > Edit > New version**, or the web app keeps running the old code.
+
+Good to know:
+
+- **Publish to live site** rebuilds production from GitLab `main` straight away, without a merge request. It only changes articles: the code is whatever `main` already holds.
+- Anyone who can edit the sheet can publish, and can see the trigger token in Apps Script. Share the sheet with editors only.
+- If the sheet has a problem, the build fails and the live site keeps its last good version.
+- To work on articles locally: `ARTICLES_URL=<web app URL> npm run articles`, then `npm run dev`. Without it the articles page is empty.
 
 ## Deploying
 

@@ -1,5 +1,7 @@
 /node_modules
 /dist
+# Written by scripts/articles.mjs from the articles sheet.
+/public/articles.json
 /.wrangler
 /photo-originals
 .DS_Store

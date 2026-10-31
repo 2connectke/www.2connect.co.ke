@@ -8,6 +8,9 @@
 #
 # Needs one CI/CD variable, CLOUDFLARE_API_TOKEN (masked and protected): a
 # Cloudflare API token with Account > Cloudflare Pages > Edit permission.
+# ARTICLES_URL, the articles sheet's Apps Script web app, brings in the
+# articles; without it the site builds with none. The sheet's "Publish to
+# live site" menu runs a main pipeline with a pipeline trigger token.
 # Both dev and main must be protected branches so the token reaches them.
 
 default:

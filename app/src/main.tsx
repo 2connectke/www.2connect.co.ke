@@ -24,6 +24,7 @@ const components: Record<PageName, string> = {
     volunteerManagement: 'services/volunteer-management',
     events: 'events',
     gallery: 'gallery',
+    articles: 'articles',
     contact: 'contact',
     brand: 'brand-styles',
 };
