@@ -59,6 +59,7 @@ const services: {
     {
         icon: Handshake,
         title: 'NGO and Community Partnerships',
+        href: '/services/volunteer-management',
         tagline: 'Volunteers who show up, ready to serve.',
         description:
             'We team up with NGOs and grassroots groups who need reliable hands. We connect them with trained volunteers, stay close to the projects and keep checking in.',

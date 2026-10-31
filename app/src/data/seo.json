@@ -109,6 +109,14 @@
             "social_description": "Your skills, your cause, your schedule. Find volunteer work in Kenya that fits you, and let 2Connect connect you to it.",
             "schema": "WebPage"
         },
+        "volunteerManagement": {
+            "path": "/services/volunteer-management",
+            "label": "Volunteer management",
+            "title": "Volunteer management for NGOs and community groups",
+            "description": "Bring volunteers on board, place them, check them in, verify their work and count real hours. Volunteer management for organisations in Kenya.",
+            "social_description": "Know who showed up, what got done and whether it was checked. Volunteer management for NGOs, community groups and campus clubs in Kenya.",
+            "schema": "WebPage"
+        },
         "events": {
             "path": "/events",
             "label": "Events",

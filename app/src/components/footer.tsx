@@ -23,6 +23,10 @@ const columns = [
                 label: 'Volunteer Matching',
                 href: '/services/volunteer-matching',
             },
+            {
+                label: 'Volunteer Management',
+                href: '/services/volunteer-management',
+            },
             { label: 'Connect+ Wellness', href: '/services' },
             { label: 'Training Academy', href: '/services' },
             { label: 'Internships', href: '/services' },
