@@ -110,7 +110,7 @@ To take an article down, set it back to Draft and publish again. Never change a 
 2. In Apps Script choose **Deploy > New deployment > Web app** (it runs as you, for anyone). Copy the web app URL. The Docs only need to be readable by this account.
 3. In GitLab (`2connect1/2connect_main`), **Settings > CI/CD**:
     - Variables: add `ARTICLES_URL` with the web app URL.
-    - Pipeline trigger tokens: add one, then save it in Apps Script under **Project Settings > Script properties** as `GITLAB_TRIGGER_TOKEN`.
+    - Pipeline trigger tokens: add one, then save it in Apps Script under **Project Settings > Script properties** as `GITLAB_TRIGGER_TOKEN`, with the project's number (project page > ⋮ > **Copy project ID**) as `GITLAB_PROJECT_ID`.
 4. After changing `Code.gs`, choose **Deploy > Manage deployments > Edit > New version**, or the web app keeps running the old code.
 
 Good to know:

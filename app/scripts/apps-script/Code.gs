@@ -16,10 +16,10 @@
  * Deployment web app url - https://script.google.com/macros/s/AKfycbzEOuqGubXea1UqKCuDR1E4LFDh8wvOHZtDlIqqP3fU8V1-Gb_dNaPS26qvJwQodQHjlg/exec
  * Script properties (Project Settings > Script properties):
  *   GITLAB_TRIGGER_TOKEN  Pipeline trigger token of gitlab.com/2connect1/2connect_main.
+ *   GITLAB_PROJECT_ID     That project's number (GitLab project page > ⋮ > Copy project ID).
  */
 
 const SHEET_NAME = 'Articles';
-const GITLAB_PROJECT = '2connect1/2connect_main';
 const TIME_ZONE = 'Africa/Nairobi';
 
 const COLUMNS = [
@@ -158,13 +158,22 @@ function publish() {
         return;
     }
 
-    const token = PropertiesService.getScriptProperties().getProperty(
-        'GITLAB_TRIGGER_TOKEN',
-    );
+    const properties = PropertiesService.getScriptProperties();
+    // Trimmed: pasted values often carry a stray space or line break.
+    const token = (properties.getProperty('GITLAB_TRIGGER_TOKEN') || '').trim();
+    // The number, not "2connect1/2connect_main": UrlFetchApp rejects the encoded slash.
+    const project = (properties.getProperty('GITLAB_PROJECT_ID') || '').trim();
+    const missing = [
+        !token && 'GITLAB_TRIGGER_TOKEN is missing',
+        !project && 'GITLAB_PROJECT_ID is missing',
+        project &&
+            !/^\d+$/.test(project) &&
+            `GITLAB_PROJECT_ID should be only digits, but is "${project}"`,
+    ].filter(Boolean);
 
-    if (!token) {
+    if (missing.length) {
         ui.alert(
-            'Publishing is not set up yet: GITLAB_TRIGGER_TOKEN is missing.',
+            `Publishing is not set up yet:\n\n${missing.join('\n')}\n\nFix it under Apps Script > Project Settings > Script properties. Found: ${properties.getKeys().join(', ') || 'none'}.`,
         );
 
         return;
@@ -181,7 +190,7 @@ function publish() {
     }
 
     const response = UrlFetchApp.fetch(
-        `https://gitlab.com/api/v4/projects/${encodeURIComponent(GITLAB_PROJECT)}/trigger/pipeline`,
+        `https://gitlab.com/api/v4/projects/${project}/trigger/pipeline`,
         {
             method: 'post',
             payload: { token, ref: 'main' },
@@ -191,7 +200,7 @@ function publish() {
 
     if (response.getResponseCode() !== 201) {
         ui.alert(
-            `Publishing failed (${response.getResponseCode()}). Ask the web team to check the GitLab trigger token.`,
+            `Publishing failed (${response.getResponseCode()}): ${response.getContentText().slice(0, 300)}\n\nAsk the web team to check the GitLab trigger token and project ID.`,
         );
 
         return;
@@ -257,7 +266,7 @@ function docMarkdown(url, title) {
 
     if (response.getResponseCode() !== 200) {
         throw new Error(
-            `The Doc for "${title}" could not be read (${response.getResponseCode()}); share it with the sheet owner`,
+            `The Doc for "${title}" could not be read (${response.getResponseCode()}): ${googleReason(response)}`,
         );
     }
 
@@ -366,4 +375,13 @@ function day(value) {
 
 function col(name) {
     return COLUMNS.indexOf(name) + 1;
+}
+
+/** Google's own reason for a failed API call, e.g. no access or the Drive API being off. */
+function googleReason(response) {
+    try {
+        return JSON.parse(response.getContentText()).error.message;
+    } catch {
+        return response.getContentText().slice(0, 200);
+    }
 }
