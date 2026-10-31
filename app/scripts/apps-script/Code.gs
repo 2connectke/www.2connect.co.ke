@@ -159,13 +159,21 @@ function publish() {
     }
 
     const properties = PropertiesService.getScriptProperties();
-    const token = properties.getProperty('GITLAB_TRIGGER_TOKEN');
+    // Trimmed: pasted values often carry a stray space or line break.
+    const token = (properties.getProperty('GITLAB_TRIGGER_TOKEN') || '').trim();
     // The number, not "2connect1/2connect_main": UrlFetchApp rejects the encoded slash.
-    const project = properties.getProperty('GITLAB_PROJECT_ID');
+    const project = (properties.getProperty('GITLAB_PROJECT_ID') || '').trim();
+    const missing = [
+        !token && 'GITLAB_TRIGGER_TOKEN is missing',
+        !project && 'GITLAB_PROJECT_ID is missing',
+        project &&
+            !/^\d+$/.test(project) &&
+            `GITLAB_PROJECT_ID should be only digits, but is "${project}"`,
+    ].filter(Boolean);
 
-    if (!token || !/^\d+$/.test(project || '')) {
+    if (missing.length) {
         ui.alert(
-            'Publishing is not set up yet: add GITLAB_TRIGGER_TOKEN and GITLAB_PROJECT_ID (a number) under Project Settings > Script properties.',
+            `Publishing is not set up yet:\n\n${missing.join('\n')}\n\nFix it under Apps Script > Project Settings > Script properties. Found: ${properties.getKeys().join(', ') || 'none'}.`,
         );
 
         return;
