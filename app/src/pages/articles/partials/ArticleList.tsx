@@ -21,10 +21,10 @@ const ArticleList = ({
             <PageHero
                 label="Articles"
                 title={[
-                    'Stories from',
-                    <>
-                        the <span className="text-sun-deep">mtaa.</span>
-                    </>,
+                    '2Connect',
+                    <span key="pulse" className="text-sun-deep">
+                        Pulse.
+                    </span>,
                 ]}
                 intro="What our volunteers, campus clubs and partners are doing, learning and building. Real people, real work, told by the people who were there."
             />
